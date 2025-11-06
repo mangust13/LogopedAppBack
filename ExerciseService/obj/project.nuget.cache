@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "aFHvK/tKQgs=",
+  "success": true,
+  "projectFilePath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\maksy\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\rabbitmq.client\\7.2.0\\rabbitmq.client.7.2.0.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
