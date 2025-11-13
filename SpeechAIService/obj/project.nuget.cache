@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ntCHUqJ6aCM=",
+  "dgSpecHash": "RQtBLfeMp9k=",
   "success": true,
   "projectFilePath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\SpeechAIService\\SpeechAIService.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,9 @@
     "C:\\Users\\maksy\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\microsoft.cognitiveservices.speech\\1.46.0\\microsoft.cognitiveservices.speech.1.46.0.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\rabbitmq.client\\7.2.0\\rabbitmq.client.7.2.0.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\serilog\\4.3.0\\serilog.4.3.0.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\serilog.sinks.console\\6.1.1\\serilog.sinks.console.6.1.1.nupkg.sha512",
+    "C:\\Users\\maksy\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\system.clientmodel\\1.1.0\\system.clientmodel.1.1.0.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",

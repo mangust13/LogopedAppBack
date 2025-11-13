@@ -1,0 +1,108 @@
+2025-11-12 13:57:14.557 +02:00 [FTL] ❌ Критична помилка запуску SpeechAIService
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed, host 127.0.0.1:5672)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed, host 127.0.0.1:5672
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFactory.ConnectUsingAddressFamilyAsync(IPEndPoint endpoint, Func`2 socketFactory, AddressFamily family, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFactory.ConnectUsingAddressFamilyAsync(IPEndPoint endpoint, Func`2 socketFactory, AddressFamily family, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFactory.OpenAsync(AmqpTcpEndpoint amqpTcpEndpoint, Func`2 socketFactory, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.CreateAsync(AmqpTcpEndpoint amqpTcpEndpoint, Func`2 socketFactory, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandlerAsync(AmqpTcpEndpoint endpoint, CancellationToken cancellationToken)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOneAsync[T](IEndpointResolver resolver, Func`3 selector, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOneAsync[T](IEndpointResolver resolver, Func`3 selector, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Framing.AutorecoveringConnection.CreateAsync(ConnectionConfig config, IEndpointResolver endpoints, CancellationToken cancellationToken)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnectionAsync(IEndpointResolver endpointResolver, String clientProvidedName, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnectionAsync(IEndpointResolver endpointResolver, String clientProvidedName, CancellationToken cancellationToken)
+   at SpeechAIService.SpeechAIService.Main(String[] args) in D:\Univer\Sem_08\LogopedApp\LogopedAppBack\SpeechAIService\Program.cs:line 29
+2025-11-12 15:09:13.694 +02:00 [FTL] ❌ Критична помилка запуску SpeechAIService
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed, host 127.0.0.1:5672)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed, host 127.0.0.1:5672
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFactory.ConnectUsingAddressFamilyAsync(IPEndPoint endpoint, Func`2 socketFactory, AddressFamily family, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFactory.ConnectUsingAddressFamilyAsync(IPEndPoint endpoint, Func`2 socketFactory, AddressFamily family, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFactory.OpenAsync(AmqpTcpEndpoint amqpTcpEndpoint, Func`2 socketFactory, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.CreateAsync(AmqpTcpEndpoint amqpTcpEndpoint, Func`2 socketFactory, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandlerAsync(AmqpTcpEndpoint endpoint, CancellationToken cancellationToken)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOneAsync[T](IEndpointResolver resolver, Func`3 selector, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOneAsync[T](IEndpointResolver resolver, Func`3 selector, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Framing.AutorecoveringConnection.CreateAsync(ConnectionConfig config, IEndpointResolver endpoints, CancellationToken cancellationToken)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnectionAsync(IEndpointResolver endpointResolver, String clientProvidedName, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnectionAsync(IEndpointResolver endpointResolver, String clientProvidedName, CancellationToken cancellationToken)
+   at SpeechAIService.SpeechAIService.Main(String[] args) in D:\Univer\Sem_08\LogopedApp\LogopedAppBack\SpeechAIService\Program.cs:line 29
+2025-11-12 15:10:06.789 +02:00 [INF] [SpeechAIService] Очікування повідомлень...
+2025-11-12 15:14:22.553 +02:00 [INF] 🎧 Отримано вправу #1
+2025-11-12 15:14:22.555 +02:00 [INF] 🎙 Аудіо: C:/Users/maksy/Downloads/Запис.wav
+2025-11-12 15:14:22.556 +02:00 [INF] 📖 Еталонна фраза: "Рома крутий хлопець"
+2025-11-12 15:14:24.080 +02:00 [INF] Розпізнано: Рома крутий хлопець.
+2025-11-12 15:14:24.089 +02:00 [INF] Accuracy: 100,0 (з урах. 95,0)
+2025-11-12 15:14:24.092 +02:00 [INF] Fluency: 99,0
+2025-11-12 15:14:24.093 +02:00 [INF] Completeness: 100,0
+2025-11-12 15:14:24.094 +02:00 [INF] Overall (скориговано): 97,8
+2025-11-12 15:14:24.117 +02:00 [INF] 📤 Результат для вправи #1 відправлено.
+2025-11-12 15:16:29.228 +02:00 [INF] 🎧 Отримано вправу #1
+2025-11-12 15:16:29.229 +02:00 [INF] 🎙 Аудіо: C:/Users/maksy/Downloads/Запис.wav
+2025-11-12 15:16:29.231 +02:00 [INF] 📖 Еталонна фраза: "я гей"
+2025-11-12 15:16:29.966 +02:00 [INF] Розпізнано: Я гей гей.
+2025-11-12 15:16:29.968 +02:00 [INF] Accuracy: 100,0 (з урах. 50,0)
+2025-11-12 15:16:29.969 +02:00 [INF] Fluency: 27,0
+2025-11-12 15:16:29.970 +02:00 [INF] Completeness: 100,0
+2025-11-12 15:16:29.972 +02:00 [INF] Overall (скориговано): 51,7
+2025-11-12 15:16:29.974 +02:00 [INF] 📤 Результат для вправи #1 відправлено.
+2025-11-12 15:25:53.906 +02:00 [INF] 🚀 Запуск SpeechAIService...
+2025-11-12 15:25:54.101 +02:00 [INF] [SpeechAIService] ✅ Готовий до роботи...
+2025-11-12 15:26:12.826 +02:00 [INF] --- Вправа #1 | Еталон: "я гей" ---
+2025-11-12 15:26:14.153 +02:00 [INF] 📝 Score: 100,0 | Errors: 1
+2025-11-12 15:26:32.801 +02:00 [INF] --- Вправа #1 | Еталон: "да да" ---
+2025-11-12 15:26:34.174 +02:00 [INF] 📝 Score: 94,5 | Errors: 1
+2025-11-12 15:31:58.953 +02:00 [INF] 🚀 Запуск SpeechAIService (режим подвійної перевірки)...
+2025-11-12 15:31:59.146 +02:00 [INF] [SpeechAIService] ✅ Готовий. Чекаю аудіо...
+2025-11-12 15:32:10.763 +02:00 [INF] --- Вправа #1 | Очікуємо: "да да" ---
+2025-11-12 15:32:12.688 +02:00 [INF] 🗣️ Реально почуто: "Рома крутий хлопець."
+2025-11-12 15:32:12.728 +02:00 [INF] 🔍 Схожість з еталоном: 10,5%
+2025-11-12 15:32:12.730 +02:00 [WRN] ⛔ Текст занадто відрізняється. Оцінка вимови скасована.
+2025-11-12 15:32:12.820 +02:00 [INF] 📤 Результат відправлено.
+2025-11-12 15:32:31.750 +02:00 [INF] --- Вправа #1 | Очікуємо: "Рома клутий хлопець" ---
+2025-11-12 15:32:32.617 +02:00 [INF] 🗣️ Реально почуто: "Рома крутий хлопець."
+2025-11-12 15:32:32.620 +02:00 [INF] 🔍 Схожість з еталоном: 94,7%
+2025-11-12 15:32:33.563 +02:00 [INF] 📤 Результат відправлено.
+2025-11-12 15:32:51.620 +02:00 [INF] --- Вправа #1 | Очікуємо: "Рома крутий хлопець" ---
+2025-11-12 15:32:52.482 +02:00 [INF] 🗣️ Реально почуто: "Рома крутий хлопець."
+2025-11-12 15:32:52.483 +02:00 [INF] 🔍 Схожість з еталоном: 100,0%
+2025-11-12 15:32:53.483 +02:00 [INF] 📤 Результат відправлено.
+2025-11-12 15:35:00.781 +02:00 [INF] --- Вправа #1 | Очікуємо: "Тигр" ---
+2025-11-12 15:35:01.498 +02:00 [WRN] ⚠️ Не вдалося розпізнати слова в першому проході.
+2025-11-12 15:35:01.576 +02:00 [INF] 📤 Результат відправлено.
+2025-11-12 15:41:17.689 +02:00 [INF] [SpeechAIService] Очікування повідомлень...
+2025-11-12 15:41:23.464 +02:00 [INF] 🎧 Отримано вправу #1
+2025-11-12 15:41:23.467 +02:00 [INF] 🎙 Аудіо: C:/Users/maksy/Downloads/Запис.wav
+2025-11-12 15:41:23.468 +02:00 [INF] 📖 Еталонна фраза: "Тигр"
+2025-11-12 15:41:26.389 +02:00 [INF] 🧾 Raw (lexical): Тигр
+2025-11-12 15:41:26.391 +02:00 [INF] 📃 Normalized: Тигр.
+2025-11-12 15:41:26.400 +02:00 [INF] 🎯 Accuracy: 100,0 (скориг. 100,0)
+2025-11-12 15:41:26.402 +02:00 [INF] 💬 Fluency: 100,0
+2025-11-12 15:41:26.403 +02:00 [INF] 🧩 Completeness: 100,0
+2025-11-12 15:41:26.404 +02:00 [INF] ⭐ Overall (скориговано): 100,0
+2025-11-12 15:41:26.426 +02:00 [INF] 📤 Результат для вправи #1 відправлено.
+2025-11-12 16:28:55.653 +02:00 [INF] 🎧 Отримано вправу #1
+2025-11-12 16:28:55.655 +02:00 [INF] 🎙 Аудіо: C:/Users/maksy/Downloads/Запис.wav
+2025-11-12 16:28:55.658 +02:00 [INF] 📖 Еталонна фраза: "Тигр"
+2025-11-12 16:28:56.879 +02:00 [INF] 🧾 Raw (lexical): Тигр
+2025-11-12 16:28:56.881 +02:00 [INF] 📃 Normalized: Тигр.
+2025-11-12 16:28:56.883 +02:00 [INF] 🎯 Accuracy: 100,0 (скориг. 100,0)
+2025-11-12 16:28:56.886 +02:00 [INF] 💬 Fluency: 100,0
+2025-11-12 16:28:56.888 +02:00 [INF] 🧩 Completeness: 100,0
+2025-11-12 16:28:56.889 +02:00 [INF] ⭐ Overall (скориговано): 100,0
+2025-11-12 16:28:56.891 +02:00 [INF] 📤 Результат для вправи #1 відправлено.

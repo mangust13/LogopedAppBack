@@ -1,0 +1,93 @@
+2025-11-06 23:11:15.415 +02:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-11-06 23:11:15.559 +02:00 [INF] Now listening on: http://localhost:5082
+2025-11-06 23:11:15.600 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-06 23:11:15.601 +02:00 [INF] Hosting environment: Development
+2025-11-06 23:11:15.603 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-11-06 23:15:25.997 +02:00 [INF] Now listening on: http://localhost:5082
+2025-11-06 23:15:26.062 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-06 23:15:26.064 +02:00 [INF] Hosting environment: Development
+2025-11-06 23:15:26.066 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-11-06 23:15:41.624 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/ - null null
+2025-11-06 23:15:41.803 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/ - 404 0 null 181.0171ms
+2025-11-06 23:15:41.822 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5082/, Response status code: 404
+2025-11-06 23:15:52.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger - null null
+2025-11-06 23:15:52.658 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger - 301 0 null 12.3698ms
+2025-11-06 23:15:52.665 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2025-11-06 23:15:52.729 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 200 null text/html;charset=utf-8 64.1723ms
+2025-11-06 23:15:52.846 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.css - null null
+2025-11-06 23:15:52.847 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - null null
+2025-11-06 23:15:52.851 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - null null
+2025-11-06 23:15:52.851 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - null null
+2025-11-06 23:15:52.852 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.js - null null
+2025-11-06 23:15:52.853 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-06 23:15:52.866 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.css - 200 152 text/css 19.8494ms
+2025-11-06 23:15:52.867 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui.css - 200 23647 text/css 20.5334ms
+2025-11-06 23:15:52.870 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.js - 200 null application/javascript;charset=utf-8 17.2546ms
+2025-11-06 23:15:52.879 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-standalone-preset.js - 200 77352 text/javascript 27.4206ms
+2025-11-06 23:15:52.882 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/swagger-ui-bundle.js - 200 424767 text/javascript 30.6884ms
+2025-11-06 23:15:52.882 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 29.4751ms
+2025-11-06 23:15:52.886 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/_vs/browserLink - null null
+2025-11-06 23:15:52.987 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/_vs/browserLink - 200 null text/javascript; charset=UTF-8 101.4203ms
+2025-11-06 23:15:53.134 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2025-11-06 23:15:53.146 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 11.1868ms
+2025-11-06 23:15:53.417 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/favicon-32x32.png - null null
+2025-11-06 23:15:53.422 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/favicon-32x32.png - 200 628 image/png 4.9399ms
+2025-11-06 23:19:50.199 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Exercise/start - application/json 143
+2025-11-06 23:19:50.206 +02:00 [INF] Executing endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:19:50.231 +02:00 [INF] Route matched with {action = "StartExercise", controller = "Exercise"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartExercise(ExerciseRequest) on controller ExerciseController (ExerciseService).
+2025-11-06 23:19:50.265 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-11-06 23:19:50.282 +02:00 [INF] Executed action ExerciseController.StartExercise (ExerciseService) in 46.2323ms
+2025-11-06 23:19:50.283 +02:00 [INF] Executed endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:19:50.284 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Exercise/start - 400 null application/problem+json; charset=utf-8 84.7183ms
+2025-11-06 23:20:55.530 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Exercise/start - application/json 143
+2025-11-06 23:20:55.535 +02:00 [INF] Executing endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:20:55.537 +02:00 [INF] Route matched with {action = "StartExercise", controller = "Exercise"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartExercise(ExerciseRequest) on controller ExerciseController (ExerciseService).
+2025-11-06 23:20:55.746 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-11-06 23:20:55.751 +02:00 [INF] Executed action ExerciseController.StartExercise (ExerciseService) in 212.1299ms
+2025-11-06 23:20:55.754 +02:00 [INF] Executed endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:20:55.755 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Exercise/start - 200 null application/json; charset=utf-8 224.7373ms
+2025-11-06 23:29:19.794 +02:00 [INF] Now listening on: http://localhost:5082
+2025-11-06 23:29:19.864 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-06 23:29:19.865 +02:00 [INF] Hosting environment: Development
+2025-11-06 23:29:19.866 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-11-06 23:29:29.244 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2025-11-06 23:29:29.372 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 200 null text/html;charset=utf-8 128.5791ms
+2025-11-06 23:29:29.404 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/_vs/browserLink - null null
+2025-11-06 23:29:29.404 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-06 23:29:29.412 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 7.9186ms
+2025-11-06 23:29:29.433 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.3564ms
+2025-11-06 23:29:29.605 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2025-11-06 23:29:29.617 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.4527ms
+2025-11-06 23:29:54.375 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Exercise/start - application/json 201
+2025-11-06 23:29:54.386 +02:00 [INF] Executing endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:29:54.407 +02:00 [INF] Route matched with {action = "StartExercise", controller = "Exercise"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartExercise(ExerciseRequest) on controller ExerciseController (ExerciseService).
+2025-11-06 23:29:54.437 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-11-06 23:29:54.459 +02:00 [INF] Executed action ExerciseController.StartExercise (ExerciseService) in 44.9609ms
+2025-11-06 23:29:54.461 +02:00 [INF] Executed endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:29:54.462 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Exercise/start - 400 null application/problem+json; charset=utf-8 87.3925ms
+2025-11-06 23:30:13.646 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Exercise/start - application/json 202
+2025-11-06 23:30:13.650 +02:00 [INF] Executing endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:30:13.652 +02:00 [INF] Route matched with {action = "StartExercise", controller = "Exercise"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartExercise(ExerciseRequest) on controller ExerciseController (ExerciseService).
+2025-11-06 23:30:13.846 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-11-06 23:30:13.850 +02:00 [INF] Executed action ExerciseController.StartExercise (ExerciseService) in 196.5007ms
+2025-11-06 23:30:13.852 +02:00 [INF] Executed endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:30:13.854 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Exercise/start - 200 null application/json; charset=utf-8 207.9456ms
+2025-11-06 23:38:27.088 +02:00 [INF] Now listening on: http://localhost:5082
+2025-11-06 23:38:27.188 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-06 23:38:27.190 +02:00 [INF] Hosting environment: Development
+2025-11-06 23:38:27.192 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-11-06 23:38:35.573 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/index.html - null null
+2025-11-06 23:38:35.697 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/index.html - 200 null text/html;charset=utf-8 125.1923ms
+2025-11-06 23:38:35.723 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/_vs/browserLink - null null
+2025-11-06 23:38:35.723 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-06 23:38:35.732 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 9.43ms
+2025-11-06 23:38:35.751 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.1162ms
+2025-11-06 23:38:35.915 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - null null
+2025-11-06 23:38:35.927 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5082/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 11.9366ms
+2025-11-06 23:38:41.221 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5082/api/Exercise/start - application/json 202
+2025-11-06 23:38:41.231 +02:00 [INF] Executing endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:38:41.247 +02:00 [INF] Route matched with {action = "StartExercise", controller = "Exercise"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartExercise(ExerciseRequest) on controller ExerciseController (ExerciseService).
+2025-11-06 23:38:41.457 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-11-06 23:38:41.464 +02:00 [INF] Executed action ExerciseController.StartExercise (ExerciseService) in 211.3349ms
+2025-11-06 23:38:41.466 +02:00 [INF] Executed endpoint 'ExerciseController.StartExercise (ExerciseService)'
+2025-11-06 23:38:41.468 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5082/api/Exercise/start - 200 null application/json; charset=utf-8 247.493ms

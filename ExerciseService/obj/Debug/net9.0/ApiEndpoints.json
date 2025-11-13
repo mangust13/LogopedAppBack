@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "ExerciseController",
+    "Method": "StartExercise",
+    "RelativePath": "api/Exercise/start",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ExerciseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

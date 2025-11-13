@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "ExerciseService\\ExerciseService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "SpeechAIService\\SpeechAIService.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]

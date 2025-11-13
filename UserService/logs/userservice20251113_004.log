@@ -1,0 +1,29 @@
+2025-11-13 02:40:38.614 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-13 02:40:38.788 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-13 02:40:38.851 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-13 02:40:38.852 +02:00 [INF] Hosting environment: Development
+2025-11-13 02:40:38.853 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService
+2025-11-13 02:40:53.981 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/swagger/index.html - null null
+2025-11-13 02:40:54.228 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/swagger/index.html - 200 null text/html;charset=utf-8 249.8114ms
+2025-11-13 02:40:54.288 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-13 02:40:54.288 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/swagger/index.js - null null
+2025-11-13 02:40:54.293 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/_vs/browserLink - null null
+2025-11-13 02:40:54.294 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/swagger/index.js - 200 null application/javascript;charset=utf-8 5.7879ms
+2025-11-13 02:40:54.295 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 6.8592ms
+2025-11-13 02:40:54.353 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.6337ms
+2025-11-13 02:40:54.654 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/swagger/v1/swagger.json - null null
+2025-11-13 02:40:54.675 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.0692ms
+2025-11-13 02:41:01.234 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5290/api/Users/login - application/json 57
+2025-11-13 02:41:01.283 +02:00 [INF] Executing endpoint 'UserService.Controllers.UsersController.Login (UserService)'
+2025-11-13 02:41:01.308 +02:00 [INF] Route matched with {action = "Login", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[UserService.Contracts.AuthDtos+LoginResponse]] Login(LoginRequest) on controller UserService.Controllers.UsersController (UserService).
+2025-11-13 02:41:02.487 +02:00 [INF] Executing ObjectResult, writing value of type 'UserService.Contracts.AuthDtos+LoginResponse'.
+2025-11-13 02:41:02.498 +02:00 [INF] Executed action UserService.Controllers.UsersController.Login (UserService) in 1184.4747ms
+2025-11-13 02:41:02.499 +02:00 [INF] Executed endpoint 'UserService.Controllers.UsersController.Login (UserService)'
+2025-11-13 02:41:02.506 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5290/api/Users/login - 200 null application/json; charset=utf-8 1272.2979ms
+2025-11-13 02:41:38.234 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/Users/me - null null
+2025-11-13 02:41:38.315 +02:00 [INF] Executing endpoint 'UserService.Controllers.UsersController.Me (UserService)'
+2025-11-13 02:41:38.321 +02:00 [INF] Route matched with {action = "Me", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Me() on controller UserService.Controllers.UsersController (UserService).
+2025-11-13 02:41:38.437 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`4[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-11-13 02:41:38.445 +02:00 [INF] Executed action UserService.Controllers.UsersController.Me (UserService) in 121.6471ms
+2025-11-13 02:41:38.445 +02:00 [INF] Executed endpoint 'UserService.Controllers.UsersController.Me (UserService)'
+2025-11-13 02:41:38.446 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/Users/me - 200 null application/json; charset=utf-8 212.1728ms
