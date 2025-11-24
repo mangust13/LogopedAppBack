@@ -1,0 +1,24 @@
+2025-11-13 14:17:12.455 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-13 14:17:12.659 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-13 14:17:12.738 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-13 14:17:12.739 +02:00 [INF] Hosting environment: Development
+2025-11-13 14:17:12.740 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService
+2025-11-13 14:20:36.461 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-13 14:20:36.655 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-13 14:20:36.727 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-13 14:20:36.728 +02:00 [INF] Hosting environment: Development
+2025-11-13 14:20:36.728 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService
+2025-11-13 14:21:07.619 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/users/me - null null
+2025-11-13 14:21:09.585 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-11-13 14:21:09.591 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-11-13 14:21:09.605 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/users/me - 401 0 null 1981.4437ms
+2025-11-13 14:21:40.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/users/me - null null
+2025-11-13 14:21:40.661 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-11-13 14:21:40.663 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-11-13 14:21:40.665 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/users/me - 401 0 null 19.4859ms
+2025-11-13 14:21:50.837 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/users/login - null null
+2025-11-13 14:21:50.845 +02:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-11-13 14:21:50.845 +02:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-11-13 14:21:50.846 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/users/login - 405 0 null 9.3423ms

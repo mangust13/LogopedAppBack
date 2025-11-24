@@ -1,0 +1,48 @@
+2025-11-13 14:20:36.461 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-13 14:20:36.655 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-13 14:20:36.727 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-13 14:20:36.728 +02:00 [INF] Hosting environment: Development
+2025-11-13 14:20:36.728 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService
+2025-11-13 14:21:07.619 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/users/me - null null
+2025-11-13 14:21:09.585 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-11-13 14:21:09.591 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-11-13 14:21:09.605 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/users/me - 401 0 null 1981.4437ms
+2025-11-13 14:21:40.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/users/me - null null
+2025-11-13 14:21:40.661 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-11-13 14:21:40.663 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-11-13 14:21:40.665 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/users/me - 401 0 null 19.4859ms
+2025-11-13 14:21:50.837 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/api/users/login - null null
+2025-11-13 14:21:50.845 +02:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-11-13 14:21:50.845 +02:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-11-13 14:21:50.846 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/api/users/login - 405 0 null 9.3423ms
+2025-11-13 14:29:10.859 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-13 14:29:11.052 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-13 14:29:11.126 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-13 14:29:11.126 +02:00 [INF] Hosting environment: Development
+2025-11-13 14:29:11.127 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService
+2025-11-13 14:32:43.133 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5290/api/users/login
+ - application/json 63
+2025-11-13 14:32:43.197 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5290/api/users/login
+ - 404 0 null 65.4906ms
+2025-11-13 14:32:43.220 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST http://localhost:5290/api/users/login%0A, Response status code: 404
+2025-11-13 14:33:05.936 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/ - null null
+2025-11-13 14:33:06.049 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/ - 404 0 null 113.8848ms
+2025-11-13 14:33:06.051 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5290/, Response status code: 404
+2025-11-13 14:33:10.245 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/swagger/index.html - null null
+2025-11-13 14:33:10.336 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/swagger/index.html - 200 null text/html;charset=utf-8 90.5278ms
+2025-11-13 14:33:10.512 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/_framework/aspnetcore-browser-refresh.js - null null
+2025-11-13 14:33:10.516 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 3.2592ms
+2025-11-13 14:33:10.549 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/swagger/index.js - null null
+2025-11-13 14:33:10.549 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/_vs/browserLink - null null
+2025-11-13 14:33:10.550 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/swagger/index.js - 200 null application/javascript;charset=utf-8 1.6837ms
+2025-11-13 14:33:10.647 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/_vs/browserLink - 200 null text/javascript; charset=UTF-8 98.1498ms
+2025-11-13 14:33:11.097 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5290/swagger/v1/swagger.json - null null
+2025-11-13 14:33:11.111 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5290/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.115ms
+2025-11-13 14:33:22.555 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5290/api/Users/login
+ - application/json 63
+2025-11-13 14:33:22.558 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5290/api/Users/login
+ - 404 0 null 3.8596ms
+2025-11-13 14:33:22.559 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST http://localhost:5290/api/Users/login%0A, Response status code: 404
+2025-11-13 14:33:22.573 +02:00 [INF] Connection id "0HNH2M2V0H5AS", Request id "0HNH2M2V0H5AS:00000002": the application completed without reading the entire request body.

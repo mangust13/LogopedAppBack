@@ -3,18 +3,22 @@ import pika
 import os
 import sys
 from allosaurus.app import read_recognizer
-
+from datetime import datetime
 from epitran import Epitran
 import Levenshtein
 
+
+def log(msg):
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
+
 # 1. Завантажуємо моделі (це станеться один раз при запуску)
-print("⏳ Завантаження AI моделей...")
+log("⏳ Завантаження AI моделей...")
 # Allosaurus слухає звук і видає фонеми. 'ukr' - код для української
 allo_model = read_recognizer() 
 # Epitran переводить текст в ідеальні фонеми
 epi_model = Epitran('ukr-Cyrl') 
 
-print("✅ Моделі завантажені. Підключення до RabbitMQ...")
+log("✅ Моделі завантажені. Підключення до RabbitMQ...")
 
 # Налаштування RabbitMQ
 RABBIT_HOST = os.getenv('RABBITMQ_HOST', 'localhost')
@@ -42,7 +46,7 @@ def analyze_audio(audio_path, reference_text):
         # lang_id='ukr' підказує моделі, які звуки пріоритетні, але НЕ включає словник
         actual_ipa = allo_model.recognize(audio_path, lang_id='ukr')
     except Exception as e:
-        print(f"Error recognising audio: {e}")
+        log(f"Error recognising audio: {e}")
         return None
 
     # 3. Порівнюємо два рядки фонем
@@ -81,21 +85,22 @@ def analyze_audio(audio_path, reference_text):
     }
 
 def callback(ch, method, properties, body):
-    print(f" [x] Отримано повідомлення")
+    log(f" Отримано повідомлення")
     data = json.loads(body)
     
     exercise_id = data.get("ExerciseId")
     audio_path = data.get("AudioUrl")
     text = data.get("ReferenceText")
 
-    print(f" --- Обробка: '{text}' ---")
+    log(f" --- Обробка: '{text}' ---")
     
     result = analyze_audio(audio_path, text)
     
     if result:
         response = {
             "ExerciseId": exercise_id,
-            "RecognizedIPA": result['RecognizedIPA'], # Можеш показати юзеру транскрипцію!
+            "UserId": data.get("UserId"),
+            "RecognizedIPA": result['RecognizedIPA'],
             "AccuracyScore": result['Accuracy'],
             "PronunciationErrors": result['Errors'],
             "Feedback": f"Точність: {result['Accuracy']:.1f}%. Почуто: [{result['RecognizedIPA']}]"
@@ -107,11 +112,11 @@ def callback(ch, method, properties, body):
             routing_key='speech.result.done',
             body=json.dumps(response)
         )
-        print(" [x] Результат відправлено")
+        log(" [x] Результат відправлено")
     else:
-        print(" [!] Помилка обробки")
+        log(" [!] Помилка обробки")
 
 channel.basic_consume(queue=QUEUE_NAME, on_message_callback=callback, auto_ack=True)
 
-print(' [*] Python AI Worker працює. Чекаю чергу...')
+log(' [*] Python AI Worker працює. Чекаю чергу...')
 channel.start_consuming()

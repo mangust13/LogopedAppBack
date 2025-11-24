@@ -1,18 +1,50 @@
 [
   {
-    "ContainingType": "ExerciseController",
-    "Method": "StartExercise",
-    "RelativePath": "api/Exercise/start",
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "Start",
+    "RelativePath": "api/Exercises/start",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "ExerciseRequest",
+        "Type": "ExerciseService.Contracts.ExerciseRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "StartHttp",
+    "RelativePath": "api/Exercises/start-http",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ExerciseService.Contracts.ExerciseRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExerciseService.ExerciseService\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_6",
+    "RelativePath": "health",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

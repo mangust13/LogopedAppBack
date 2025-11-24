@@ -1,6 +1,65 @@
 [
   {
-    "Name": "New Profile",
+    "Name": "US + Gateway",
+    "Projects": [
+      {
+        "Path": "UserService\\UserService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  },
+  {
+    "Name": "US + ES + PS + G",
+    "Projects": [
+      {
+        "Path": "UserService\\UserService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ExerciseService\\ExerciseService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ProgressService\\ProgressService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  },
+  {
+    "Name": "All",
+    "Projects": [
+      {
+        "Path": "UserService\\UserService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ExerciseService\\ExerciseService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ProgressService\\ProgressService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "SpeechAIService\\SpeechAIService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  },
+  {
+    "Name": "ES + AI",
     "Projects": [
       {
         "Path": "ExerciseService\\ExerciseService.csproj",

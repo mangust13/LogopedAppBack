@@ -140,8 +140,6 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\runtimes
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Shared.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Shared.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.csproj.AssemblyReference.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\rpswa.dswa.cache.json
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.GeneratedMSBuildEditorConfig.editorconfig
@@ -159,10 +157,10 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwe
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.development.json
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserServ.57764DC8.Up2Date
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\refint\UserService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.genruntimeconfig.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\ref\UserService.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

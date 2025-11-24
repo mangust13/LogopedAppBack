@@ -1576,16 +1576,6 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
-      },
-      "Shared/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/Shared.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Shared.dll": {}
-        }
       }
     }
   },
@@ -4539,11 +4529,6 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Shared/1.0.0": {
-      "type": "project",
-      "path": "../Shared/Shared.csproj",
-      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4556,7 +4541,6 @@
       "Serilog >= 3.1.1",
       "Serilog.AspNetCore >= 8.0.1",
       "Serilog.Sinks.File >= 5.0.0",
-      "Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.8.0"
     ]
   },
@@ -4591,11 +4575,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared\\Shared.csproj": {
-              "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared\\Shared.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

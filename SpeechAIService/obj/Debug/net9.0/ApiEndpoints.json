@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "SpeechAIService.Controllers.AiController",
+    "Method": "Analyze",
+    "RelativePath": "api/Ai/analyze",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SpeechAIService.Contracts.SpeechRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SpeechAIService.Contracts.SpeechResultDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

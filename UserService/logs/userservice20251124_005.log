@@ -1,0 +1,10 @@
+2025-11-24 16:55:25.646 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-24 16:55:25.952 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-24 16:55:26.066 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-24 16:55:26.067 +02:00 [INF] Hosting environment: Development
+2025-11-24 16:55:26.068 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService
+2025-11-24 17:00:07.979 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-11-24 17:00:08.342 +02:00 [INF] Now listening on: http://localhost:5290
+2025-11-24 17:00:08.515 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-24 17:00:08.517 +02:00 [INF] Hosting environment: Development
+2025-11-24 17:00:08.518 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService

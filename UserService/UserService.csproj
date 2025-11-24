@@ -28,12 +28,8 @@
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
 
-    <!-- Swagger / OpenAPI -->
+    <!-- Swagger -->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>
