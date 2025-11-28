@@ -13,10 +13,6 @@ public class ResultListener : IHostedService
     private readonly RabbitOptions _options;
     private readonly ProgressReporter _progressReporter;
 
-    // ActivitySource для OpenTelemetry
-    private static readonly ActivitySource Activity =
-        new ActivitySource("ExerciseService.RabbitMQ");
-
     private IConnection? _connection;
     private IChannel? _channel;
 
@@ -60,22 +56,14 @@ public class ResultListener : IHostedService
 
         consumer.ReceivedAsync += async (_, ea) =>
         {
-            using var activity = Activity.StartActivity("RabbitMQ Receive");
-
             var json = Encoding.UTF8.GetString(ea.Body.ToArray());
-            activity?.SetTag("rabbitmq.raw", json);
-
             var payload = JsonSerializer.Deserialize<JsonElement>(json);
+
             var exerciseId = payload.GetProperty("ExerciseId").GetString();
             var userId = payload.GetProperty("UserId").GetString();
             var accuracy = payload.GetProperty("AccuracyScore").GetDouble();
             var feedback = payload.GetProperty("Feedback").GetString();
             var ipa = payload.GetProperty("RecognizedIPA").GetString();
-
-            // enrichment для trace
-            activity?.SetTag("exercise.id", exerciseId);
-            activity?.SetTag("user.id", userId);
-            activity?.SetTag("accuracy", accuracy);
 
             await _progressReporter.ReportAsync(
                 userId!,

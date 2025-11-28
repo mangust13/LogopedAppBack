@@ -41,31 +41,36 @@ public class ExercisesController : ControllerBase
         return Ok(new { message = $"Exercise #{request.ExerciseId} has been sent for analysis." });
     }
 
-    [HttpPost("start-http")]
-    public async Task<IActionResult> StartHttp([FromBody] ExerciseRequest request)
+    [HttpPost("upload-audio")]
+    public async Task<IActionResult> UploadAudio([FromForm] UploadAudioRequest req)
     {
-        var client = _clientFactory.CreateClient("SpeechAI");
-        Console.WriteLine("HTTP → SpeechAI BaseAddress = " + client.BaseAddress);
+        var file = req.File;
 
-        var result = await client.PostAsJsonAsync(
-            "/api/ai/analyze",
-            new
-            {
-                request.ExerciseId,
-                request.UserId,
-                request.AudioUrl,
-                request.ReferenceText
-            });
+        if (file == null || file.Length == 0)
+            return BadRequest("No file uploaded");
 
-        if (!result.IsSuccessStatusCode)
-            return StatusCode(500, new { error = "SpeechAIService HTTP error" });
+        var root = Directory.GetCurrentDirectory();
+        var uploadsFolder = Path.Combine(root, "Uploads");
 
-        var analysis = await result.Content.ReadFromJsonAsync<ExerciseResultDto>();
+        Directory.CreateDirectory(uploadsFolder);
 
-        return Ok(new
+        var filePath = Path.Combine(uploadsFolder, file.FileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
         {
-            message = $"Exercise #{request.ExerciseId} analyzed over HTTP.",
-            analysis
-        });
+            await file.CopyToAsync(stream);
+        }
+
+        var message = new
+        {
+            ExerciseId = req.ExerciseId,
+            UserId = req.UserId,
+            AudioUrl = filePath,      // Абсолютний шлях
+            ReferenceText = req.ReferenceText
+        };
+
+        await _publisher.PublishAsync(message);
+
+        return Ok(new { filePath });
     }
 }

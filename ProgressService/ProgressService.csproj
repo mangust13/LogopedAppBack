@@ -13,14 +13,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
 
-    <!-- OpenTelemetry (усі потрібні пакети) -->
-    <PackageReference Include="OpenTelemetry" Version="1.14.0-beta.2" />
-    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0-beta.2" />
-    <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.14.0-beta.2" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.14.0-beta.2" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.14.0-beta.2" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.14.0-beta.2" />
-
     <!-- Swagger / OpenAPI -->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10" />

@@ -1,7 +1,6 @@
 import json
 import pika
 import os
-import sys
 from allosaurus.app import read_recognizer
 from datetime import datetime
 from epitran import Epitran

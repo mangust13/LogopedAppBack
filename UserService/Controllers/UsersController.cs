@@ -39,6 +39,7 @@ public class UsersController : ControllerBase
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(req.Password),
             Role = String.IsNullOrWhiteSpace(req.Role) ? "User" : req.Role!,
         };
+
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
         return CreatedAtAction(nameof(Me), new { }, new { user.Id, user.Email, user.Role });

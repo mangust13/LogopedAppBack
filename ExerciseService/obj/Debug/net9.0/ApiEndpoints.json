@@ -32,6 +32,37 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "UploadAudio",
+    "RelativePath": "api/Exercises/upload-audio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "ExerciseId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ReferenceText",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ExerciseService.ExerciseService\u002B\u003C\u003Ec",
     "Method": "\u003CMain\u003Eb__0_6",
     "RelativePath": "health",

@@ -36,6 +36,56 @@
         }
       }
     },
+    "/api/Exercises/upload-audio": {
+      "post": {
+        "tags": [
+          "Exercises"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "ExerciseId": {
+                    "type": "string"
+                  },
+                  "UserId": {
+                    "type": "string"
+                  },
+                  "ReferenceText": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "ExerciseId": {
+                  "style": "form"
+                },
+                "UserId": {
+                  "style": "form"
+                },
+                "ReferenceText": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Exercises/start-http": {
       "post": {
         "tags": [

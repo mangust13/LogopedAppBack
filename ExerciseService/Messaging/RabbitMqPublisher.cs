@@ -9,7 +9,6 @@ namespace ExerciseService.Messaging;
 public class RabbitMqPublisher
 {
     private readonly RabbitOptions _options;
-    private static readonly ActivitySource Activity = new("ExerciseService.RabbitMQPublisher");
 
     public RabbitMqPublisher(IOptions<RabbitOptions> options)
     {
@@ -18,11 +17,6 @@ public class RabbitMqPublisher
 
     public async Task PublishAsync(object message)
     {
-        using var activity = Activity.StartActivity("RabbitMQ Publish");
-
-        var json = JsonSerializer.Serialize(message);
-        activity?.SetTag("rabbitmq.message", json);
-
         var factory = new ConnectionFactory
         {
             HostName = _options.Host,

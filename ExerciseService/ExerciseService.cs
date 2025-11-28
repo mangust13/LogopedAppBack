@@ -3,8 +3,6 @@ using ExerciseService.Messaging;
 using ExerciseService.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Resources;
 
 namespace ExerciseService;
 
@@ -27,26 +25,6 @@ public class ExerciseService
         {
             client.BaseAddress = new Uri(builder.Configuration["Services:ProgressServiceUrl"]!);
         });
-
-        // 2 варіант для лаби
-        builder.Services.AddHttpClient("SpeechAI", client =>
-        {
-            client.BaseAddress = new Uri(builder.Configuration["Services:SpeechAIUrl"]!);
-        });
-
-        builder.Services.AddOpenTelemetry()
-            .ConfigureResource(r =>
-                r.AddService("ExerciseService"))
-            .WithTracing(t =>
-            {
-                t.AddAspNetCoreInstrumentation();
-                t.AddHttpClientInstrumentation();
-                t.AddSource("ExerciseService.RabbitMQ");
-                t.AddZipkinExporter(o =>
-                {
-                    o.Endpoint = new Uri("http://localhost:9411/api/v2/spans");
-                });
-            });
 
         builder.Services.AddSingleton<ProgressReporter>();
         builder.Services.AddSingleton<RabbitMqPublisher>();

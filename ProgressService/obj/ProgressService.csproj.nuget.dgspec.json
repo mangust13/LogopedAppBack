@@ -63,30 +63,6 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
-            "OpenTelemetry": {
-              "target": "Package",
-              "version": "[1.14.0-beta.2, )"
-            },
-            "OpenTelemetry.Exporter.Zipkin": {
-              "target": "Package",
-              "version": "[1.14.0-beta.2, )"
-            },
-            "OpenTelemetry.Extensions.Hosting": {
-              "target": "Package",
-              "version": "[1.14.0-beta.2, )"
-            },
-            "OpenTelemetry.Instrumentation.AspNetCore": {
-              "target": "Package",
-              "version": "[1.14.0-beta.2, )"
-            },
-            "OpenTelemetry.Instrumentation.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[1.14.0-beta.2, )"
-            },
-            "OpenTelemetry.Instrumentation.Http": {
-              "target": "Package",
-              "version": "[1.14.0-beta.2, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.8.0, )"

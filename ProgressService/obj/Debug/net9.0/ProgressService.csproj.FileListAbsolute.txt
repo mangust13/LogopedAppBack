@@ -147,12 +147,3 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\refi
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.genruntimeconfig.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ref\ProgressService.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Api.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Api.ProviderBuilderExtensions.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Exporter.Zipkin.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Extensions.Hosting.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Instrumentation.AspNetCore.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Instrumentation.EntityFrameworkCore.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\OpenTelemetry.Instrumentation.Http.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\System.Diagnostics.DiagnosticSource.dll
