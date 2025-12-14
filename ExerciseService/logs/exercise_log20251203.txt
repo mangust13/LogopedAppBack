@@ -1,0 +1,48 @@
+2025-12-03 19:01:51.969 +02:00 [ERR] Hosting failed to start
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed, host 127.0.0.1:5672)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed, host 127.0.0.1:5672
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFactory.ConnectUsingAddressFamilyAsync(IPEndPoint endpoint, Func`2 socketFactory, AddressFamily family, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFactory.ConnectUsingAddressFamilyAsync(IPEndPoint endpoint, Func`2 socketFactory, AddressFamily family, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFactory.OpenAsync(AmqpTcpEndpoint amqpTcpEndpoint, Func`2 socketFactory, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.CreateAsync(AmqpTcpEndpoint amqpTcpEndpoint, Func`2 socketFactory, TimeSpan connectionTimeout, CancellationToken cancellationToken)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandlerAsync(AmqpTcpEndpoint endpoint, CancellationToken cancellationToken)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOneAsync[T](IEndpointResolver resolver, Func`3 selector, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOneAsync[T](IEndpointResolver resolver, Func`3 selector, CancellationToken cancellationToken)
+   at RabbitMQ.Client.Framing.AutorecoveringConnection.CreateAsync(ConnectionConfig config, IEndpointResolver endpoints, CancellationToken cancellationToken)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnectionAsync(IEndpointResolver endpointResolver, String clientProvidedName, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnectionAsync(IEndpointResolver endpointResolver, String clientProvidedName, CancellationToken cancellationToken)
+   at ExerciseService.Messaging.ResultListener.StartAsync(CancellationToken cancellationToken) in D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\Messaging\ResultListener.cs:line 34
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-12-03 19:02:46.466 +02:00 [INF] Now listening on: http://localhost:5002
+2025-12-03 19:02:46.565 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-03 19:02:46.567 +02:00 [INF] Hosting environment: Development
+2025-12-03 19:02:46.568 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-12-03 19:21:15.014 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-03 19:21:15.327 +02:00 [INF] Now listening on: http://localhost:5002
+2025-12-03 19:21:15.381 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-03 19:21:15.383 +02:00 [INF] Hosting environment: Development
+2025-12-03 19:21:15.386 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-12-03 19:32:24.165 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-03 19:32:24.571 +02:00 [INF] Now listening on: http://localhost:5002
+2025-12-03 19:32:24.649 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-03 19:32:24.652 +02:00 [INF] Hosting environment: Development
+2025-12-03 19:32:24.655 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-12-03 19:43:56.112 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-03 19:43:56.458 +02:00 [INF] Now listening on: http://localhost:5002
+2025-12-03 19:43:56.512 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-03 19:43:56.514 +02:00 [INF] Hosting environment: Development
+2025-12-03 19:43:56.516 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService
+2025-12-03 19:59:48.223 +02:00 [INF] User profile is available. Using 'C:\Users\maksy\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-03 19:59:48.606 +02:00 [INF] Now listening on: http://localhost:5002
+2025-12-03 19:59:48.671 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-03 19:59:48.673 +02:00 [INF] Hosting environment: Development
+2025-12-03 19:59:48.675 +02:00 [INF] Content root path: D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService

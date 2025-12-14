@@ -27,6 +27,7 @@ public class ResultListener : IHostedService
         var factory = new ConnectionFactory
         {
             HostName = _options.Host,
+            Port = _options.Port,
             UserName = _options.UserName,
             Password = _options.Password
         };

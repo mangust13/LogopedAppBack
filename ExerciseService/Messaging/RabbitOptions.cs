@@ -3,6 +3,7 @@
 public class RabbitOptions
 {
     public string Host { get; set; } = "";
+    public int Port { get; set; } = 5673;
     public string Exchange { get; set; } = "";
     public string AudioRoutingKey { get; set; } = "";
     public string ResultRoutingKey { get; set; } = "";

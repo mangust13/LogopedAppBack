@@ -7,6 +7,7 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Prog
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\ProgressService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\ProgressService.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Humanizer.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.Build.Locator.dll
@@ -23,6 +24,12 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Micr
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Microsoft.OpenApi.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Mono.TextTemplating.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
@@ -37,6 +44,7 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Syst
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\System.Composition.Hosting.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\System.Composition.Runtime.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll

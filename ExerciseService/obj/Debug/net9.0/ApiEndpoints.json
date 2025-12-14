@@ -17,22 +17,6 @@
   },
   {
     "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "StartHttp",
-    "RelativePath": "api/Exercises/start-http",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "ExerciseService.Contracts.ExerciseRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
     "Method": "UploadAudio",
     "RelativePath": "api/Exercises/upload-audio",
     "HttpMethod": "POST",
@@ -46,12 +30,12 @@
       },
       {
         "Name": "ExerciseId",
-        "Type": "System.String",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {
         "Name": "UserId",
-        "Type": "System.String",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -64,7 +48,7 @@
   },
   {
     "ContainingType": "ExerciseService.ExerciseService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_6",
+    "Method": "\u003CMain\u003Eb__0_4",
     "RelativePath": "health",
     "HttpMethod": "GET",
     "IsController": false,

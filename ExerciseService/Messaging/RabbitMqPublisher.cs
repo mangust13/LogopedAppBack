@@ -15,11 +15,14 @@ public class RabbitMqPublisher
         _options = options.Value;
     }
 
-    public async Task PublishAsync(object message)
+    public virtual async Task PublishAsync(object message)
     {
+        Console.WriteLine($"Connecting to RabbitMQ at {_options.Host}:{_options.Port}");
+
         var factory = new ConnectionFactory
         {
             HostName = _options.Host,
+            Port = _options.Port,
             UserName = _options.UserName,
             Password = _options.Password
         };

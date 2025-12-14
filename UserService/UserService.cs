@@ -12,7 +12,6 @@ public static class UserService
 {
     public async static Task Main(string[] args)
     {
-        // Створюємо WebApplication та налаштовуємо його
         var builder = WebApplication.CreateBuilder(args);
 
         // Logging

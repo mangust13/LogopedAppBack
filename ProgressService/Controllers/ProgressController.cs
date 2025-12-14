@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgressService.Contracts;
 using ProgressService.Domain;
@@ -8,6 +9,7 @@ namespace ProgressService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ProgressController : ControllerBase
 {
     private readonly ProgressDbContext _db;

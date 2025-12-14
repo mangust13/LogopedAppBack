@@ -52,10 +52,12 @@
                     "format": "binary"
                   },
                   "ExerciseId": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int32"
                   },
                   "UserId": {
-                    "type": "string"
+                    "type": "integer",
+                    "format": "int32"
                   },
                   "ReferenceText": {
                     "type": "string"
@@ -86,37 +88,6 @@
         }
       }
     },
-    "/api/Exercises/start-http": {
-      "post": {
-        "tags": [
-          "Exercises"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ExerciseRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ExerciseRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ExerciseRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/health": {
       "get": {
         "tags": [
@@ -136,12 +107,12 @@
         "type": "object",
         "properties": {
           "exerciseId": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           },
           "userId": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           },
           "audioUrl": {
             "type": "string",

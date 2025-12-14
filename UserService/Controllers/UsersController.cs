@@ -24,6 +24,7 @@ public class UsersController : ControllerBase
         _jwt = jwt;
     }
 
+    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] AuthDtos.RegisterRequest req)
     {
@@ -45,6 +46,7 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(Me), new { }, new { user.Id, user.Email, user.Role });
     }
 
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<ActionResult<AuthDtos.LoginResponse>> Login([FromBody] AuthDtos.LoginRequest req)
     {

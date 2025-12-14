@@ -1,5 +1,6 @@
 ﻿using ExerciseService.Contracts;
 using ExerciseService.Messaging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,16 +8,15 @@ namespace ExerciseService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ExercisesController : ControllerBase
 {
     private readonly RabbitMqPublisher _publisher;
-    private readonly IHttpClientFactory _clientFactory;
     private static readonly ActivitySource Activity = new("ExerciseService.Start");
 
-    public ExercisesController(RabbitMqPublisher publisher, IHttpClientFactory clientFactory)
+    public ExercisesController(RabbitMqPublisher publisher)
     {
         _publisher = publisher;
-        _clientFactory = clientFactory;
     }
 
     [HttpPost("start")]
