@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
+using Shared.Contracts.Events.Common;
 using System.Text;
 using System.Text.Json;
-using System.Diagnostics;
 
 namespace ExerciseService.Messaging;
 
@@ -15,10 +15,11 @@ public class RabbitMqPublisher
         _options = options.Value;
     }
 
-    public virtual async Task PublishAsync(object message)
+    public async Task PublishAsync<TEvent>(
+        TEvent @event,
+        string routingKey)
+        where TEvent : IntegrationEvent
     {
-        Console.WriteLine($"Connecting to RabbitMQ at {_options.Host}:{_options.Port}");
-
         var factory = new ConnectionFactory
         {
             HostName = _options.Host,
@@ -30,16 +31,25 @@ public class RabbitMqPublisher
         await using var connection = await factory.CreateConnectionAsync();
         await using var channel = await connection.CreateChannelAsync();
 
-        await channel.ExchangeDeclareAsync(_options.Exchange, ExchangeType.Topic);
-
-        var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message));
-
-        await channel.BasicPublishAsync<BasicProperties>(
+        await channel.ExchangeDeclareAsync(
             exchange: _options.Exchange,
-            routingKey: _options.AudioRoutingKey,
+            type: ExchangeType.Topic);
+
+        var body = Encoding.UTF8.GetBytes(
+            JsonSerializer.Serialize(@event));
+
+        var properties = new BasicProperties
+        {
+            ContentType = "application/json",
+            CorrelationId = @event.CorrelationId,
+            MessageId = @event.EventId.ToString()
+        };
+
+        await channel.BasicPublishAsync(
+            exchange: _options.Exchange,
+            routingKey: routingKey,
             mandatory: false,
-            basicProperties: new BasicProperties(),
-            body: body
-        );
+            basicProperties: properties,
+            body: body);
     }
 }

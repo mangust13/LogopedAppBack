@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Net.Http.Json;
+using Shared.Contracts.Events.Exercises;
+using Shared.Contracts.Dtos.Progress;
 
 namespace ExerciseService.Services;
 
@@ -12,19 +14,21 @@ public class ProgressReporter
         _clientFactory = clientFactory;
     }
 
-    public async Task ReportAsync(string userId, string exerciseId, double accuracy, string feedback, string ipa)
+    public async Task ReportAsync(ExerciseAnalysisCompletedEvent evt)
     {
         var client = _clientFactory.CreateClient("ProgressService");
 
-        var payload = new
+        var dto = new ProgressReportDto
         {
-            UserId = int.Parse(userId),
-            ExerciseId = int.Parse(exerciseId),
-            Accuracy = accuracy,
-            Feedback = feedback,
-            RecognizedText = ipa
+            ChildProfileId = evt.UserId,
+            ExerciseId = evt.ExerciseId,
+            Accuracy = evt.Accuracy,
+            Feedback = evt.Feedback,
+            RecognizedText = evt.RecognizedIpa
         };
 
-        await client.PostAsJsonAsync("/api/progress", payload);
+        var response = await client.PostAsJsonAsync("/api/progress", dto);
+
+        response.EnsureSuccessStatusCode();
     }
 }

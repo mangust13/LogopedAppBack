@@ -23,11 +23,6 @@
     <!-- Password hashing -->
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
 
-    <!-- Serilog logging -->
-    <PackageReference Include="Serilog" Version="3.1.1" />
-    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
-
     <!-- Swagger -->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
   </ItemGroup>

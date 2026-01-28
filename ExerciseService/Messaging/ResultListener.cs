@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Shared.Contracts.Events.Exercises;
 using System.Text;
 using System.Text.Json;
-using System.Diagnostics;
 
 namespace ExerciseService.Messaging;
 
@@ -16,7 +16,9 @@ public class ResultListener : IHostedService
     private IConnection? _connection;
     private IChannel? _channel;
 
-    public ResultListener(IOptions<RabbitOptions> options, ProgressReporter progressReporter)
+    public ResultListener(
+        IOptions<RabbitOptions> options,
+        ProgressReporter progressReporter)
     {
         _options = options.Value;
         _progressReporter = progressReporter;
@@ -39,7 +41,7 @@ public class ResultListener : IHostedService
             exchange: _options.Exchange,
             type: ExchangeType.Topic);
 
-        const string queueName = "speech.result";
+        const string queueName = "exercise.analysis.completed";
 
         await _channel.QueueDeclareAsync(
             queue: queueName,
@@ -51,32 +53,44 @@ public class ResultListener : IHostedService
         await _channel.QueueBindAsync(
             queue: queueName,
             exchange: _options.Exchange,
-            routingKey: _options.ResultRoutingKey);
+            routingKey: "exercise.analysis.completed");
 
         var consumer = new AsyncEventingBasicConsumer(_channel);
 
         consumer.ReceivedAsync += async (_, ea) =>
         {
-            var json = Encoding.UTF8.GetString(ea.Body.ToArray());
-            var payload = JsonSerializer.Deserialize<JsonElement>(json);
+            try
+            {
+                var json = Encoding.UTF8.GetString(ea.Body.ToArray());
 
-            var exerciseId = payload.GetProperty("ExerciseId").GetString();
-            var userId = payload.GetProperty("UserId").GetString();
-            var accuracy = payload.GetProperty("AccuracyScore").GetDouble();
-            var feedback = payload.GetProperty("Feedback").GetString();
-            var ipa = payload.GetProperty("RecognizedIPA").GetString();
+                var evt = JsonSerializer.Deserialize<ExerciseAnalysisCompletedEvent>(
+                    json,
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
 
-            await _progressReporter.ReportAsync(
-                userId!,
-                exerciseId!,
-                accuracy,
-                feedback!,
-                ipa!);
+                if (evt == null)
+                    throw new InvalidOperationException("Empty event payload");
+
+                await _progressReporter.ReportAsync(evt);
+
+                await _channel.BasicAckAsync(
+                    deliveryTag: ea.DeliveryTag,
+                    multiple: false);
+            }
+            catch
+            {
+                await _channel.BasicNackAsync(
+                    deliveryTag: ea.DeliveryTag,
+                    multiple: false,
+                    requeue: true);
+            }
         };
 
         await _channel.BasicConsumeAsync(
             queue: queueName,
-            autoAck: true,
+            autoAck: false,
             consumer: consumer);
     }
 

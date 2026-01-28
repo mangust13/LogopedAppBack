@@ -3,6 +3,7 @@ using ExerciseService.Messaging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Shared.Contracts.Events.Exercises;
 
 namespace ExerciseService.Controllers;
 
@@ -27,16 +28,15 @@ public class ExercisesController : ControllerBase
         activity?.SetTag("exercise.id", request.ExerciseId);
         activity?.SetTag("user.id", request.UserId);
 
-        var message = new
+        var evt = new ExerciseAnalysisRequestedEvent
         {
-            request.ExerciseId,
-            request.UserId,
-            request.AudioUrl,
-            request.ReferenceText,
-            Timestamp = DateTime.UtcNow
+            ExerciseId = request.ExerciseId,
+            UserId = request.UserId,
+            AudioUri = request.AudioUrl,
+            ReferenceText = request.ReferenceText
         };
 
-        await _publisher.PublishAsync(message);
+        await _publisher.PublishAsync(evt, routingKey: "exercise.analysis.requested");
 
         return Ok(new { message = $"Exercise #{request.ExerciseId} has been sent for analysis." });
     }
@@ -61,16 +61,16 @@ public class ExercisesController : ControllerBase
             await file.CopyToAsync(stream);
         }
 
-        var message = new
+        var evt = new ExerciseAnalysisRequestedEvent
         {
             ExerciseId = req.ExerciseId,
             UserId = req.UserId,
-            AudioUrl = filePath,      // Абсолютний шлях
+            AudioUri = filePath,
             ReferenceText = req.ReferenceText
         };
 
-        await _publisher.PublishAsync(message);
+        await _publisher.PublishAsync(evt, routingKey: "exercise.analysis.requested");
 
-        return Ok(new { filePath });
+        return Ok(new { audioUri = filePath });
     }
 }

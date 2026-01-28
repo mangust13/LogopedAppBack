@@ -1324,6 +1324,16 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "Shared.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Shared.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.Contracts.dll": {}
+        }
       }
     }
   },
@@ -3881,6 +3891,11 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Shared.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Shared.Contracts/Shared.Contracts.csproj",
+      "msbuildProject": "../Shared.Contracts/Shared.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3889,6 +3904,7 @@
       "Microsoft.AspNetCore.OpenApi >= 9.0.10",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
+      "Shared.Contracts >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.8.0"
     ]
   },
@@ -3923,7 +3939,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
+              "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -3983,7 +4003,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

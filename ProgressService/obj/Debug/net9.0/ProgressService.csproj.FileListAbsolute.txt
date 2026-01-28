@@ -131,6 +131,8 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\runt
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\runtimes\win-arm64\native\e_sqlite3.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\runtimes\win-x64\native\e_sqlite3.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Shared.Contracts.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\bin\Debug\net9.0\Shared.Contracts.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.csproj.AssemblyReference.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\rpswa.dswa.cache.json
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.GeneratedMSBuildEditorConfig.editorconfig
@@ -148,10 +150,10 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\stat
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\staticwebassets.development.json
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\Progress.E966CF16.Up2Date
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\refint\ProgressService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ProgressService.genruntimeconfig.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\ref\ProgressService.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ProgressService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

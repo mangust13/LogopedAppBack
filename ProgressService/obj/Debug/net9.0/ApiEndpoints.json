@@ -17,15 +17,121 @@
   },
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
-    "Method": "GetByUser",
-    "RelativePath": "api/Progress/{userId}",
+    "Method": "GetByChild",
+    "RelativePath": "api/Progress/child/{childProfileId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "childProfileId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProgressService.Controllers.ProgressController",
+    "Method": "GetExerciseProgress",
+    "RelativePath": "api/Progress/child/{childProfileId}/exercise/{exerciseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childProfileId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "exerciseId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProgressService.Controllers.ProgressController",
+    "Method": "GetLastAttempts",
+    "RelativePath": "api/Progress/child/{childProfileId}/last",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childProfileId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProgressService.Controllers.ProgressController",
+    "Method": "GetChildSummary",
+    "RelativePath": "api/Progress/child/{childProfileId}/summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childProfileId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProgressService.Controllers.ProgressController",
+    "Method": "GetProblemExercises",
+    "RelativePath": "api/Progress/logoped/problem-exercises",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ProgressService.Controllers.ProgressController\u002BProblemExercisesRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProgressService.Controllers.ProgressController",
+    "Method": "GetLogopedSummary",
+    "RelativePath": "api/Progress/logoped/summary",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childProfileIds",
+        "Type": "System.Int32[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProgressService.Controllers.ProgressController",
+    "Method": "GetTrends",
+    "RelativePath": "api/Progress/logoped/trends",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ProgressService.Controllers.ProgressController\u002BTrendRequest",
         "IsRequired": true
       }
     ],
@@ -49,7 +155,7 @@
   },
   {
     "ContainingType": "ProgressService.ProgressService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_2",
+    "Method": "\u003CMain\u003Eb__0_3",
     "RelativePath": "health",
     "HttpMethod": "GET",
     "IsController": false,

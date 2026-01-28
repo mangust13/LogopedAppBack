@@ -19,5 +19,9 @@
         "Action": "StartWithoutDebugging"
       }
     ]
+  },
+  {
+    "Name": "U + P",
+    "Projects": []
   }
 ]

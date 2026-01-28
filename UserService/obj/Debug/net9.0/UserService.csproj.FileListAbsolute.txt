@@ -32,15 +32,6 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Microsof
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Microsoft.OpenApi.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Mono.TextTemplating.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.AspNetCore.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Extensions.Hosting.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Extensions.Logging.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Formatting.Compact.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Settings.Configuration.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Sinks.Console.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Sinks.Debug.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\Serilog.Sinks.File.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\SQLitePCLRaw.core.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -157,10 +148,10 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwe
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.development.json
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserServ.57764DC8.Up2Date
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\refint\UserService.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\UserService.genruntimeconfig.cache
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\ref\UserService.dll
+D:\Univer\Sem_08\LogopedApp\LogopedAppBack\UserService\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

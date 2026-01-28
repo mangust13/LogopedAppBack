@@ -12,6 +12,7 @@
           "Microsoft.AspNetCore.OpenApi": "9.0.10",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0",
+          "Shared.Contracts": "1.0.0",
           "Swashbuckle.AspNetCore": "6.8.0"
         },
         "runtime": {
@@ -857,7 +858,15 @@
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Text.Json/9.0.0": {},
-      "System.Threading.Channels/7.0.0": {}
+      "System.Threading.Channels/7.0.0": {},
+      "Shared.Contracts/1.0.0": {
+        "runtime": {
+          "Shared.Contracts.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -1306,6 +1315,11 @@
       "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
       "path": "system.threading.channels/7.0.0",
       "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
+    },
+    "Shared.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

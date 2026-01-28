@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\exerciseservice\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\controllers\\logopedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\controllers\\logopedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\controllers\\childrencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\controllers\\childrencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ExercisesController.cs",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ExercisesController.cs",
-              "RelativeDocumentMoniker": "ExerciseService\\Controllers\\ExercisesController.cs",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ExercisesController.cs",
-              "RelativeToolTip": "ExerciseService\\Controllers\\ExercisesController.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwA0AAAAwAAAAAAAAAA==",
+              "Title": "LogopedController.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\LogopedController.cs",
+              "RelativeDocumentMoniker": "UserService\\Controllers\\LogopedController.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\LogopedController.cs",
+              "RelativeToolTip": "UserService\\Controllers\\LogopedController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwB4AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-14T17:02:01.245Z",
+              "WhenOpened": "2026-01-26T16:46:45.251Z",
               "EditorCaption": ""
             },
             {
@@ -68,6 +72,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChildrenController.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\ChildrenController.cs",
+              "RelativeDocumentMoniker": "UserService\\Controllers\\ChildrenController.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\ChildrenController.cs",
+              "RelativeToolTip": "UserService\\Controllers\\ChildrenController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAkwFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T16:46:06.227Z",
+              "EditorCaption": ""
             }
           ]
         },

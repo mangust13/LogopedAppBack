@@ -42,7 +42,7 @@ namespace ProgressService.Migrations
                     b.Property<string>("RecognizedText")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("ChildProfileId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

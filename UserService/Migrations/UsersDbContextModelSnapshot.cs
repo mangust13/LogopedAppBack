@@ -17,6 +17,60 @@ namespace UserService.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
+            modelBuilder.Entity("UserService.Domain.ChildAssignment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("AssignedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ChildProfileId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("LogopedUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChildProfileId");
+
+                    b.HasIndex("LogopedUserId");
+
+                    b.ToTable("ChildAssignments");
+                });
+
+            modelBuilder.Entity("UserService.Domain.ChildProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ParentUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ProblemSounds")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentUserId");
+
+                    b.ToTable("ChildProfiles");
+                });
+
             modelBuilder.Entity("UserService.Domain.User", b =>
                 {
                     b.Property<int>("Id")
@@ -44,6 +98,36 @@ namespace UserService.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("UserService.Domain.ChildAssignment", b =>
+                {
+                    b.HasOne("UserService.Domain.ChildProfile", "ChildProfile")
+                        .WithMany()
+                        .HasForeignKey("ChildProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UserService.Domain.User", "Logoped")
+                        .WithMany()
+                        .HasForeignKey("LogopedUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChildProfile");
+
+                    b.Navigation("Logoped");
+                });
+
+            modelBuilder.Entity("UserService.Domain.ChildProfile", b =>
+                {
+                    b.HasOne("UserService.Domain.User", "ParentUser")
+                        .WithMany()
+                        .HasForeignKey("ParentUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ParentUser");
                 });
 #pragma warning restore 612, 618
         }

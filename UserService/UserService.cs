@@ -2,7 +2,6 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Serilog;
 using UserService.Infrastructure;
 using UserService.Services;
 
@@ -13,13 +12,6 @@ public static class UserService
     public async static Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-        // Logging
-        builder.Host.UseSerilog((ctx, cfg) => 
-            cfg.ReadFrom.Configuration(ctx.Configuration)
-            .WriteTo.File("logs/userservice.log", rollingInterval: RollingInterval.Day),
-            writeToProviders: true);
-
 
         builder.Services.AddDbContext<UsersDbContext>(opt =>
             opt.UseSqlite(builder.Configuration.GetConnectionString("Default")));
@@ -62,19 +54,19 @@ public static class UserService
             });
 
             options.AddSecurityRequirement(new()
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
             {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
+                    new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                    {
+                        Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                        {
+                            Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
                 }
-            },
-            Array.Empty<string>()
-        }
-    });
+            });
         });
 
 

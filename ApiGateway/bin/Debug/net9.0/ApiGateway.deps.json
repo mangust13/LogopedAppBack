@@ -9,6 +9,7 @@
       "ApiGateway/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "9.0.10",
+          "Swashbuckle.AspNetCore": "6.8.0",
           "Yarp.ReverseProxy": "2.3.0"
         },
         "runtime": {
@@ -26,11 +27,50 @@
           }
         }
       },
+      "Microsoft.Extensions.ApiDescription.Server/6.0.5": {},
       "Microsoft.OpenApi/1.6.17": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {
             "assemblyVersion": "1.6.17.0",
             "fileVersion": "1.6.17.0"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore/6.8.0": {
+        "dependencies": {
+          "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
+          "Swashbuckle.AspNetCore.Swagger": "6.8.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.8.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "6.8.0"
+        }
+      },
+      "Swashbuckle.AspNetCore.Swagger/6.8.0": {
+        "dependencies": {
+          "Microsoft.OpenApi": "1.6.17"
+        },
+        "runtime": {
+          "lib/net8.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "assemblyVersion": "6.8.0.0",
+            "fileVersion": "6.8.0.744"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/6.8.0": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "6.8.0"
+        },
+        "runtime": {
+          "lib/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "assemblyVersion": "6.8.0.0",
+            "fileVersion": "6.8.0.744"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/6.8.0": {
+        "runtime": {
+          "lib/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "assemblyVersion": "6.8.0.0",
+            "fileVersion": "6.8.0.744"
           }
         }
       },
@@ -68,12 +108,47 @@
       "path": "microsoft.aspnetcore.openapi/9.0.10",
       "hashPath": "microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512"
     },
+    "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ckb5EDBUNJdFWyajfXzUIMRkhf52fHZOQuuZg/oiu8y7zDCVwD0iHhew6MnThjHmevanpxL3f5ci2TtHQEN6bw==",
+      "path": "microsoft.extensions.apidescription.server/6.0.5",
+      "hashPath": "microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512"
+    },
     "Microsoft.OpenApi/1.6.17": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Le+kehlmrlQfuDFUt1zZ2dVwrhFQtKREdKBo+rexOwaCoYP0/qpgT9tLxCsZjsgR5Itk1UKPcbgO+FyaNid/bA==",
       "path": "microsoft.openapi/1.6.17",
       "hashPath": "microsoft.openapi.1.6.17.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore/6.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0Mk8/31efsxFNVeFzLjUVYDFTjYKtEi2UCSaI9+HIkSQ/duu++28gfq1+gwWDRLHkRMOkUgoWMLe0UoayAZySA==",
+      "path": "swashbuckle.aspnetcore/6.8.0",
+      "hashPath": "swashbuckle.aspnetcore.6.8.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Swagger/6.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f6Utk5eLFWRJbDFIqHGeb9Kb+w/9b+z0WIJUIAPY4hP263MPXI8ZbejdOktS10gvCLaQ3YCFl6fAVlCIUFKsRQ==",
+      "path": "swashbuckle.aspnetcore.swagger/6.8.0",
+      "hashPath": "swashbuckle.aspnetcore.swagger.6.8.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/6.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bmWglb1jeKD+tUE56wL2zE6lnlpJZbgDLXMlEOgl8xTqEs9g8C6eNNKGuMcnfxFt0CgZaBClaDqad2JDjZW5Fw==",
+      "path": "swashbuckle.aspnetcore.swaggergen/6.8.0",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.6.8.0.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/6.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tG1FL+aFmmuqZ3eKVHgvSFvrzJoKbDzOmvK8YACucfbIBYfHQd45uQ18MhMF3xDaR46qdggdaHGqmfYo+nxwrw==",
+      "path": "swashbuckle.aspnetcore.swaggerui/6.8.0",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.6.8.0.nupkg.sha512"
     },
     "System.IO.Hashing/8.0.0": {
       "type": "package",

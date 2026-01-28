@@ -26,6 +26,9 @@ namespace ProgressService.Migrations
                     b.Property<double>("Accuracy")
                         .HasColumnType("REAL");
 
+                    b.Property<int>("ChildProfileId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
@@ -37,10 +40,8 @@ namespace ProgressService.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RecognizedText")
+                        .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

@@ -1,5 +1,62 @@
 [
   {
+    "ContainingType": "UserService.Controllers.ChildrenController",
+    "Method": "Create",
+    "RelativePath": "api/children",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "UserService.Contracts.CreateChildProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.ChildrenController",
+    "Method": "GetMyChildren",
+    "RelativePath": "api/children",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.ChildrenController",
+    "Method": "AssignLogoped",
+    "RelativePath": "api/children/{childId}/assign-logoped",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "UserService.Contracts.AssignLogopedDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LogopedController",
+    "Method": "GetMyChildren",
+    "RelativePath": "api/logoped/children",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UserService.Controllers.UsersController",
     "Method": "Login",
     "RelativePath": "api/Users/login",
@@ -53,7 +110,7 @@
   },
   {
     "ContainingType": "UserService.UserService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_4",
+    "Method": "\u003CMain\u003Eb__0_3",
     "RelativePath": "health",
     "HttpMethod": "GET",
     "IsController": false,
