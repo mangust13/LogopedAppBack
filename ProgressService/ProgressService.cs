@@ -18,9 +18,9 @@ public class ProgressService
         );
 
         builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
 
         //Swagger
+        builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new()

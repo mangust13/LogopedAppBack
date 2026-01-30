@@ -8,7 +8,7 @@ using ProgressService.Infrastructure;
 namespace ProgressService.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("progress")]
 [Authorize]
 public class ProgressController : ControllerBase
 {

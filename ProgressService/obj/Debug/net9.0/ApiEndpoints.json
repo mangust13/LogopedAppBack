@@ -1,8 +1,24 @@
 [
   {
+    "ContainingType": "ProgressService.ProgressService\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_3",
+    "RelativePath": "health",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "Create",
-    "RelativePath": "api/Progress",
+    "RelativePath": "progress",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -18,7 +34,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetByChild",
-    "RelativePath": "api/Progress/child/{childProfileId}",
+    "RelativePath": "progress/child/{childProfileId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -34,7 +50,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetExerciseProgress",
-    "RelativePath": "api/Progress/child/{childProfileId}/exercise/{exerciseId}",
+    "RelativePath": "progress/child/{childProfileId}/exercise/{exerciseId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -55,7 +71,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetLastAttempts",
-    "RelativePath": "api/Progress/child/{childProfileId}/last",
+    "RelativePath": "progress/child/{childProfileId}/last",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -76,7 +92,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetChildSummary",
-    "RelativePath": "api/Progress/child/{childProfileId}/summary",
+    "RelativePath": "progress/child/{childProfileId}/summary",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -92,7 +108,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetProblemExercises",
-    "RelativePath": "api/Progress/logoped/problem-exercises",
+    "RelativePath": "progress/logoped/problem-exercises",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -108,7 +124,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetLogopedSummary",
-    "RelativePath": "api/Progress/logoped/summary",
+    "RelativePath": "progress/logoped/summary",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -124,7 +140,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetTrends",
-    "RelativePath": "api/Progress/logoped/trends",
+    "RelativePath": "progress/logoped/trends",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -140,7 +156,7 @@
   {
     "ContainingType": "ProgressService.Controllers.ProgressController",
     "Method": "GetRecord",
-    "RelativePath": "api/Progress/record/{id}",
+    "RelativePath": "progress/record/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -152,21 +168,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ProgressService.ProgressService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_3",
-    "RelativePath": "health",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
   }
 ]

@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/children": {
+    "/children": {
       "post": {
         "tags": [
           "Children"
@@ -46,7 +46,70 @@
         }
       }
     },
-    "/api/children/{childId}/assign-logoped": {
+    "/children/{childId}": {
+      "put": {
+        "tags": [
+          "Children"
+        ],
+        "parameters": [
+          {
+            "name": "childId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateChildProfileDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateChildProfileDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateChildProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Children"
+        ],
+        "parameters": [
+          {
+            "name": "childId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/children/{childId}/assign-logoped": {
       "post": {
         "tags": [
           "Children"
@@ -88,7 +151,7 @@
         }
       }
     },
-    "/api/logoped/children": {
+    "/logoped/children": {
       "get": {
         "tags": [
           "Logoped"
@@ -100,7 +163,19 @@
         }
       }
     },
-    "/api/Users/register": {
+    "/logoped/logopeds": {
+      "get": {
+        "tags": [
+          "Logoped"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/register": {
       "post": {
         "tags": [
           "Users"
@@ -126,12 +201,29 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Users/login": {
+    "/login": {
       "post": {
         "tags": [
           "Users"
@@ -179,7 +271,7 @@
         }
       }
     },
-    "/api/Users/me": {
+    "/me": {
       "get": {
         "tags": [
           "Users"
@@ -251,10 +343,6 @@
       "LoginResponse": {
         "type": "object",
         "properties": {
-          "token": {
-            "type": "string",
-            "nullable": true
-          },
           "userId": {
             "type": "integer",
             "format": "int32"
@@ -264,6 +352,10 @@
             "nullable": true
           },
           "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
             "type": "string",
             "nullable": true
           }
@@ -282,6 +374,24 @@
             "nullable": true
           },
           "role": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateChildProfileDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "problemSounds": {
             "type": "string",
             "nullable": true
           }

@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Progress": {
+    "/progress": {
       "post": {
         "tags": [
           "Progress"
@@ -36,7 +36,7 @@
         }
       }
     },
-    "/api/Progress/child/{childProfileId}": {
+    "/progress/child/{childProfileId}": {
       "get": {
         "tags": [
           "Progress"
@@ -59,7 +59,7 @@
         }
       }
     },
-    "/api/Progress/record/{id}": {
+    "/progress/record/{id}": {
       "get": {
         "tags": [
           "Progress"
@@ -82,7 +82,7 @@
         }
       }
     },
-    "/api/Progress/child/{childProfileId}/summary": {
+    "/progress/child/{childProfileId}/summary": {
       "get": {
         "tags": [
           "Progress"
@@ -105,7 +105,7 @@
         }
       }
     },
-    "/api/Progress/child/{childProfileId}/exercise/{exerciseId}": {
+    "/progress/child/{childProfileId}/exercise/{exerciseId}": {
       "get": {
         "tags": [
           "Progress"
@@ -137,7 +137,7 @@
         }
       }
     },
-    "/api/Progress/child/{childProfileId}/last": {
+    "/progress/child/{childProfileId}/last": {
       "get": {
         "tags": [
           "Progress"
@@ -169,7 +169,7 @@
         }
       }
     },
-    "/api/Progress/logoped/summary": {
+    "/progress/logoped/summary": {
       "post": {
         "tags": [
           "Progress"
@@ -212,7 +212,7 @@
         }
       }
     },
-    "/api/Progress/logoped/problem-exercises": {
+    "/progress/logoped/problem-exercises": {
       "post": {
         "tags": [
           "Progress"
@@ -243,7 +243,7 @@
         }
       }
     },
-    "/api/Progress/logoped/trends": {
+    "/progress/logoped/trends": {
       "post": {
         "tags": [
           "Progress"

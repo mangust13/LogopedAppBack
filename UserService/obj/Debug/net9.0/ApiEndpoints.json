@@ -2,7 +2,7 @@
   {
     "ContainingType": "UserService.Controllers.ChildrenController",
     "Method": "Create",
-    "RelativePath": "api/children",
+    "RelativePath": "children",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -18,7 +18,7 @@
   {
     "ContainingType": "UserService.Controllers.ChildrenController",
     "Method": "GetMyChildren",
-    "RelativePath": "api/children",
+    "RelativePath": "children",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -27,8 +27,45 @@
   },
   {
     "ContainingType": "UserService.Controllers.ChildrenController",
+    "Method": "UpdateChild",
+    "RelativePath": "children/{childId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "UserService.Contracts.UpdateChildProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.ChildrenController",
+    "Method": "DeleteChild",
+    "RelativePath": "children/{childId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.ChildrenController",
     "Method": "AssignLogoped",
-    "RelativePath": "api/children/{childId}/assign-logoped",
+    "RelativePath": "children/{childId}/assign-logoped",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -47,19 +84,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "LogopedController",
-    "Method": "GetMyChildren",
-    "RelativePath": "api/logoped/children",
+    "ContainingType": "UserService.UserService\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_3",
+    "RelativePath": "health",
     "HttpMethod": "GET",
-    "IsController": true,
+    "IsController": false,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "UserService.Controllers.UsersController",
     "Method": "Login",
-    "RelativePath": "api/Users/login",
+    "RelativePath": "login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -83,9 +126,29 @@
     ]
   },
   {
+    "ContainingType": "UserService.Controllers.LogopedController",
+    "Method": "GetMyChildren",
+    "RelativePath": "logoped/children",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.LogopedController",
+    "Method": "GetAllLogopeds",
+    "RelativePath": "logoped/logopeds",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UserService.Controllers.UsersController",
     "Method": "Me",
-    "RelativePath": "api/Users/me",
+    "RelativePath": "me",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -95,7 +158,7 @@
   {
     "ContainingType": "UserService.Controllers.UsersController",
     "Method": "Register",
-    "RelativePath": "api/Users/register",
+    "RelativePath": "register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -106,20 +169,14 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "UserService.UserService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_3",
-    "RelativePath": "health",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Void",
-        "MediaTypes": [],
+        "Type": "UserService.Contracts.AuthDtos\u002BLoginResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]

@@ -4,7 +4,6 @@ using ExerciseService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Serilog;
 using System.Text;
 
 namespace ExerciseService;
@@ -14,9 +13,6 @@ public class ExerciseService
     public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-        builder.Host.UseSerilog((ctx, cfg) =>
-            cfg.ReadFrom.Configuration(ctx.Configuration));
 
         builder.Services.Configure<RabbitOptions>(
             builder.Configuration.GetSection("RabbitMQ"));

@@ -12,7 +12,7 @@ using AuthDtos = UserService.Contracts.AuthDtos;
 namespace UserService.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("")]
 public class UsersController : ControllerBase
 {
     private readonly UsersDbContext _db;
@@ -26,7 +26,7 @@ public class UsersController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] AuthDtos.RegisterRequest req)
+    public async Task<ActionResult<AuthDtos.LoginResponse>> Register([FromBody] AuthDtos.RegisterRequest req)
     {
         var exists = await _db.Users.AnyAsync(x => x.Email == req.Email);
         if (exists)
@@ -43,7 +43,9 @@ public class UsersController : ControllerBase
 
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
-        return CreatedAtAction(nameof(Me), new { }, new { user.Id, user.Email, user.Role });
+
+        var token = _jwt.Create(user);
+        return new AuthDtos.LoginResponse(user.Id, user.Email, user.Role, token);
     }
 
     [AllowAnonymous]
@@ -56,7 +58,7 @@ public class UsersController : ControllerBase
         var ok = BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash);
         if (!ok) return Unauthorized();
         var token = _jwt.Create(user);
-        return new AuthDtos.LoginResponse(token, user.Id, user.Email, user.Role);
+        return new AuthDtos.LoginResponse(user.Id, user.Email, user.Role, token);
     }
 
     [Authorize]

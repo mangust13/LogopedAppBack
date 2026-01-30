@@ -1,0 +1,81 @@
+############################
+# .NET / Visual Studio
+############################
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+.vs/
+.vscode/
+
+############################
+# Build artifacts
+############################
+Debug/
+Release/
+x64/
+x86/
+AnyCPU/
+
+############################
+# Logs
+############################
+*.log
+
+############################
+# Databases (SQLite)
+############################
+*.db
+*.db-shm
+*.db-wal
+
+############################
+# ASP.NET Core
+############################
+appsettings.Development.json
+appsettings.Local.json
+
+############################
+# Python (AIService)
+############################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.env/
+
+############################
+# OS junk
+############################
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+############################
+# Rider / ReSharper
+############################
+.idea/
+*.DotSettings.user
+
+############################
+# Node (на майбутнє, якщо буде)
+############################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+############################
+# Uploaded files (якщо не хочеш зберігати)
+############################
+ExerciseService/Uploads/*
+!ExerciseService/Uploads/.gitkeep

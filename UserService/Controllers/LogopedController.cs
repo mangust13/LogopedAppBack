@@ -5,8 +5,10 @@ using System.Security.Claims;
 using UserService.Domain;
 using UserService.Infrastructure;
 
+namespace UserService.Controllers;
+
 [ApiController]
-[Route("api/logoped")]
+[Route("logoped")]
 [Authorize]
 public class LogopedController : ControllerBase
 {
@@ -34,5 +36,20 @@ public class LogopedController : ControllerBase
             .ToListAsync();
 
         return Ok(children);
+    }
+
+    [HttpGet("logopeds")]
+    public async Task<IActionResult> GetAllLogopeds()
+    {
+        var logopeds = await _db.Users
+            .Where(u => u.Role == "Logoped")
+            .Select(u => new
+            {
+                u.Id,
+                u.Email
+            })
+            .ToListAsync();
+
+        return Ok(logopeds);
     }
 }

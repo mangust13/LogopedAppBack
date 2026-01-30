@@ -22,6 +22,19 @@
   },
   {
     "Name": "U + P",
-    "Projects": []
+    "Projects": [
+      {
+        "Path": "UserService\\UserService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ProgressService\\ProgressService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
   }
 ]
