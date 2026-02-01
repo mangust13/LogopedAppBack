@@ -10,3 +10,15 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Sha
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\refint\Shared.Contracts.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.pdb
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\ref\Shared.Contracts.dll
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\bin\Debug\net9.0\Shared.Contracts.deps.json
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\bin\Debug\net9.0\Shared.Contracts.dll
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\bin\Debug\net9.0\Shared.Contracts.pdb
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.AssemblyInfoInputs.cache
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.AssemblyInfo.cs
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.csproj.CoreCompileInputs.cache
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.sourcelink.json
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.dll
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\refint\Shared.Contracts.dll
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\Shared.Contracts.pdb
+D:\LogopedApp\LogopedAppBack\Shared.Contracts\obj\Debug\net9.0\ref\Shared.Contracts.dll

@@ -5,45 +5,131 @@
     "version": "v1"
   },
   "paths": {
-    "/progress": {
+    "/logoped/summary": {
       "post": {
         "tags": [
-          "Progress"
+          "LogopedAnalytics"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProgressCreateDto"
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProgressCreateDto"
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProgressCreateDto"
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogopedSummaryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogopedSummaryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LogopedSummaryDto"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/progress/child/{childProfileId}": {
+    "/logoped/problem-exercises": {
+      "post": {
+        "tags": [
+          "LogopedAnalytics"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProblemExercisesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProblemExercisesRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProblemExercisesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProblemExerciseDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProblemExerciseDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProblemExerciseDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/child/{childId}/summary": {
       "get": {
         "tags": [
-          "Progress"
+          "ProgressAnalytics"
         ],
         "parameters": [
           {
-            "name": "childProfileId",
+            "name": "childId",
             "in": "path",
             "required": true,
             "schema": {
@@ -54,97 +140,36 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressSummaryDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressSummaryDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressSummaryDto"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/progress/record/{id}": {
+    "/child/{childId}/last": {
       "get": {
         "tags": [
-          "Progress"
+          "ProgressAnalytics"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/progress/child/{childProfileId}/summary": {
-      "get": {
-        "tags": [
-          "Progress"
-        ],
-        "parameters": [
-          {
-            "name": "childProfileId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/progress/child/{childProfileId}/exercise/{exerciseId}": {
-      "get": {
-        "tags": [
-          "Progress"
-        ],
-        "parameters": [
-          {
-            "name": "childProfileId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "exerciseId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/progress/child/{childProfileId}/last": {
-      "get": {
-        "tags": [
-          "Progress"
-        ],
-        "parameters": [
-          {
-            "name": "childProfileId",
+            "name": "childId",
             "in": "path",
             "required": true,
             "schema": {
@@ -164,43 +189,115 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProgressAttemptDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProgressAttemptDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProgressAttemptDto"
+                  }
+                }
+              }
+            }
           }
         }
       }
     },
-    "/progress/logoped/summary": {
+    "/child/{childId}/trend": {
+      "get": {
+        "tags": [
+          "ProgressAnalytics"
+        ],
+        "parameters": [
+          {
+            "name": "childId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 14
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrendPointDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrendPointDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TrendPointDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/records": {
       "post": {
         "tags": [
-          "Progress"
+          "ProgressRecords"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                }
+                "$ref": "#/components/schemas/ProgressCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                }
+                "$ref": "#/components/schemas/ProgressCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                }
+                "$ref": "#/components/schemas/ProgressCreateDto"
               }
             }
           }
@@ -212,30 +309,22 @@
         }
       }
     },
-    "/progress/logoped/problem-exercises": {
-      "post": {
+    "/records/child/{childId}": {
+      "get": {
         "tags": [
-          "Progress"
+          "ProgressRecords"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProblemExercisesRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProblemExercisesRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/ProblemExercisesRequest"
-              }
+        "parameters": [
+          {
+            "name": "childId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -243,30 +332,22 @@
         }
       }
     },
-    "/progress/logoped/trends": {
-      "post": {
+    "/records/{id}": {
+      "get": {
         "tags": [
-          "Progress"
+          "ProgressRecords"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TrendRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TrendRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TrendRequest"
-              }
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -289,6 +370,47 @@
   },
   "components": {
     "schemas": {
+      "LogopedSummaryDto": {
+        "type": "object",
+        "properties": {
+          "totalChildren": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAttempts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "avgAccuracy": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastActivityAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemExerciseDto": {
+        "type": "object",
+        "properties": {
+          "exerciseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "attempts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "avgAccuracy": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "ProblemExercisesRequest": {
         "type": "object",
         "properties": {
@@ -303,6 +425,33 @@
           "minAttempts": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProgressAttemptDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exerciseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exerciseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "accuracy": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -333,24 +482,39 @@
         },
         "additionalProperties": false
       },
-      "TrendRequest": {
+      "ProgressSummaryDto": {
         "type": "object",
         "properties": {
-          "childProfileIds": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
+          "childId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalAttempts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "avgAccuracy": {
+            "type": "number",
+            "format": "double"
+          },
+          "lastActivityAt": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
-          },
-          "from": {
+          }
+        },
+        "additionalProperties": false
+      },
+      "TrendPointDto": {
+        "type": "object",
+        "properties": {
+          "date": {
             "type": "string",
             "format": "date-time"
           },
-          "to": {
-            "type": "string",
-            "format": "date-time"
+          "value": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
