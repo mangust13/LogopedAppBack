@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj": {}
+    "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj": {}
   },
   "projects": {
-    "D:\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj": {
+    "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj",
+        "projectUniqueName": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj",
         "projectName": "ExerciseService",
-        "projectPath": "D:\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\LogopedApp\\LogopedAppBack\\ExerciseService\\obj\\",
+        "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.csproj",
+        "packagesPath": "C:\\Users\\maksy\\.nuget\\packages\\",
+        "outputPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ExerciseService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maksy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
-                "projectPath": "D:\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj"
+              "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
+                "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj"
               }
             }
           }
@@ -99,20 +99,20 @@
         }
       }
     },
-    "D:\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
+    "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
+        "projectUniqueName": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
         "projectName": "Shared.Contracts",
-        "projectPath": "D:\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\obj\\",
+        "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
+        "packagesPath": "C:\\Users\\maksy\\.nuget\\packages\\",
+        "outputPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maksy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
