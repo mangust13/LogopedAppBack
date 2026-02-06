@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using UserService.Contracts;
 using UserService.Domain;
 using UserService.Infrastructure;
 
@@ -27,11 +28,12 @@ public class LogopedController : ControllerBase
 
         var children = await _db.ChildAssignments
             .Where(x => x.LogopedUserId == logopedId)
-            .Select(x => new
+            .Select(x => new LogopedChildDto
             {
-                x.ChildProfile.Id,
-                x.ChildProfile.Name,
-                x.ChildProfile.BirthDate
+                Id = x.ChildProfile.Id,
+                Name = x.ChildProfile.Name,
+                BirthDate = x.ChildProfile.BirthDate,
+                ProblemSounds = x.ChildProfile.ProblemSounds
             })
             .ToListAsync();
 
@@ -43,10 +45,10 @@ public class LogopedController : ControllerBase
     {
         var logopeds = await _db.Users
             .Where(u => u.Role == "Logoped")
-            .Select(u => new
+            .Select(u => new LogopedDto
             {
-                u.Id,
-                u.Email
+                Id = u.Id,
+                Email = u.Email
             })
             .ToListAsync();
 

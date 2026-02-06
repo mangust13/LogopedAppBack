@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProgressService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25fecad26aaea9a6959d1e3b92198b8d46d52779")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f92bf53b0ad6ead749ddc88c2c3e27f1fd685d2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProgressService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProgressService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

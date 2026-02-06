@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\controllers\\logopedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\controllers\\logopedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\progressservice\\domain\\progressrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|solutionrelative:progressservice\\domain\\progressrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\contracts\\logopeddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\contracts\\logopeddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\progressservice\\controllers\\logopedanalyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|solutionrelative:progressservice\\controllers\\logopedanalyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\controllers\\childrencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\controllers\\childrencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\contracts\\createchildprofiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\contracts\\createchildprofiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\apigateway\\apigateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\apigateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,32 +30,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChildrenController.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\ChildrenController.cs",
+              "RelativeDocumentMoniker": "UserService\\Controllers\\ChildrenController.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\ChildrenController.cs",
+              "RelativeToolTip": "UserService\\Controllers\\ChildrenController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGsAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T09:30:21.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CreateChildProfileDtos.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Contracts\\CreateChildProfileDtos.cs",
+              "RelativeDocumentMoniker": "UserService\\Contracts\\CreateChildProfileDtos.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Contracts\\CreateChildProfileDtos.cs",
+              "RelativeToolTip": "UserService\\Contracts\\CreateChildProfileDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T09:24:30.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LogopedDtos.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Contracts\\LogopedDtos.cs",
+              "RelativeDocumentMoniker": "UserService\\Contracts\\LogopedDtos.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Contracts\\LogopedDtos.cs",
+              "RelativeToolTip": "UserService\\Contracts\\LogopedDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T09:24:27.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\appsettings.json",
-              "RelativeDocumentMoniker": "ApiGateway\\appsettings.json",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\appsettings.json",
-              "RelativeToolTip": "ApiGateway\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-01T15:48:01.483Z",
+              "Title": "LogopedController.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\LogopedController.cs",
+              "RelativeDocumentMoniker": "UserService\\Controllers\\LogopedController.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\Controllers\\LogopedController.cs",
+              "RelativeToolTip": "UserService\\Controllers\\LogopedController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAYwC8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T09:23:13.22Z",
               "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:2:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:3:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
@@ -83,37 +122,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LogopedAnalyticsController.cs",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\Controllers\\LogopedAnalyticsController.cs",
-              "RelativeDocumentMoniker": "ProgressService\\Controllers\\LogopedAnalyticsController.cs",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\Controllers\\LogopedAnalyticsController.cs",
-              "RelativeToolTip": "ProgressService\\Controllers\\LogopedAnalyticsController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowEQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-01T15:44:24.264Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProgressRecord.cs",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\Domain\\ProgressRecord.cs",
-              "RelativeDocumentMoniker": "ProgressService\\Domain\\ProgressRecord.cs",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\Domain\\ProgressRecord.cs",
-              "RelativeToolTip": "ProgressService\\Domain\\ProgressRecord.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T20:32:12.11Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -126,6 +135,23 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApiGateway.cs",
+              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\ApiGateway.cs",
+              "RelativeDocumentMoniker": "ApiGateway\\ApiGateway.cs",
+              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\ApiGateway.cs",
+              "RelativeToolTip": "ApiGateway\\ApiGateway.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-03T11:16:42.136Z",
+              "EditorCaption": ""
             }
           ]
         },
