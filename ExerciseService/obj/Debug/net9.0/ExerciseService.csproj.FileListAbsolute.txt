@@ -32,15 +32,6 @@ D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Micr
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Microsoft.OpenApi.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Mono.TextTemplating.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\RabbitMQ.Client.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.AspNetCore.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Extensions.Hosting.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Extensions.Logging.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Formatting.Compact.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Settings.Configuration.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Sinks.Console.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Sinks.Debug.dll
-D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\Serilog.Sinks.File.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\SQLitePCLRaw.batteries_v2.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\SQLitePCLRaw.core.dll
 D:\Univer\Sem_08\LogopedApp\LogopedAppBack\ExerciseService\bin\Debug\net9.0\SQLitePCLRaw.provider.e_sqlite3.dll
