@@ -12,8 +12,6 @@ public static class UserService
     public async static Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-        builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
         builder.Services.AddDbContext<UsersDbContext>(opt =>
             opt.UseSqlite(builder.Configuration.GetConnectionString("Default")));

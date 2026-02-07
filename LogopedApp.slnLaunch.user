@@ -30,6 +30,10 @@
       {
         "Path": "ProgressService\\ProgressService.csproj",
         "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
       }
     ]
   }
