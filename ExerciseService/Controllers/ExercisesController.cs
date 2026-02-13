@@ -1,76 +1,34 @@
 ﻿using ExerciseService.Contracts;
-using ExerciseService.Messaging;
-using Microsoft.AspNetCore.Authorization;
+using ExerciseService.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using Shared.Contracts.Events.Exercises;
-
-namespace ExerciseService.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 [ApiController]
-[Route("api/[controller]")]
-[Authorize]
+[Route("")]
 public class ExercisesController : ControllerBase
 {
-    private readonly RabbitMqPublisher _publisher;
-    private static readonly ActivitySource Activity = new("ExerciseService.Start");
+    private readonly ExerciseDbContext _db;
 
-    public ExercisesController(RabbitMqPublisher publisher)
+    public ExercisesController(ExerciseDbContext db)
     {
-        _publisher = publisher;
+        _db = db;
     }
 
-    [HttpPost("start")]
-    public async Task<IActionResult> Start([FromBody] ExerciseRequest request)
+    [HttpGet]
+    public async Task<ActionResult<List<ExerciseDto>>> GetAll()
     {
-        using var activity = Activity.StartActivity("Exercise Start");
+        var list = await _db.Exercises
+            .Select(x => new ExerciseDto
+            {
+                Id = x.Id,
+                Title = x.Title,
+                Description = x.Description,
+                VideoUrl = x.VideoUrl,
+                IconName = x.IconName,
+                Category = x.Category
+            })
+            .ToListAsync();
 
-        activity?.SetTag("exercise.id", request.ExerciseId);
-        activity?.SetTag("user.id", request.UserId);
-
-        var evt = new ExerciseAnalysisRequestedEvent
-        {
-            ExerciseId = request.ExerciseId,
-            UserId = request.UserId,
-            AudioUri = request.AudioUrl,
-            ReferenceText = request.ReferenceText
-        };
-
-        await _publisher.PublishAsync(evt, routingKey: "exercise.analysis.requested");
-
-        return Ok(new { message = $"Exercise #{request.ExerciseId} has been sent for analysis." });
-    }
-
-    [HttpPost("upload-audio")]
-    public async Task<IActionResult> UploadAudio([FromForm] UploadAudioRequest req)
-    {
-        var file = req.File;
-
-        if (file == null || file.Length == 0)
-            return BadRequest("No file uploaded");
-
-        var root = Directory.GetCurrentDirectory();
-        var uploadsFolder = Path.Combine(root, "Uploads");
-
-        Directory.CreateDirectory(uploadsFolder);
-
-        var filePath = Path.Combine(uploadsFolder, file.FileName);
-
-        using (var stream = new FileStream(filePath, FileMode.Create))
-        {
-            await file.CopyToAsync(stream);
-        }
-
-        var evt = new ExerciseAnalysisRequestedEvent
-        {
-            ExerciseId = req.ExerciseId,
-            UserId = req.UserId,
-            AudioUri = filePath,
-            ReferenceText = req.ReferenceText
-        };
-
-        await _publisher.PublishAsync(evt, routingKey: "exercise.analysis.requested");
-
-        return Ok(new { audioUri = filePath });
+        return Ok(list);
     }
 }

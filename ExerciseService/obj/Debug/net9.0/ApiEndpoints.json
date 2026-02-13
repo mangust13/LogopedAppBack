@@ -1,54 +1,105 @@
 [
   {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "Start",
-    "RelativePath": "api/Exercises/start",
+    "ContainingType": "ExercisesController",
+    "Method": "GetAll",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ComplexesController",
+    "Method": "Create",
+    "RelativePath": "complexes",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ExerciseService.Contracts.ExerciseRequest",
+        "Name": "dto",
+        "Type": "ExerciseService.Contracts.CreateComplexDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "UploadAudio",
-    "RelativePath": "api/Exercises/upload-audio",
+    "ContainingType": "ComplexesController",
+    "Method": "Assign",
+    "RelativePath": "complexes/assign",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "File",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      },
-      {
-        "Name": "ExerciseId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "ReferenceText",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "ExerciseService.Contracts.AssignHomeworkDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ComplexesController",
+    "Method": "GetChildHomework",
+    "RelativePath": "complexes/child/{childId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ComplexesController",
+    "Method": "GetMyComplexes",
+    "RelativePath": "complexes/my",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ExerciseService.ExerciseService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_4",
+    "Method": "\u003CMain\u003Eb__0_2",
     "RelativePath": "health",
     "HttpMethod": "GET",
     "IsController": false,

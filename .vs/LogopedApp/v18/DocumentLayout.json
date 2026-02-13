@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\",
+  "WorkspaceRootPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4F44697-629A-43E1-BE4E-5123C6D17D76}|UserService\\UserService.csproj|solutionrelative:userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\contracts\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\contracts\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\progressservice\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|solutionrelative:progressservice\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\exerciseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\exerciseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\controllers\\complexescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\controllers\\complexescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|d:\\univer\\sem_08\\logopedapp\\logopedappback\\apigateway\\apigateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\apigateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ProgressService.cs",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.cs",
-              "RelativeDocumentMoniker": "ProgressService\\ProgressService.cs",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.cs",
-              "RelativeToolTip": "ProgressService\\ProgressService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Title": "ExerciseService.cs",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.cs",
+              "RelativeDocumentMoniker": "ExerciseService\\ExerciseService.cs",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\ExerciseService.cs",
+              "RelativeToolTip": "ExerciseService\\ExerciseService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwDQAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T16:24:15.074Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\UserService.cs",
-              "RelativeDocumentMoniker": "UserService\\UserService.cs",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\UserService\\UserService.cs",
-              "RelativeToolTip": "UserService\\UserService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T14:36:07.878Z",
+              "WhenOpened": "2026-02-13T12:43:41.058Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ApiGateway.cs",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\ApiGateway.cs",
-              "RelativeDocumentMoniker": "ApiGateway\\ApiGateway.cs",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\ApiGateway.cs",
-              "RelativeToolTip": "ApiGateway\\ApiGateway.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAQwEYAAAAfAAAAAAAAAA==",
+              "Title": "ExercisesController.cs",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ExercisesController.cs",
+              "RelativeDocumentMoniker": "ExerciseService\\Controllers\\ExercisesController.cs",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ExercisesController.cs",
+              "RelativeToolTip": "ExerciseService\\Controllers\\ExercisesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-07T13:47:57.832Z",
+              "WhenOpened": "2026-02-13T11:57:00.315Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\appsettings.json",
-              "RelativeDocumentMoniker": "ApiGateway\\appsettings.json",
-              "ToolTip": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\appsettings.json",
-              "RelativeToolTip": "ApiGateway\\appsettings.json",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-07T13:45:35.34Z",
+              "Title": "ComplexesController.cs",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ComplexesController.cs",
+              "RelativeDocumentMoniker": "ExerciseService\\Controllers\\ComplexesController.cs",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ComplexesController.cs",
+              "RelativeToolTip": "ExerciseService\\Controllers\\ComplexesController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAiwFwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T11:57:01.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dtos.cs",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Contracts\\Dtos.cs",
+              "RelativeDocumentMoniker": "ExerciseService\\Contracts\\Dtos.cs",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Contracts\\Dtos.cs",
+              "RelativeToolTip": "ExerciseService\\Contracts\\Dtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T11:27:52.686Z",
               "EditorCaption": ""
             },
             {
@@ -114,10 +114,6 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
@@ -131,6 +127,14 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",

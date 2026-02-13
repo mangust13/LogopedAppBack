@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj": {}
+    "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj": {}
   },
   "projects": {
-    "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj": {
+    "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
+        "projectUniqueName": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
         "projectName": "ProgressService",
-        "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
+        "projectPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
         "packagesPath": "C:\\Users\\maksy\\.nuget\\packages\\",
-        "outputPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\obj\\",
+        "outputPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
-                "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj"
+              "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
+                "projectPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj"
               }
             }
           }
@@ -95,18 +95,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
+    "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
+        "projectUniqueName": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
         "projectName": "Shared.Contracts",
-        "projectPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
+        "projectPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\Shared.Contracts.csproj",
         "packagesPath": "C:\\Users\\maksy\\.nuget\\packages\\",
-        "outputPath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\obj\\",
+        "outputPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\Shared.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -160,7 +160,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

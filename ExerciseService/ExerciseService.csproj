@@ -13,8 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     
-    <!-- Swagger + RabbitMq-->
-    <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
+    <!-- Swagger-->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.0" />
 
     <!-- Authentication & JWT -->

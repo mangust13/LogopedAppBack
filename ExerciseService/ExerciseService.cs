@@ -1,6 +1,4 @@
 using ExerciseService.Infrastructure;
-using ExerciseService.Messaging;
-using ExerciseService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,26 +12,15 @@ public class ExerciseService
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.Configure<RabbitOptions>(
-            builder.Configuration.GetSection("RabbitMQ"));
-
+        // Services
         builder.Services.AddDbContext<ExerciseDbContext>(opt =>
             opt.UseSqlite("Data Source=exercise.db"));
-
-        builder.Services.AddHttpClient("ProgressService", client =>
-        {
-            client.BaseAddress = new Uri(builder.Configuration["Services:ProgressServiceUrl"]!);
-        });
-
-        builder.Services.AddSingleton<ProgressReporter>();
-        builder.Services.AddSingleton<RabbitMqPublisher>();
-        builder.Services.AddHostedService<ResultListener>();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        // JWT конфігурація
+        // JWT
         var jwtSection = builder.Configuration.GetSection("Jwt");
         var key = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
 
@@ -56,12 +43,12 @@ public class ExerciseService
 
         var app = builder.Build();
 
-        // Якщо потрібна міграція бази, розкоментуй
-        //using (var scope = app.Services.CreateScope())
-        //{
-        //    var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
-        //    db.Database.Migrate();
-        //}
+        // Apply migration
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
+            db.Database.Migrate();
+        }
 
         if (app.Environment.IsDevelopment())
         {
@@ -69,6 +56,7 @@ public class ExerciseService
             app.UseSwaggerUI();
         }
 
+        app.UseStaticFiles();
         app.UseAuthentication();
         app.UseAuthorization();
 

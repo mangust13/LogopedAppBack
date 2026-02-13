@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yRzrFkpCAas=",
+  "dgSpecHash": "CHKwOEx2qu8=",
   "success": true,
-  "projectFilePath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
+  "projectFilePath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maksy\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.0\\microsoft.aspnetcore.authentication.jwtbearer.9.0.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8+xzt87XHpc=",
+  "dgSpecHash": "Lfl3ygOTOAM=",
   "success": true,
-  "projectFilePath": "D:\\Univer\\Sem_08\\LogopedApp\\LogopedAppBack\\ApiGateway\\ApiGateway.csproj",
+  "projectFilePath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maksy\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

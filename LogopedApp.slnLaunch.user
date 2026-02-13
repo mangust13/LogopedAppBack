@@ -36,5 +36,18 @@
         "Action": "StartWithoutDebugging"
       }
     ]
+  },
+  {
+    "Name": "E",
+    "Projects": [
+      {
+        "Path": "ExerciseService\\ExerciseService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
   }
 ]
