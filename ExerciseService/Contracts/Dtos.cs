@@ -3,28 +3,30 @@
 public class ExerciseDto
 {
     public int Id { get; set; }
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public string VideoUrl { get; set; }
-    public string IconName { get; set; }
-    public string Category { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string VideoPath { get; set; } = string.Empty;
+    public string IconName { get; set; } = string.Empty;
+
+    public string MainCategory { get; set; } = string.Empty;
+    public string MainCategoryDisplayName { get; set; } = string.Empty;
+
+    public List<ExerciseTagDto> Tags { get; set; } = new();
 }
 
-public class CreateComplexDto
-{
-    public string Title { get; set; }
-    public List<int> ExerciseIds { get; set; }
-}
-
-public class ComplexDto
+public class ExerciseTagDto
 {
     public int Id { get; set; }
-    public string Title { get; set; }
-    public List<ExerciseDto> Exercises { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Category { get; set; } = string.Empty; // sound, muscle, type, organ
+    public string DisplayName { get; set; } = string.Empty;
 }
 
-public class AssignHomeworkDto
+public class ExerciseMainCategoryDto
 {
-    public int ChildId { get; set; }
-    public int ComplexId { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string DisplayName { get; set; } = string.Empty;
+    public string FolderName { get; set; } = string.Empty;
+    public int ExerciseCount { get; set; }
 }

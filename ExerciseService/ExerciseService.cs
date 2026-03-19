@@ -1,4 +1,5 @@
 using ExerciseService.Infrastructure;
+using ExerciseService.Infrastructure.Seed;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,8 +14,8 @@ public class ExerciseService
         var builder = WebApplication.CreateBuilder(args);
 
         // Services
-        builder.Services.AddDbContext<ExerciseDbContext>(opt =>
-            opt.UseSqlite("Data Source=exercise.db"));
+        builder.Services.AddDbContext<ExerciseDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
@@ -43,11 +44,20 @@ public class ExerciseService
 
         var app = builder.Build();
 
-        // Apply migration
+        // Apply migration + seed
         using (var scope = app.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
-            db.Database.Migrate();
+
+            //db.Database.Migrate();
+            await db.Database.EnsureDeletedAsync();
+            await db.Database.EnsureCreatedAsync();
+
+            await ExerciseSeeder.SeedAsync(
+                db,
+                Path.Combine(Directory.GetCurrentDirectory(), "Data", "exercises.xlsx"),
+                true
+            );
         }
 
         if (app.Environment.IsDevelopment())

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\controllers\\exercisescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\Migrations\\20260319145235_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ProgressService\\Migrations\\20260319145235_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\controllers\\complexescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\controllers\\complexescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\progressservice\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|solutionrelative:progressservice\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F6FA7E88-1713-49D7-BF14-D19CE016C34D}|ApiGateway\\ApiGateway.csproj|solutionrelative:apigateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\progressservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|solutionrelative:progressservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\exerciseservice\\contracts\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{92D75A77-AFBD-4AE2-9EFA-CD20EA179862}|ExerciseService\\ExerciseService.csproj|solutionrelative:exerciseservice\\contracts\\dtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|d:\\univer\\diplom\\logopedapp\\logopedappback\\progressservice\\progressservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{194E814C-6359-4D06-821E-C6719DFABB44}|ProgressService\\ProgressService.csproj|solutionrelative:progressservice\\progressservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,59 +26,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260319145235_InitialCreate.cs",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\Migrations\\20260319145235_InitialCreate.cs",
+              "RelativeDocumentMoniker": "ProgressService\\Migrations\\20260319145235_InitialCreate.cs",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\Migrations\\20260319145235_InitialCreate.cs",
+              "RelativeToolTip": "ProgressService\\Migrations\\20260319145235_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T14:52:35.611Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ApiGateway\\appsettings.json",
-              "RelativeDocumentMoniker": "ApiGateway\\appsettings.json",
-              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ApiGateway\\appsettings.json",
-              "RelativeToolTip": "ApiGateway\\appsettings.json",
-              "ViewState": "AgIAABcAAAAAAAAAAAAYwEAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\appsettings.json",
+              "RelativeDocumentMoniker": "ProgressService\\appsettings.json",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\appsettings.json",
+              "RelativeToolTip": "ProgressService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-13T12:15:07.974Z",
+              "WhenOpened": "2026-03-19T14:49:40.693Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExercisesController.cs",
-              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ExercisesController.cs",
-              "RelativeDocumentMoniker": "ExerciseService\\Controllers\\ExercisesController.cs",
-              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ExercisesController.cs",
-              "RelativeToolTip": "ExerciseService\\Controllers\\ExercisesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T11:57:00.315Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ComplexesController.cs",
-              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ComplexesController.cs",
-              "RelativeDocumentMoniker": "ExerciseService\\Controllers\\ComplexesController.cs",
-              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Controllers\\ComplexesController.cs",
-              "RelativeToolTip": "ExerciseService\\Controllers\\ComplexesController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAiwHcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T11:57:01.252Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Dtos.cs",
-              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Contracts\\Dtos.cs",
-              "RelativeDocumentMoniker": "ExerciseService\\Contracts\\Dtos.cs",
-              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ExerciseService\\Contracts\\Dtos.cs",
-              "RelativeToolTip": "ExerciseService\\Contracts\\Dtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T11:27:52.686Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:12:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:10:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
@@ -102,22 +92,6 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:7:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:9:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
@@ -126,19 +100,57 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:4:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+              "Name": "ST:3:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:7:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:2:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:3:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProgressService.cs",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.cs",
+              "RelativeDocumentMoniker": "ProgressService\\ProgressService.cs",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.cs",
+              "RelativeToolTip": "ProgressService\\ProgressService.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAQwBAAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T14:49:43.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProgressService",
+              "DocumentMoniker": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
+              "RelativeDocumentMoniker": "ProgressService\\ProgressService.csproj",
+              "ToolTip": "D:\\Univer\\Diplom\\LogopedApp\\LogopedAppBack\\ProgressService\\ProgressService.csproj",
+              "RelativeToolTip": "ProgressService\\ProgressService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-19T14:49:36.194Z",
+              "EditorCaption": ""
             }
           ]
         },

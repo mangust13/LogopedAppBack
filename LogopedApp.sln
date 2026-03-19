@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressService", "Progress
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{F6FA7E88-1713-49D7-BF14-D19CE016C34D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Contracts", "Shared.Contracts\Shared.Contracts.csproj", "{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,18 +69,6 @@ Global
 		{F6FA7E88-1713-49D7-BF14-D19CE016C34D}.Release|x64.Build.0 = Release|Any CPU
 		{F6FA7E88-1713-49D7-BF14-D19CE016C34D}.Release|x86.ActiveCfg = Release|Any CPU
 		{F6FA7E88-1713-49D7-BF14-D19CE016C34D}.Release|x86.Build.0 = Release|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Debug|x64.Build.0 = Debug|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Debug|x86.Build.0 = Debug|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Release|Any CPU.Build.0 = Release|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Release|x64.ActiveCfg = Release|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Release|x64.Build.0 = Release|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Release|x86.ActiveCfg = Release|Any CPU
-		{562340C3-2F08-4A4F-ABEB-6D19CFCC6470}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

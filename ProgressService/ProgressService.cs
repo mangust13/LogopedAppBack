@@ -14,7 +14,7 @@ public class ProgressService
 
         // Database
         builder.Services.AddDbContext<ProgressDbContext>(opt =>
-            opt.UseSqlite(builder.Configuration.GetConnectionString("Default"))
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
         );
 
         builder.Services.AddControllers();

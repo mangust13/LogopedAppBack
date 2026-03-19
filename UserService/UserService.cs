@@ -14,7 +14,7 @@ public static class UserService
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<UsersDbContext>(opt =>
-            opt.UseSqlite(builder.Configuration.GetConnectionString("Default")));
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         // JWT
         builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));

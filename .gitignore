@@ -67,7 +67,7 @@ Desktop.ini
 *.DotSettings.user
 
 ############################
-# Node (на майбутнє, якщо буде)
+# Node 
 ############################
 node_modules/
 npm-debug.log*
@@ -75,7 +75,9 @@ yarn-debug.log*
 yarn-error.log*
 
 ############################
-# Uploaded files (якщо не хочеш зберігати)
+# Media files
 ############################
-ExerciseService/Uploads/*
-!ExerciseService/Uploads/.gitkeep
+ExerciseService/wwwroot/static/videos/*
+!ExerciseService/wwwroot/static/videos/.gitkeep
+
+*.xlsx

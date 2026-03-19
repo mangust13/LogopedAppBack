@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "ExercisesController",
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
     "Method": "GetAll",
     "RelativePath": "",
     "HttpMethod": "GET",
@@ -20,54 +20,22 @@
     ]
   },
   {
-    "ContainingType": "ComplexesController",
-    "Method": "Create",
-    "RelativePath": "complexes",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "ExerciseService.Contracts.CreateComplexDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ComplexesController",
-    "Method": "Assign",
-    "RelativePath": "complexes/assign",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "ExerciseService.Contracts.AssignHomeworkDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ComplexesController",
-    "Method": "GetChildHomework",
-    "RelativePath": "complexes/child/{childId}",
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetById",
+    "RelativePath": "{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "childId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "ExerciseService.Contracts.ExerciseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -78,16 +46,42 @@
     ]
   },
   {
-    "ContainingType": "ComplexesController",
-    "Method": "GetMyComplexes",
-    "RelativePath": "complexes/my",
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetMainCategories",
+    "RelativePath": "categories",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseMainCategoryDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetByCategory",
+    "RelativePath": "categories/{categoryName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -109,6 +103,52 @@
       {
         "Type": "System.Void",
         "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetTags",
+    "RelativePath": "tags",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseTagDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetTagsByCategory",
+    "RelativePath": "tags/{category}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseTagDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
         "StatusCode": 200
       }
     ]
