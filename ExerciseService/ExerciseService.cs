@@ -43,20 +43,24 @@ public class ExerciseService
         builder.Services.AddAuthorization();
 
         var app = builder.Build();
+        var env = app.Services.GetRequiredService<IWebHostEnvironment>();
 
         // Apply migration + seed
         using (var scope = app.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
+            var filePath = Path.Combine(env.WebRootPath, "static", "exercises.xlsx");
 
             //db.Database.Migrate();
             await db.Database.EnsureDeletedAsync();
             await db.Database.EnsureCreatedAsync();
 
+            bool forceReseed = false;
+
             await ExerciseSeeder.SeedAsync(
                 db,
-                Path.Combine(Directory.GetCurrentDirectory(), "Data", "exercises.xlsx"),
-                true
+                filePath,
+                forceReseed = false
             );
         }
 

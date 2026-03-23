@@ -1,4 +1,4 @@
-﻿// Domain/Exercise.cs
+﻿//Domain/Exercise.cs
 namespace ExerciseService.Domain;
 
 public class Exercise
@@ -15,13 +15,12 @@ public class Exercise
     public List<ExerciseTagLink> Tags { get; set; } = new();
 }
 
-// Основні категорії вправ
 public class ExerciseMainCategory
 {
     public int Id { get; set; }
-    public string Name { get; set; } = string.Empty; // whistling, hushing, sound-l, etc.
-    public string DisplayName { get; set; } = string.Empty; // Свистячі, Шиплячі, etc.
-    public string FolderName { get; set; } = string.Empty; // для відео папок
+    public string Name { get; set; } = string.Empty;
+    public string DisplayName { get; set; } = string.Empty;
+    public string FolderName { get; set; } = string.Empty;
 
     public List<Exercise> Exercises { get; set; } = new();
 }

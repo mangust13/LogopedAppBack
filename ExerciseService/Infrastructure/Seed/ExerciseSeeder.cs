@@ -53,58 +53,46 @@ public static class ExerciseSeeder
         tags.AddRange(new[]
         {
             new ExerciseTag { Name = "organ-lips", Category = "organ", DisplayName = "Губи" },
-            new ExerciseTag { Name = "organ-jaw", Category = "organ", DisplayName = "Нижня щелепа" }
+            new ExerciseTag { Name = "organ-jaw", Category = "organ", DisplayName = "Нижня щелепа" },
+            new ExerciseTag { Name = "organ-tongue", Category = "organ", DisplayName = "Язик" }
         });
 
         var sounds = new Dictionary<string, string>
         {
             ["sound-a"] = "Звук А",
+            ["sound-b"] = "Звук Б",
+            ["sound-v"] = "Звук В",
+            ["sound-h"] = "Звук Г",
+            ["sound-g"] = "Звук Ґ",
+            ["sound-d"] = "Звук Д",
+            ["sound-dzh"] = "Звук ДЖ",
+            ["sound-dz"] = "Звук ДЗ",
             ["sound-e"] = "Звук Е",
+            ["sound-zh"] = "Звук Ж",
+            ["sound-z"] = "Звук З",
             ["sound-y"] = "Звук И",
             ["sound-i"] = "Звук І",
+            ["sound-k"] = "Звук К",
+            ["sound-l"] = "Звук Л",
+            ["sound-m"] = "Звук М",
+            ["sound-n"] = "Звук Н",
             ["sound-o"] = "Звук О",
-            ["sound-u"] = "Звук У",
+            ["sound-p"] = "Звук П",
+            ["sound-r"] = "Звук Р",
             ["sound-s"] = "Звук С",
-            ["sound-z"] = "Звук З",
+            ["sound-t"] = "Звук Т",
+            ["sound-u"] = "Звук У",
+            ["sound-f"] = "Звук Ф",
+            ["sound-kh"] = "Звук Х",
             ["sound-ts"] = "Звук Ц",
-            ["sound-dz"] = "Звук ДЗ",
-            ["sound-sh"] = "Звук Ш",
-            ["sound-zh"] = "Звук Ж",
             ["sound-ch"] = "Звук Ч",
-            ["sound-dzh"] = "Звук ДЖ"
+            ["sound-sh"] = "Звук Ш"
         };
 
         tags.AddRange(sounds.Select(kvp => new ExerciseTag
         {
             Name = kvp.Key,
             Category = "sound",
-            DisplayName = kvp.Value
-        }));
-
-        var muscles = new Dictionary<string, string>
-        {
-            ["muscle-digastric"] = "Двочеревцевий м'яз",
-            ["muscle-mylohyoid"] = "Щелепно-під'язиковий м'яз",
-            ["muscle-geniohyoid"] = "Підборідно-під'язиковий м'яз",
-            ["muscle-lateral-pterygoid"] = "Латеральний крилоподібний м'яз",
-            ["muscle-orbicularis-oris"] = "Круговий м'яз рота",
-            ["muscle-zygomaticus-major"] = "Великий виличний м'яз",
-            ["muscle-zygomaticus-minor"] = "Малий виличний м'яз",
-            ["muscle-buccinator"] = "Щічний м'яз",
-            ["muscle-masseter"] = "Жувальний м'яз",
-            ["muscle-temporalis"] = "Скроневий м'яз",
-            ["muscle-medial-pterygoid"] = "Медіальний крилоподібний м'яз",
-            ["muscle-risorius"] = "М'яз сміху",
-            ["muscle-mentalis"] = "Підборідний м'яз",
-            ["muscle-levator-labii-superioris"] = "Підіймач верхньої губи",
-            ["muscle-levator-labii-superioris-alaeque-nasi"] = "Підіймач верхньої губи і крила носа",
-            ["muscle-depressor-labii-inferioris"] = "Опускач нижньої губи"
-        };
-
-        tags.AddRange(muscles.Select(kvp => new ExerciseTag
-        {
-            Name = kvp.Key,
-            Category = "muscle",
             DisplayName = kvp.Value
         }));
 
@@ -126,61 +114,60 @@ public static class ExerciseSeeder
             throw new InvalidOperationException("Excel файл не містить жодної таблиці");
         }
 
-        var table = ds.Tables[0];
-
-        if (table.Rows.Count <= 1)
-        {
-            return;
-        }
-
         var mainCategories = await db.ExerciseMainCategories.ToDictionaryAsync(x => x.Name);
         var tags = await db.ExerciseTags.ToDictionaryAsync(x => x.Name);
 
         var exercises = new List<Exercise>();
         var exerciseTagMappings = new List<(string title, List<string> tagNames)>();
 
-        for (int i = 1; i < table.Rows.Count; i++)
+        foreach (DataTable table in ds.Tables)
         {
-            var row = table.Rows[i];
-
-            var title = GetCellValue(row, 0);
-            var category = GetCellValue(row, 1);
-            var video = GetCellValue(row, 2);
-            var type = GetCellValue(row, 3);
-            var organ = GetCellValue(row, 4);
-            var sounds = GetCellValue(row, 5);
-            var muscles = GetCellValue(row, 6);
-            var description = GetCellValue(row, 7);
-
-            if (string.IsNullOrWhiteSpace(title))
+            if (table.Rows.Count <= 1)
             {
                 continue;
             }
 
-            var mainCategoryName = GetMainCategoryName(category);
-            if (!mainCategories.ContainsKey(mainCategoryName))
+            for (int i = 1; i < table.Rows.Count; i++)
             {
-                mainCategoryName = "all";
+                var row = table.Rows[i];
+
+                var title = GetCellValue(row, 0);
+                var category = GetCellValue(row, 1);
+                var video = GetCellValue(row, 2);
+                var type = GetCellValue(row, 3);
+                var organ = GetCellValue(row, 4);
+                var sounds = GetCellValue(row, 5);
+                var description = GetCellValue(row, 6);
+
+                if (string.IsNullOrWhiteSpace(title))
+                {
+                    continue;
+                }
+
+                var mainCategoryName = GetMainCategoryName(category);
+                if (!mainCategories.ContainsKey(mainCategoryName))
+                {
+                    mainCategoryName = "all";
+                }
+
+                var exercise = new Exercise
+                {
+                    Title = title,
+                    Description = description,
+                    VideoPath = BuildVideoPath(video, mainCategories[mainCategoryName].FolderName),
+                    IconName = "exercise",
+                    MainCategoryId = mainCategories[mainCategoryName].Id
+                };
+
+                exercises.Add(exercise);
+
+                var exerciseTags = new List<string>();
+                exerciseTags.AddRange(MapType(type));
+                exerciseTags.AddRange(MapOrgan(organ));
+                exerciseTags.AddRange(MapSounds(sounds));
+
+                exerciseTagMappings.Add((title, exerciseTags.Distinct().ToList()));
             }
-
-            var exercise = new Exercise
-            {
-                Title = title,
-                Description = description,
-                VideoPath = BuildVideoPath(video, mainCategories[mainCategoryName].FolderName),
-                IconName = "exercise",
-                MainCategoryId = mainCategories[mainCategoryName].Id
-            };
-
-            exercises.Add(exercise);
-
-            var exerciseTags = new List<string>();
-            exerciseTags.AddRange(MapType(type));
-            exerciseTags.AddRange(MapOrgan(organ));
-            exerciseTags.AddRange(MapSounds(sounds));
-            exerciseTags.AddRange(MapMuscles(muscles));
-
-            exerciseTagMappings.Add((title, exerciseTags.Distinct().ToList()));
         }
 
         if (!exercises.Any())
@@ -202,8 +189,7 @@ public static class ExerciseSeeder
 
             var exerciseId = exerciseIds[title];
 
-            foreach
- (var tagName in tagNames)
+            foreach (var tagName in tagNames)
             {
                 if (tags.ContainsKey(tagName))
                 {
@@ -240,16 +226,12 @@ public static class ExerciseSeeder
 
         var categoryMap = new Dictionary<string, string>
         {
-            ["свистячі"] = "whistling",
-            ["шиплячі"] = "hushing",
-            ["сонорні"] = "sound-l",
-            ["всі"] = "all",
+            ["all"] = "all",
             ["whistling"] = "whistling",
             ["hushing"] = "hushing",
             ["sound-l"] = "sound-l",
             ["sound-r"] = "sound-r",
             ["tongue-tip"] = "tongue-tip",
-            ["all"] = "all"
         };
 
         if (categoryMap.ContainsKey(normalized))
@@ -299,7 +281,8 @@ public static class ExerciseSeeder
     private static readonly Dictionary<string, string> OrganMap = new()
     {
         ["губи"] = "organ-lips",
-        ["нижня щелепа"] = "organ-jaw"
+        ["нижня щелепа"] = "organ-jaw",
+        ["язик"] = "organ-tongue"
     };
 
     private static List<string> MapOrgan(string raw)
@@ -319,19 +302,33 @@ public static class ExerciseSeeder
     private static readonly Dictionary<string, string> SoundMap = new()
     {
         ["а"] = "sound-a",
+        ["б"] = "sound-b",
+        ["в"] = "sound-v",
+        ["г"] = "sound-h",
+        ["ґ"] = "sound-g",
+        ["д"] = "sound-d",
+        ["дж"] = "sound-dzh",
+        ["дз"] = "sound-dz",
         ["е"] = "sound-e",
+        ["ж"] = "sound-zh",
+        ["з"] = "sound-z",
         ["и"] = "sound-y",
         ["і"] = "sound-i",
+        ["к"] = "sound-k",
+        ["л"] = "sound-l",
+        ["м"] = "sound-m",
+        ["н"] = "sound-n",
         ["о"] = "sound-o",
-        ["у"] = "sound-u",
+        ["п"] = "sound-p",
+        ["р"] = "sound-r",
         ["с"] = "sound-s",
-        ["з"] = "sound-z",
+        ["т"] = "sound-t",
+        ["у"] = "sound-u",
+        ["ф"] = "sound-f",
+        ["х"] = "sound-kh",
         ["ц"] = "sound-ts",
-        ["дз"] = "sound-dz",
-        ["ш"] = "sound-sh",
-        ["ж"] = "sound-zh",
         ["ч"] = "sound-ch",
-        ["дж"] = "sound-dzh"
+        ["ш"] = "sound-sh"
     };
 
     private static List<string> MapSounds(string raw)
@@ -348,40 +345,6 @@ public static class ExerciseSeeder
             .ToList();
     }
 
-    private static readonly Dictionary<string, string> MuscleMap = new()
-    {
-        ["двочеревцевий м'яз"] = "muscle-digastric",
-        ["щелепно-під'язиковий м'яз"] = "muscle-mylohyoid",
-        ["підборідно-під'язиковий м'яз"] = "muscle-geniohyoid",
-        ["латеральний крилоподібний м'яз"] = "muscle-lateral-pterygoid",
-        ["круговий м'яз рота"] = "muscle-orbicularis-oris",
-        ["великий виличний м'яз"] = "muscle-zygomaticus-major",
-        ["малий величний м'яз"] = "muscle-zygomaticus-minor",
-        ["щічний м'яз"] = "muscle-buccinator",
-        ["жувальний м'яз"] = "muscle-masseter",
-        ["скроневий м'яз"] = "muscle-temporalis",
-        ["медіальний крилоподібний м'яз"] = "muscle-medial-pterygoid",
-        ["м'яз сміху"] = "muscle-risorius",
-        ["підборідний м'яз"] = "muscle-mentalis",
-        ["підіймач верхньої губи"] = "muscle-levator-labii-superioris",
-        ["підіймач верхньої губи і крила носа"] = "muscle-levator-labii-superioris-alaeque-nasi",
-        ["опускач нижньої губи"] = "muscle-depressor-labii-inferioris"
-    };
-
-    private static List<string> MapMuscles(string raw)
-    {
-        raw = Normalize(raw);
-
-        if (string.IsNullOrEmpty(raw))
-            return new List<string>();
-
-        return raw.Split(';', StringSplitOptions.RemoveEmptyEntries)
-            .Select(x => Normalize(x))
-            .Where(x => MuscleMap.ContainsKey(x))
-            .Select(x => MuscleMap[x])
-            .ToList();
-    }
-
     private static async Task ClearAllDataAsync(ExerciseDbContext db)
     {
         await db.Database.ExecuteSqlRawAsync("DELETE FROM ExerciseTagLinks");
@@ -395,13 +358,7 @@ public static class ExerciseSeeder
 
         foreach (var table in tables)
         {
-            try
-            {
-                await db.Database.ExecuteSqlRawAsync($"DBCC CHECKIDENT ('{table}', RESEED, 0)");
-            }
-            catch
-            {
-            }
+            await db.Database.ExecuteSqlRawAsync($"DBCC CHECKIDENT ('{table}', RESEED, 0)");
         }
     }
 }

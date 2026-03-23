@@ -1,26 +1,6 @@
 [
   {
     "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "GetAll",
-    "RelativePath": "",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
     "Method": "GetById",
     "RelativePath": "{id}",
     "HttpMethod": "GET",
@@ -36,6 +16,26 @@
     "ReturnTypes": [
       {
         "Type": "ExerciseService.Contracts.ExerciseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetAll",
+    "RelativePath": "all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

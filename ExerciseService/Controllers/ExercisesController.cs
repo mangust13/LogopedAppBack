@@ -16,7 +16,7 @@ public class ExercisesController : ControllerBase
         _db = db;
     }
 
-    [HttpGet]
+    [HttpGet("/all")]
     public async Task<ActionResult<List<ExerciseDto>>> GetAll()
     {
         var exercises = await _db.Exercises
@@ -65,11 +65,13 @@ public class ExercisesController : ControllerBase
     [HttpGet("categories/{categoryName}")]
     public async Task<ActionResult<List<ExerciseDto>>> GetByCategory(string categoryName)
     {
-        var exercises = await _db.Exercises
+        var query = _db.Exercises
             .Include(x => x.MainCategory)
             .Include(x => x.Tags)
                 .ThenInclude(t => t.Tag)
-            .Where(x => x.MainCategory.Name == categoryName || categoryName == "all")
+            .Where(x => x.MainCategory.Name == categoryName);
+
+        var exercises = await query
             .Select(x => new ExerciseDto
             {
                 Id = x.Id,

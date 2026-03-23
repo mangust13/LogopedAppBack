@@ -81,3 +81,4 @@ ExerciseService/wwwroot/static/videos/*
 !ExerciseService/wwwroot/static/videos/.gitkeep
 
 *.xlsx
+*.sql

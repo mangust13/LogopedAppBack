@@ -1,4 +1,5 @@
-﻿namespace ExerciseService.Contracts;
+﻿//Contracts/Dtos.cs
+namespace ExerciseService.Contracts;
 
 public class ExerciseDto
 {
@@ -18,7 +19,7 @@ public class ExerciseTagDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string Category { get; set; } = string.Empty; // sound, muscle, type, organ
+    public string Category { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
 }
 
