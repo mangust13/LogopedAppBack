@@ -9,20 +9,7 @@ public class Exercise
     public string VideoPath { get; set; } = string.Empty;
     public string IconName { get; set; } = "happy";
 
-    public int MainCategoryId { get; set; }
-    public ExerciseMainCategory MainCategory { get; set; } = null!;
-
     public List<ExerciseTagLink> Tags { get; set; } = new();
-}
-
-public class ExerciseMainCategory
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string DisplayName { get; set; } = string.Empty;
-    public string FolderName { get; set; } = string.Empty;
-
-    public List<Exercise> Exercises { get; set; } = new();
 }
 
 public class ExerciseTag

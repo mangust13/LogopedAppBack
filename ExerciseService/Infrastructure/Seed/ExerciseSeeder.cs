@@ -8,35 +8,26 @@ namespace ExerciseService.Infrastructure.Seed;
 
 public static class ExerciseSeeder
 {
-    public static async Task SeedAsync(ExerciseDbContext db, string filePath, bool forceReseed = false)
+    public static async Task SeedAsync(ExerciseDbContext db, string filePath)
     {
-        if (forceReseed)
-        {
-            await ClearAllDataAsync(db);
-        }
-        else if (await db.Exercises.AnyAsync())
-        {
-            return;
-        }
-
-        await SeedMainCategoriesAsync(db);
+        await SeedDefaultComplexesAsync(db);
         await SeedTagsAsync(db);
         await ImportExercisesFromExcelAsync(db, filePath);
     }
 
-    private static async Task SeedMainCategoriesAsync(ExerciseDbContext db)
+    private static async Task SeedDefaultComplexesAsync(ExerciseDbContext db)
     {
-        var categories = new List<ExerciseMainCategory>
+        var complexes = new List<Complex>
         {
-            new() { Name = "all", DisplayName = "Всі вправи", FolderName = "all" },
-            new() { Name = "whistling", DisplayName = "Свистячі", FolderName = "whistling" },
-            new() { Name = "hushing", DisplayName = "Шиплячі", FolderName = "hushing" },
-            new() { Name = "sound-l", DisplayName = "Звук Л", FolderName = "sound-l" },
-            new() { Name = "sound-r", DisplayName = "Звук Р", FolderName = "sound-r" },
-            new() { Name = "tongue-tip", DisplayName = "Кінчик язика", FolderName = "tongue-tip" }
+            new() { Name = "all", DisplayName = "Всі вправи", FolderName = "all", IsDefault = true, Description = "" },
+            new() { Name = "whistling", DisplayName = "Свистячі", FolderName = "whistling", IsDefault = true, Description = "Комплекс вправ для свистячих звуків" },
+            new() { Name = "hushing", DisplayName = "Шиплячі", FolderName = "hushing", IsDefault = true, Description = "Комплекс вправ для шиплячих звуків" },
+            new() { Name = "sound-l", DisplayName = "Звук Л", FolderName = "sound-l", IsDefault = true, Description = "Комплекс вправ для звука Л" },
+            new() { Name = "sound-r", DisplayName = "Звук Р", FolderName = "sound-r", IsDefault = true, Description = "Комплекс вправ для звука Р" },
+            new() { Name = "tongue-tip", DisplayName = "Кінчик язика", FolderName = "tongue-tip", IsDefault = true, Description = "Комплекс вправ для кінчика язика" }
         };
 
-        db.ExerciseMainCategories.AddRange(categories);
+        db.Complexes.AddRange(complexes);
         await db.SaveChangesAsync();
     }
 
@@ -114,11 +105,24 @@ public static class ExerciseSeeder
             throw new InvalidOperationException("Excel файл не містить жодної таблиці");
         }
 
-        var mainCategories = await db.ExerciseMainCategories.ToDictionaryAsync(x => x.Name);
+        var complexes = await db.Complexes.Where(c => c.IsDefault).ToDictionaryAsync(c => c.Name
+    );
         var tags = await db.ExerciseTags.ToDictionaryAsync(x => x.Name);
-
         var exercises = new List<Exercise>();
         var exerciseTagMappings = new List<(string title, List<string> tagNames)>();
+        var complexItemMappings = new List<(string title, string complexName)>();
+
+        // Dictionary to map sheet names to complex names
+        var sheetToComplexMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["all"] = "all",
+            ["всі вправи"] = "all",
+            ["шиплячі"] = "hushing",
+            ["свистячі"] = "whistling",
+            ["звук л"] = "sound-l",
+            ["звук р"] = "sound-r",
+            ["кінчик язика"] = "tongue-tip"
+        };
 
         foreach (DataTable table in ds.Tables)
         {
@@ -127,12 +131,25 @@ public static class ExerciseSeeder
                 continue;
             }
 
+            // Determine the complex for this sheet
+            string sheetComplexName = "all"; // Default
+            string sheetName = table.TableName.Trim().ToLower();
+
+            foreach (var kvp in sheetToComplexMap)
+            {
+                if (sheetName.Contains(kvp.Key))
+                {
+                    sheetComplexName = kvp.Value;
+                    break;
+                }
+            }
+
             for (int i = 1; i < table.Rows.Count; i++)
             {
                 var row = table.Rows[i];
 
                 var title = GetCellValue(row, 0);
-                var category = GetCellValue(row, 1);
+                var complexName = GetCellValue(row, 1); // This is still read but not used for mapping
                 var video = GetCellValue(row, 2);
                 var type = GetCellValue(row, 3);
                 var organ = GetCellValue(row, 4);
@@ -144,19 +161,15 @@ public static class ExerciseSeeder
                     continue;
                 }
 
-                var mainCategoryName = GetMainCategoryName(category);
-                if (!mainCategories.ContainsKey(mainCategoryName))
-                {
-                    mainCategoryName = "all";
-                }
+                // Use the sheet's complex name instead of the cell value
+                var normalizedComplexName = sheetComplexName;
 
                 var exercise = new Exercise
                 {
                     Title = title,
                     Description = description,
-                    VideoPath = BuildVideoPath(video, mainCategories[mainCategoryName].FolderName),
-                    IconName = "exercise",
-                    MainCategoryId = mainCategories[mainCategoryName].Id
+                    VideoPath = BuildVideoPath(video, normalizedComplexName),
+                    IconName = "exercise"
                 };
 
                 exercises.Add(exercise);
@@ -167,9 +180,13 @@ public static class ExerciseSeeder
                 exerciseTags.AddRange(MapSounds(sounds));
 
                 exerciseTagMappings.Add((title, exerciseTags.Distinct().ToList()));
+
+                // Add the exercise to the complex based on the sheet name
+                complexItemMappings.Add((title, normalizedComplexName));
             }
         }
 
+        // Rest of the method remains the same...
         if (!exercises.Any())
         {
             return;
@@ -182,6 +199,7 @@ public static class ExerciseSeeder
             .Where(e => exercises.Select(ex => ex.Title).Contains(e.Title))
             .ToDictionaryAsync(e => e.Title, e => e.Id);
 
+        // Add tags
         foreach (var (title, tagNames) in exerciseTagMappings)
         {
             if (!exerciseIds.ContainsKey(title))
@@ -201,6 +219,61 @@ public static class ExerciseSeeder
                 }
             }
         }
+
+        // Add exercises to complexes
+        var complexItemOrder = new Dictionary<string, int>();
+        foreach (var complexName in complexes.Keys)
+        {
+            complexItemOrder[complexName] = 1;
+        }
+
+        foreach (var (title, complexName) in complexItemMappings)
+        {
+            if (!exerciseIds.ContainsKey(title) || !complexes.ContainsKey(complexName))
+                continue;
+
+            var exerciseId = exerciseIds[title];
+            var complexId = complexes[complexName].Id;
+
+            db.ComplexItems.Add(new ComplexItem
+            {
+                ComplexId = complexId,
+                ExerciseId = exerciseId,
+                Order = complexItemOrder[complexName]++
+            });
+        }
+
+        await db.SaveChangesAsync();
+    }
+
+    private static string GetComplexName(string complexFromExcel)
+    {
+        var normalized = Normalize(complexFromExcel);
+
+        var categoryMap = new Dictionary<string, string>
+        {
+            ["всі вправи"] = "all",
+            ["свистячі"] = "whistling",
+            ["шиплячі"] = "hushing",
+            ["звук л"] = "sound-l",
+            ["звук р"] = "sound-r",
+            ["кінчик язика"] = "tongue-tip",
+        };
+
+        if (categoryMap.ContainsKey(normalized))
+        {
+            return categoryMap[normalized];
+        }
+
+        foreach (var kvp in categoryMap)
+        {
+            if (normalized.Contains(kvp.Key))
+            {
+                return kvp.Value;
+            }
+        }
+
+        return "all";
     }
 
     private static string GetCellValue(DataRow row, int columnIndex)
@@ -218,36 +291,6 @@ public static class ExerciseSeeder
 
         file = file.Trim().ToLower().Replace(" ", "-");
         return $"/static/videos/{folderName}/{file}";
-    }
-
-    private static string GetMainCategoryName(string category)
-    {
-        var normalized = Normalize(category);
-
-        var categoryMap = new Dictionary<string, string>
-        {
-            ["all"] = "all",
-            ["whistling"] = "whistling",
-            ["hushing"] = "hushing",
-            ["sound-l"] = "sound-l",
-            ["sound-r"] = "sound-r",
-            ["tongue-tip"] = "tongue-tip",
-        };
-
-        if (categoryMap.ContainsKey(normalized))
-        {
-            return categoryMap[normalized];
-        }
-
-        foreach (var kvp in categoryMap)
-        {
-            if (normalized.Contains(kvp.Key))
-            {
-                return kvp.Value;
-            }
-        }
-
-        return "all";
     }
 
     private static string Normalize(string s)
@@ -343,22 +386,5 @@ public static class ExerciseSeeder
             .Where(x => SoundMap.ContainsKey(x))
             .Select(x => SoundMap[x])
             .ToList();
-    }
-
-    private static async Task ClearAllDataAsync(ExerciseDbContext db)
-    {
-        await db.Database.ExecuteSqlRawAsync("DELETE FROM ExerciseTagLinks");
-        await db.Database.ExecuteSqlRawAsync("DELETE FROM Exercises");
-        await db.Database.ExecuteSqlRawAsync("DELETE FROM ExerciseTags");
-        await db.Database.ExecuteSqlRawAsync("DELETE FROM ExerciseMainCategories");
-
-        var tables = new[] {
-            "Exercises", "ExerciseTags", "ExerciseMainCategories"
-        };
-
-        foreach (var table in tables)
-        {
-            await db.Database.ExecuteSqlRawAsync($"DBCC CHECKIDENT ('{table}', RESEED, 0)");
-        }
     }
 }

@@ -25,7 +25,7 @@ namespace UserService.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("UserService.Domain.ChildAssignment", b =>
+            modelBuilder.Entity("UserProgram.Domain.ChildAssignment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace UserService.Migrations
                     b.ToTable("ChildAssignments");
                 });
 
-            modelBuilder.Entity("UserService.Domain.ChildProfile", b =>
+            modelBuilder.Entity("UserProgram.Domain.ChildProfile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,7 +89,7 @@ namespace UserService.Migrations
                     b.ToTable("ChildProfiles");
                 });
 
-            modelBuilder.Entity("UserService.Domain.User", b =>
+            modelBuilder.Entity("UserProgram.Domain.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,15 +125,15 @@ namespace UserService.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("UserService.Domain.ChildAssignment", b =>
+            modelBuilder.Entity("UserProgram.Domain.ChildAssignment", b =>
                 {
-                    b.HasOne("UserService.Domain.ChildProfile", "ChildProfile")
+                    b.HasOne("UserProgram.Domain.ChildProfile", "ChildProfile")
                         .WithMany()
                         .HasForeignKey("ChildProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UserService.Domain.User", "Logoped")
+                    b.HasOne("UserProgram.Domain.User", "Logoped")
                         .WithMany()
                         .HasForeignKey("LogopedUserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -144,9 +144,9 @@ namespace UserService.Migrations
                     b.Navigation("Logoped");
                 });
 
-            modelBuilder.Entity("UserService.Domain.ChildProfile", b =>
+            modelBuilder.Entity("UserProgram.Domain.ChildProfile", b =>
                 {
-                    b.HasOne("UserService.Domain.User", "ParentUser")
+                    b.HasOne("UserProgram.Domain.User", "ParentUser")
                         .WithMany()
                         .HasForeignKey("ParentUserId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,5 +1,6 @@
 using ExerciseService.Infrastructure;
 using ExerciseService.Infrastructure.Seed;
+using ExerciseService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace ExerciseService;
 
-public class ExerciseService
+public class ExerciseProgram
 {
     public static async Task Main(string[] args)
     {
@@ -17,9 +18,45 @@ public class ExerciseService
         builder.Services.AddDbContext<ExerciseDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddHttpClient<IUserService, UserService>(client =>
+        {
+            client.BaseAddress = new Uri("http://192.168.0.100:5000");
+        });
+
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+
+        // Swagger
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new() { Title = "ExerciseProgram", Version = "v1" });
+
+            options.AddSecurityDefinition("Bearer", new()
+            {
+                Name = "Authorization",
+                Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                Description = "Введіть: Bearer {token}"
+            });
+
+            options.AddSecurityRequirement(new()
+            {
+                {
+                    new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                    {
+                        Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                        {
+                            Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+        });
 
         // JWT
         var jwtSection = builder.Configuration.GetSection("Jwt");
@@ -51,17 +88,15 @@ public class ExerciseService
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
             var filePath = Path.Combine(env.WebRootPath, "static", "exercises.xlsx");
 
-            //db.Database.Migrate();
-            await db.Database.EnsureDeletedAsync();
-            await db.Database.EnsureCreatedAsync();
-
             bool forceReseed = false;
 
-            await ExerciseSeeder.SeedAsync(
-                db,
-                filePath,
-                forceReseed = false
-            );
+            if (forceReseed)
+            {
+                await db.Database.EnsureDeletedAsync();
+                await db.Database.EnsureCreatedAsync();
+
+                await ExerciseSeeder.SeedAsync(db, filePath);
+            }
         }
 
         if (app.Environment.IsDevelopment())
@@ -74,7 +109,7 @@ public class ExerciseService
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "ExerciseService" }));
+        app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "ExerciseProgram" }));
         app.MapControllers();
 
         await app.RunAsync();

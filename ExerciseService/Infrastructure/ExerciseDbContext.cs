@@ -1,73 +1,73 @@
-﻿using ExerciseService.Domain;
+﻿// Infrastructure/ExerciseDbContext.cs
+using ExerciseService.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExerciseService.Infrastructure;
 
 public class ExerciseDbContext : DbContext
 {
-    public ExerciseDbContext(DbContextOptions<ExerciseDbContext> options) : base(options)
-    {
-    }
+    public ExerciseDbContext(DbContextOptions<ExerciseDbContext> options) : base(options) { }
 
-    public DbSet<Exercise> Exercises => Set<Exercise>();
-    public DbSet<ExerciseMainCategory> ExerciseMainCategories => Set<ExerciseMainCategory>();
-    public DbSet<ExerciseTag> ExerciseTags => Set<ExerciseTag>();
-    public DbSet<ExerciseTagLink> ExerciseTagLinks => Set<ExerciseTagLink>();
+    public DbSet<Exercise> Exercises { get; set; }
+    public DbSet<ExerciseTag> ExerciseTags { get; set; }
+    public DbSet<ExerciseTagLink> ExerciseTagLinks { get; set; }
+
+    public DbSet<Complex> Complexes { get; set; }
+    public DbSet<ComplexItem> ComplexItems { get; set; }
+    public DbSet<ComplexAssignment> ComplexAssignments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
-        // Exercise
-        modelBuilder.Entity<Exercise>(e =>
+        modelBuilder.Entity<Exercise>(entity =>
         {
-            e.HasKey(x => x.Id);
-            e.Property(x => x.Title).IsRequired().HasMaxLength(200);
-            e.Property(x => x.Description).HasMaxLength(2000);
-            e.Property(x => x.VideoPath).IsRequired().HasMaxLength(500);
-            e.Property(x => x.IconName).HasMaxLength(100);
-
-            e.HasOne(x => x.MainCategory)
-                .WithMany(x => x.Exercises)
-                .HasForeignKey(x => x.MainCategoryId)
-                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
         });
 
-        // ExerciseMainCategory
-        modelBuilder.Entity<ExerciseMainCategory>(c =>
+        modelBuilder.Entity<ExerciseTag>(entity =>
         {
-            c.HasKey(x => x.Id);
-            c.Property(x => x.Name).IsRequired().HasMaxLength(100);
-            c.Property(x => x.DisplayName).IsRequired().HasMaxLength(200);
-            c.Property(x => x.FolderName).IsRequired().HasMaxLength(100);
-            c.HasIndex(x => x.Name).IsUnique();
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Category).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.DisplayName).IsRequired().HasMaxLength(200);
         });
 
-        // ExerciseTag
-        modelBuilder.Entity<ExerciseTag>(t =>
+        modelBuilder.Entity<ExerciseTagLink>(entity =>
         {
-            t.HasKey(x => x.Id);
-            t.Property(x => x.Name).IsRequired().HasMaxLength(100);
-            t.Property(x => x.Category).IsRequired().HasMaxLength(50);
-            t.Property(x => x.DisplayName).IsRequired().HasMaxLength(200);
-            t.HasIndex(x => x.Name).IsUnique();
+            entity.HasKey(e => new { e.ExerciseId, e.TagId });
+            entity.HasOne(e => e.Exercise)
+                .WithMany(ex => ex.Tags)
+                .HasForeignKey(e => e.ExerciseId);
+            entity.HasOne(e => e.Tag)
+                .WithMany(t => t.Exercises)
+                .HasForeignKey(e => e.TagId);
         });
 
-        // ExerciseTagLink
-        modelBuilder.Entity<ExerciseTagLink>(l =>
+        modelBuilder.Entity<Complex>(entity =>
         {
-            l.HasKey(x => new { x.ExerciseId, x.TagId });
-
-            l.HasOne(x => x.Exercise)
-                .WithMany(x => x.Tags)
-                .HasForeignKey(x => x.ExerciseId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            l.HasOne(x => x.Tag)
-                .WithMany(x => x.Exercises)
-                .HasForeignKey(x => x.TagId)
-                .OnDelete(DeleteBehavior.Cascade);
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.DisplayName).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.FolderName).HasMaxLength(100);
         });
 
+        modelBuilder.Entity<ComplexItem>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasOne(e => e.Complex)
+                .WithMany(c => c.Exercises)
+                .HasForeignKey(e => e.ComplexId);
+            entity.HasOne(e => e.Exercise)
+                .WithMany()
+                .HasForeignKey(e => e.ExerciseId);
+        });
+
+        modelBuilder.Entity<ComplexAssignment>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasOne(e => e.Complex)
+                .WithMany(c => c.Assignments)
+                .HasForeignKey(e => e.ComplexId);
+        });
     }
 }

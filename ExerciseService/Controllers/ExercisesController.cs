@@ -20,7 +20,6 @@ public class ExercisesController : ControllerBase
     public async Task<ActionResult<List<ExerciseDto>>> GetAll()
     {
         var exercises = await _db.Exercises
-            .Include(x => x.MainCategory)
             .Include(x => x.Tags)
                 .ThenInclude(t => t.Tag)
             .Select(x => new ExerciseDto
@@ -30,8 +29,6 @@ public class ExercisesController : ControllerBase
                 Description = x.Description,
                 VideoPath = x.VideoPath,
                 IconName = x.IconName,
-                MainCategory = x.MainCategory.Name,
-                MainCategoryDisplayName = x.MainCategory.DisplayName,
                 Tags = x.Tags.Select(t => new ExerciseTagDto
                 {
                     Id = t.Tag.Id,
@@ -45,33 +42,13 @@ public class ExercisesController : ControllerBase
         return Ok(exercises);
     }
 
-    [HttpGet("categories")]
-    public async Task<ActionResult<List<ExerciseMainCategoryDto>>> GetMainCategories()
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ExerciseDto>> GetById(int id)
     {
-        var categories = await _db.ExerciseMainCategories
-            .Select(c => new ExerciseMainCategoryDto
-            {
-                Id = c.Id,
-                Name = c.Name,
-                DisplayName = c.DisplayName,
-                FolderName = c.FolderName,
-                ExerciseCount = c.Exercises.Count
-            })
-            .ToListAsync();
-
-        return Ok(categories);
-    }
-
-    [HttpGet("categories/{categoryName}")]
-    public async Task<ActionResult<List<ExerciseDto>>> GetByCategory(string categoryName)
-    {
-        var query = _db.Exercises
-            .Include(x => x.MainCategory)
+        var exercise = await _db.Exercises
             .Include(x => x.Tags)
                 .ThenInclude(t => t.Tag)
-            .Where(x => x.MainCategory.Name == categoryName);
-
-        var exercises = await query
+            .Where(x => x.Id == id)
             .Select(x => new ExerciseDto
             {
                 Id = x.Id,
@@ -79,8 +56,6 @@ public class ExercisesController : ControllerBase
                 Description = x.Description,
                 VideoPath = x.VideoPath,
                 IconName = x.IconName,
-                MainCategory = x.MainCategory.Name,
-                MainCategoryDisplayName = x.MainCategory.DisplayName,
                 Tags = x.Tags.Select(t => new ExerciseTagDto
                 {
                     Id = t.Tag.Id,
@@ -89,9 +64,12 @@ public class ExercisesController : ControllerBase
                     DisplayName = t.Tag.DisplayName
                 }).ToList()
             })
-            .ToListAsync();
+            .FirstOrDefaultAsync();
 
-        return Ok(exercises);
+        if (exercise == null)
+            return NotFound();
+
+        return Ok(exercise);
     }
 
     [HttpGet("tags")]
@@ -125,38 +103,5 @@ public class ExercisesController : ControllerBase
             .ToListAsync();
 
         return Ok(tags);
-    }
-
-    [HttpGet("{id}")]
-    public async Task<ActionResult<ExerciseDto>> GetById(int id)
-    {
-        var exercise = await _db.Exercises
-            .Include(x => x.MainCategory)
-            .Include(x => x.Tags)
-                .ThenInclude(t => t.Tag)
-            .Where(x => x.Id == id)
-            .Select(x => new ExerciseDto
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Description = x.Description,
-                VideoPath = x.VideoPath,
-                IconName = x.IconName,
-                MainCategory = x.MainCategory.Name,
-                MainCategoryDisplayName = x.MainCategory.DisplayName,
-                Tags = x.Tags.Select(t => new ExerciseTagDto
-                {
-                    Id = t.Tag.Id,
-                    Name = t.Tag.Name,
-                    Category = t.Tag.Category,
-                    DisplayName = t.Tag.DisplayName
-                }).ToList()
-            })
-            .FirstOrDefaultAsync();
-
-        if (exercise == null)
-            return NotFound();
-
-        return Ok(exercise);
     }
 }

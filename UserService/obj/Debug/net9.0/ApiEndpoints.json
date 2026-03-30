@@ -84,7 +84,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "UserService.UserService\u002B\u003C\u003Ec",
+    "ContainingType": "UserService.UserProgram\u002B\u003C\u003Ec",
     "Method": "\u003CMain\u003Eb__0_3",
     "RelativePath": "health",
     "HttpMethod": "GET",

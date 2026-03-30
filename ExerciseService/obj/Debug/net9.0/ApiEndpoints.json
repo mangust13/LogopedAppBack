@@ -46,16 +46,16 @@
     ]
   },
   {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "GetMainCategories",
-    "RelativePath": "categories",
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "GetComplexes",
+    "RelativePath": "complexes",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseMainCategoryDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -66,22 +66,22 @@
     ]
   },
   {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "GetByCategory",
-    "RelativePath": "categories/{categoryName}",
-    "HttpMethod": "GET",
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "CreateComplex",
+    "RelativePath": "complexes",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "categoryName",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "ExerciseService.Contracts.CreateComplexRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "ExerciseService.Contracts.ComplexDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -92,8 +92,168 @@
     ]
   },
   {
-    "ContainingType": "ExerciseService.ExerciseService\u002B\u003C\u003Ec",
-    "Method": "\u003CMain\u003Eb__0_2",
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "AssignComplexToChildren",
+    "RelativePath": "complexes/{complexId}/assign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "complexId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ExerciseService.Contracts.AssignComplexRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "GetComplexById",
+    "RelativePath": "complexes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ExerciseService.Contracts.ComplexDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "UpdateComplex",
+    "RelativePath": "complexes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ExerciseService.Contracts.CreateComplexRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ExerciseService.Contracts.ComplexDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "DeleteComplex",
+    "RelativePath": "complexes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "GetAssignedComplexes",
+    "RelativePath": "complexes/assigned",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "GetPublicComplexes",
+    "RelativePath": "complexes/public",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "GetPublicComplexById",
+    "RelativePath": "complexes/public/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ExerciseService.Contracts.ComplexDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.ExerciseProgram\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_4",
     "RelativePath": "health",
     "HttpMethod": "GET",
     "IsController": false,

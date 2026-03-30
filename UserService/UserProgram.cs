@@ -7,7 +7,7 @@ using UserService.Services;
 
 namespace UserService;
 
-public static class UserService
+public static class UserProgram
 {
     public async static Task Main(string[] args)
     {
@@ -41,7 +41,7 @@ public static class UserService
         //Swagger
         builder.Services.AddSwaggerGen(options =>
         {
-            options.SwaggerDoc("v1", new() { Title = "UserService", Version = "v1" });
+            options.SwaggerDoc("v1", new() { Title = "UserProgram", Version = "v1" });
 
             options.AddSecurityDefinition("Bearer", new()
             {
@@ -87,7 +87,7 @@ public static class UserService
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.MapGet("/health", () => Results.Ok( new { status = "ok", service = "UserService" } ));
+        app.MapGet("/health", () => Results.Ok( new { status = "ok", service = "UserProgram" } ));
         app.MapControllers();
 
         await app.RunAsync();

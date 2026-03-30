@@ -54,4 +54,5 @@ public class LogopedController : ControllerBase
 
         return Ok(logopeds);
     }
+
 }

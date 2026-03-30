@@ -1,4 +1,4 @@
-﻿//Contracts/Dtos.cs
+﻿//Contracts/ExerciseDtos.cs
 namespace ExerciseService.Contracts;
 
 public class ExerciseDto
@@ -8,9 +8,6 @@ public class ExerciseDto
     public string Description { get; set; } = string.Empty;
     public string VideoPath { get; set; } = string.Empty;
     public string IconName { get; set; } = string.Empty;
-
-    public string MainCategory { get; set; } = string.Empty;
-    public string MainCategoryDisplayName { get; set; } = string.Empty;
 
     public List<ExerciseTagDto> Tags { get; set; } = new();
 }

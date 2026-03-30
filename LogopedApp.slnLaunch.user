@@ -49,5 +49,22 @@
         "Action": "StartWithoutDebugging"
       }
     ]
+  },
+  {
+    "Name": "U + E",
+    "Projects": [
+      {
+        "Path": "UserService\\UserService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ExerciseService\\ExerciseService.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "ApiGateway\\ApiGateway.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
   }
 ]
