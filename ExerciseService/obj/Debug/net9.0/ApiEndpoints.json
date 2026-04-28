@@ -268,6 +268,22 @@
     ]
   },
   {
+    "ContainingType": "ExerciseService.Controllers.SoundCardsController",
+    "Method": "GetBySound",
+    "RelativePath": "sound-cards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sound",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ExerciseService.Controllers.ExercisesController",
     "Method": "GetTags",
     "RelativePath": "tags",

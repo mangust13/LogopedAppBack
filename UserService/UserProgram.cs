@@ -1,7 +1,9 @@
-using System.Text;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using UserService.Contracts;
 using UserService.Infrastructure;
 using UserService.Services;
 
@@ -36,6 +38,7 @@ public static class UserProgram
 
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
+        builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
         builder.Services.AddEndpointsApiExplorer();
 
         //Swagger
@@ -75,7 +78,7 @@ public static class UserProgram
         using (var scope = app.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<UsersDbContext>();
-            db.Database.Migrate();
+            await db.Database.MigrateAsync();
         }
 
         if (app.Environment.IsDevelopment())

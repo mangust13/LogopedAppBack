@@ -1,8 +1,9 @@
 ﻿using BCrypt.Net;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using UserService.Contracts;
 using UserService.Domain;
 using UserService.Infrastructure;
 using UserService.Services;
@@ -17,28 +18,43 @@ public class UsersController : ControllerBase
 {
     private readonly UsersDbContext _db;
     private readonly IJwtTokenService _jwt;
+    private readonly IValidator<AuthDtos.RegisterRequest> _registerValidator;
+    private readonly IValidator<AuthDtos.LoginRequest> _loginValidator;
 
-    public UsersController(UsersDbContext db, IJwtTokenService jwt)
+    public UsersController(
+        UsersDbContext db,
+        IJwtTokenService jwt,
+        IValidator<AuthDtos.RegisterRequest> registerValidator,
+        IValidator<AuthDtos.LoginRequest> loginValidator)
     {
         _db = db;
         _jwt = jwt;
+        _registerValidator = registerValidator;
+        _loginValidator = loginValidator;
     }
 
     [AllowAnonymous]
     [HttpPost("register")]
     public async Task<ActionResult<AuthDtos.LoginResponse>> Register([FromBody] AuthDtos.RegisterRequest req)
     {
-        var exists = await _db.Users.AnyAsync(x => x.Email == req.Email);
-        if (exists)
+        var validation = await _registerValidator.ValidateAsync(req);
+        if (!validation.IsValid)
         {
-            return Conflict("Email already registered");
+            var errors = validation.Errors
+                .GroupBy(x => x.PropertyName)
+                .ToDictionary(g => g.Key, g => g.Select(x => x.ErrorMessage).ToArray());
+            return ValidationProblem(new ValidationProblemDetails(errors));
         }
+
+        var exists = await _db.Users.AnyAsync(x => x.Email == req.Email.Trim().ToLower());
+        if (exists)
+            return Conflict(new { message = "Email вже зареєстрований" });
 
         var user = new User
         {
             Email = req.Email.Trim().ToLower(),
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(req.Password),
-            Role = String.IsNullOrWhiteSpace(req.Role) ? "User" : req.Role!,
+            Role = string.IsNullOrWhiteSpace(req.Role) ? "User" : req.Role!,
         };
 
         _db.Users.Add(user);
@@ -52,11 +68,24 @@ public class UsersController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<AuthDtos.LoginResponse>> Login([FromBody] AuthDtos.LoginRequest req)
     {
-        string email = req.Email.Trim().ToLower();
+        var validation = await _loginValidator.ValidateAsync(req);
+        if (!validation.IsValid)
+        {
+            var errors = validation.Errors
+                .GroupBy(x => x.PropertyName)
+                .ToDictionary(g => g.Key, g => g.Select(x => x.ErrorMessage).ToArray());
+            return ValidationProblem(new ValidationProblemDetails(errors));
+        }
+
+        var email = req.Email.Trim().ToLower();
         var user = await _db.Users.FirstOrDefaultAsync(x => x.Email == email);
-        if (user is null) return Unauthorized();
+        if (user is null)
+            return Unauthorized(new { message = "Невірний email або пароль" });
+
         var ok = BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash);
-        if (!ok) return Unauthorized();
+        if (!ok)
+            return Unauthorized(new { message = "Невірний email або пароль" });
+
         var token = _jwt.Create(user);
         return new AuthDtos.LoginResponse(user.Id, user.Email, user.Role, token);
     }

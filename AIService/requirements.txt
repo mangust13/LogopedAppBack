@@ -1,7 +1,0 @@
-pika
-allosaurus
-epitran
-python-Levenshtein
-numpy
-scipy
-phonemizer

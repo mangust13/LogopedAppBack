@@ -540,6 +540,27 @@
           }
         }
       }
+    },
+    "/sound-cards": {
+      "get": {
+        "tags": [
+          "SoundCards"
+        ],
+        "parameters": [
+          {
+            "name": "sound",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

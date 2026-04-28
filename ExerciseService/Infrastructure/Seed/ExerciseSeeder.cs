@@ -17,6 +17,8 @@ public static class ExerciseSeeder
 
     private static async Task SeedDefaultComplexesAsync(ExerciseDbContext db)
     {
+        if (await db.Complexes.AnyAsync()) return;
+
         var complexes = new List<Complex>
         {
             new() { Name = "all", DisplayName = "Всі вправи", FolderName = "all", IsDefault = true, Description = "" },
@@ -33,6 +35,8 @@ public static class ExerciseSeeder
 
     private static async Task SeedTagsAsync(ExerciseDbContext db)
     {
+        if (await db.ExerciseTags.AnyAsync()) return;
+
         var tags = new List<ExerciseTag>();
 
         tags.AddRange(new[]
@@ -93,6 +97,8 @@ public static class ExerciseSeeder
 
     private static async Task ImportExercisesFromExcelAsync(ExerciseDbContext db, string filePath)
     {
+        if (await db.Exercises.AnyAsync()) return;
+
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
         using var stream = File.Open(filePath, FileMode.Open, FileAccess.Read);

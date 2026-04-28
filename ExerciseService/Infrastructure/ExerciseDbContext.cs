@@ -15,6 +15,8 @@ public class ExerciseDbContext : DbContext
     public DbSet<Complex> Complexes { get; set; }
     public DbSet<ComplexItem> ComplexItems { get; set; }
     public DbSet<ComplexAssignment> ComplexAssignments { get; set; }
+    public DbSet<SoundCard> SoundCards { get; set; }
+    public DbSet<SoundPosition> SoundPositions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -68,6 +70,23 @@ public class ExerciseDbContext : DbContext
             entity.HasOne(e => e.Complex)
                 .WithMany(c => c.Assignments)
                 .HasForeignKey(e => e.ComplexId);
+        });
+
+        modelBuilder.Entity<SoundPosition>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.DisplayName).IsRequired().HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<SoundCard>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Sound).IsRequired().HasMaxLength(10);
+            entity.Property(e => e.Word).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.ImageFile).IsRequired().HasMaxLength(200);
+            entity.HasOne(e => e.Position)
+                .WithMany(p => p.SoundCards)
+                .HasForeignKey(e => e.PositionId);
         });
     }
 }

@@ -83,20 +83,21 @@ public class ExerciseProgram
         var env = app.Services.GetRequiredService<IWebHostEnvironment>();
 
         // Apply migration + seed
+        bool forceReseed = true;
+
         using (var scope = app.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
             var filePath = Path.Combine(env.WebRootPath, "static", "exercises.xlsx");
 
-            bool forceReseed = false;
-
             if (forceReseed)
             {
                 await db.Database.EnsureDeletedAsync();
-                await db.Database.EnsureCreatedAsync();
-
-                await ExerciseSeeder.SeedAsync(db, filePath);
             }
+
+            await db.Database.EnsureCreatedAsync();
+            await ExerciseSeeder.SeedAsync(db, filePath);
+            await SoundCardSeeder.SeedAsync(db);
         }
 
         if (app.Environment.IsDevelopment())
