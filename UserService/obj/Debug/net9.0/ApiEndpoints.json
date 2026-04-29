@@ -137,6 +137,27 @@
   },
   {
     "ContainingType": "UserService.Controllers.LogopedController",
+    "Method": "UpdateChild",
+    "RelativePath": "logoped/children/{childId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "childId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "UserService.Contracts.UpdateChildProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.LogopedController",
     "Method": "GetAllLogopeds",
     "RelativePath": "logoped/logopeds",
     "HttpMethod": "GET",

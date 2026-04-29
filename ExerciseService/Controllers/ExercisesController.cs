@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ExerciseService.Controllers;
 
 [ApiController]
-[Route("")]
+[Route("api/[controller]")]
 public class ExercisesController : ControllerBase
 {
     private readonly ExerciseDbContext _db;
@@ -16,27 +16,21 @@ public class ExercisesController : ControllerBase
         _db = db;
     }
 
-    [HttpGet("/all")]
-    public async Task<ActionResult<List<ExerciseDto>>> GetAll()
+    [HttpGet("all")]
+    public async Task<ActionResult<List<ExerciseDto>>> GetAll([FromQuery] string? sound = null)
     {
-        var exercises = await _db.Exercises
-            .Include(x => x.Tags)
-                .ThenInclude(t => t.Tag)
-            .Select(x => new ExerciseDto
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Description = x.Description,
-                VideoPath = x.VideoPath,
-                IconName = x.IconName,
-                Tags = x.Tags.Select(t => new ExerciseTagDto
-                {
-                    Id = t.Tag.Id,
-                    Name = t.Tag.Name,
-                    Category = t.Tag.Category,
-                    DisplayName = t.Tag.DisplayName
-                }).ToList()
-            })
+        var query = _db.Exercises
+            .AsNoTracking()
+            .AsQueryable();
+
+        if (!string.IsNullOrEmpty(sound))
+        {
+            var tagName = $"sound-{sound.ToLower()}";
+            query = query.Where(x => x.Tags.Any(t => t.Tag.Name == tagName));
+        }
+
+        var exercises = await query
+            .Select(ExerciseDto.From)
             .ToListAsync();
 
         return Ok(exercises);
@@ -46,24 +40,9 @@ public class ExercisesController : ControllerBase
     public async Task<ActionResult<ExerciseDto>> GetById(int id)
     {
         var exercise = await _db.Exercises
-            .Include(x => x.Tags)
-                .ThenInclude(t => t.Tag)
+            .AsNoTracking()
             .Where(x => x.Id == id)
-            .Select(x => new ExerciseDto
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Description = x.Description,
-                VideoPath = x.VideoPath,
-                IconName = x.IconName,
-                Tags = x.Tags.Select(t => new ExerciseTagDto
-                {
-                    Id = t.Tag.Id,
-                    Name = t.Tag.Name,
-                    Category = t.Tag.Category,
-                    DisplayName = t.Tag.DisplayName
-                }).ToList()
-            })
+            .Select(ExerciseDto.From)
             .FirstOrDefaultAsync();
 
         if (exercise == null)

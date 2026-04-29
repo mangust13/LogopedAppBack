@@ -1,81 +1,43 @@
-﻿// Services/UserService.cs в ExerciseService
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace ExerciseService.Services;
 
-public class UserService : IUserService
+public class UserService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor) : IUserService
 {
-    private readonly HttpClient _httpClient;
-    private readonly ILogger<UserService> _logger;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public UserService(HttpClient httpClient, ILogger<UserService> logger, IHttpContextAccessor httpContextAccessor)
+    public Task<List<ChildDto>> GetLogopedChildren(int logopedId)
     {
-        _httpClient = httpClient;
-        _logger = logger;
-        _httpContextAccessor = httpContextAccessor;
+        return GetChildren("/logoped/children", "/users/logoped/children");
     }
 
-    public async Task<List<ChildDto>> GetLogopedChildren(int logopedId)
+    public Task<List<ChildDto>> GetMyChildren()
     {
-        try
+        return GetChildren("/children", "/users/children");
+    }
+
+    private async Task<List<ChildDto>> GetChildren(params string[] requestUris)
+    {
+        var token = httpContextAccessor.HttpContext?.Request.Headers.Authorization.ToString();
+
+        foreach (var requestUri in requestUris)
         {
-            _logger.LogInformation("Getting children for logoped ID: {LogopedId}", logopedId);
+            using var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
 
-            // Отримуємо токен з поточного запиту
-            var token = _httpContextAccessor.HttpContext?.Request.Headers["Authorization"].ToString();
+            if (!string.IsNullOrWhiteSpace(token))
+                request.Headers.TryAddWithoutValidation("Authorization", token);
 
-            if (!string.IsNullOrEmpty(token))
+            var response = await httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+                continue;
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            return JsonSerializer.Deserialize<List<ChildDto>>(json, new JsonSerializerOptions
             {
-                // Додаємо токен до запиту
-                _httpClient.DefaultRequestHeaders.Remove("Authorization");
-                _httpClient.DefaultRequestHeaders.Add("Authorization", token);
-                _logger.LogInformation("Added Authorization header: {Token}", token);
-            }
-            else
-            {
-                _logger.LogWarning("No Authorization token found in the current request");
-            }
-
-            // Використовуємо повний URL
-            var requestUri = "/api/users/logoped/children";
-            _logger.LogInformation("Request URI: {RequestUri}", requestUri);
-
-            var response = await _httpClient.GetAsync(requestUri);
-
-            _logger.LogInformation("Response status code: {StatusCode}", response.StatusCode);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var json = await response.Content.ReadAsStringAsync();
-                _logger.LogInformation("Response content: {Content}", json);
-
-                var children = JsonSerializer.Deserialize<List<ChildDto>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                }) ?? new();
-
-                _logger.LogInformation("Deserialized {Count} children", children.Count);
-                foreach (var child in children)
-                {
-                    _logger.LogInformation("Child ID: {ChildId}, Name: {Name}", child.Id, child.Name);
-                }
-
-                return children;
-            }
-
-            var errorContent = await response.Content.ReadAsStringAsync();
-            _logger.LogError("Error getting children. Status code: { StatusCode}, Content: { ErrorContent}", 
-                response.StatusCode, errorContent);
-
-            return new();
+                PropertyNameCaseInsensitive = true
+            }) ?? new List<ChildDto>();
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error getting children for logoped {LogopedId}", logopedId);
-            return new();
-        }
+
+        return new List<ChildDto>();
     }
 }

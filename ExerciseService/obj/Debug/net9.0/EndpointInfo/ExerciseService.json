@@ -89,84 +89,6 @@
         }
       }
     },
-    "/complexes/public": {
-      "get": {
-        "tags": [
-          "Complex"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ComplexDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ComplexDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ComplexDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/complexes/public/{id}": {
-      "get": {
-        "tags": [
-          "Complex"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplexDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplexDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ComplexDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/complexes/assigned": {
       "get": {
         "tags": [
@@ -365,10 +287,71 @@
         }
       }
     },
-    "/all": {
+    "/complexes/{complexId}/assigned-children": {
+      "get": {
+        "tags": [
+          "Complex"
+        ],
+        "parameters": [
+          {
+            "name": "complexId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Exercises/all": {
       "get": {
         "tags": [
           "Exercises"
+        ],
+        "parameters": [
+          {
+            "name": "sound",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -403,7 +386,7 @@
         }
       }
     },
-    "/{id}": {
+    "/api/Exercises/{id}": {
       "get": {
         "tags": [
           "Exercises"
@@ -443,7 +426,7 @@
         }
       }
     },
-    "/tags": {
+    "/api/Exercises/tags": {
       "get": {
         "tags": [
           "Exercises"
@@ -481,7 +464,7 @@
         }
       }
     },
-    "/tags/{category}": {
+    "/api/Exercises/tags/{category}": {
       "get": {
         "tags": [
           "Exercises"

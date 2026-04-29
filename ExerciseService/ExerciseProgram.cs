@@ -19,9 +19,16 @@ public class ExerciseProgram
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddHttpContextAccessor();
+        var userServiceUrl = builder.Configuration["Services:UserService"];
+
         builder.Services.AddHttpClient<IUserService, UserService>(client =>
         {
-            client.BaseAddress = new Uri("http://192.168.0.100:5000");
+            if (string.IsNullOrWhiteSpace(userServiceUrl))
+            {
+                throw new Exception("UserService URL is not configured");
+            }
+
+            client.BaseAddress = new Uri(userServiceUrl);
         });
 
         builder.Services.AddControllers();
@@ -83,19 +90,18 @@ public class ExerciseProgram
         var env = app.Services.GetRequiredService<IWebHostEnvironment>();
 
         // Apply migration + seed
-        bool forceReseed = true;
+        bool forceReseed = false;
 
-        using (var scope = app.Services.CreateScope())
+        if (forceReseed)
         {
+            using var scope = app.Services.CreateScope();
+
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
             var filePath = Path.Combine(env.WebRootPath, "static", "exercises.xlsx");
 
-            if (forceReseed)
-            {
-                await db.Database.EnsureDeletedAsync();
-            }
-
+            await db.Database.EnsureDeletedAsync();
             await db.Database.EnsureCreatedAsync();
+
             await ExerciseSeeder.SeedAsync(db, filePath);
             await SoundCardSeeder.SeedAsync(db);
         }

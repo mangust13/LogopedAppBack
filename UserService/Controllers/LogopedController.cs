@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using UserService.Contracts;
-using UserService.Domain;
 using UserService.Infrastructure;
 
 namespace UserService.Controllers;
@@ -11,29 +10,23 @@ namespace UserService.Controllers;
 [ApiController]
 [Route("logoped")]
 [Authorize]
-public class LogopedController : ControllerBase
+public class LogopedController(UsersDbContext db) : ControllerBase
 {
-    private readonly UsersDbContext _db;
-
-    public LogopedController(UsersDbContext db)
-    {
-        _db = db;
-    }
-
     [HttpGet("children")]
+    [Authorize(Roles = "Logoped")]
     public async Task<IActionResult> GetMyChildren()
     {
-        var logopedId = int.Parse(
-            User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        var logopedId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
-        var children = await _db.ChildAssignments
+        var children = await db.ChildAssignments
             .Where(x => x.LogopedUserId == logopedId)
-            .Select(x => new LogopedChildDto
+            .Select(x => new GetChildProfilesDto
             {
                 Id = x.ChildProfile.Id,
                 Name = x.ChildProfile.Name,
                 BirthDate = x.ChildProfile.BirthDate,
-                ProblemSounds = x.ChildProfile.ProblemSounds
+                ProblemSounds = x.ChildProfile.ProblemSounds,
+                LogopedEmail = x.Logoped.Email
             })
             .ToListAsync();
 
@@ -43,7 +36,7 @@ public class LogopedController : ControllerBase
     [HttpGet("logopeds")]
     public async Task<IActionResult> GetAllLogopeds()
     {
-        var logopeds = await _db.Users
+        var logopeds = await db.Users
             .Where(u => u.Role == "Logoped")
             .Select(u => new LogopedDto
             {
@@ -55,4 +48,27 @@ public class LogopedController : ControllerBase
         return Ok(logopeds);
     }
 
+    [HttpPut("children/{childId:int}")]
+    [Authorize(Roles = "Logoped")]
+    public async Task<IActionResult> UpdateChild(int childId, UpdateChildProfileDto dto)
+    {
+        var logopedId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+        var assignment = await db.ChildAssignments
+            .Include(x => x.ChildProfile)
+            .FirstOrDefaultAsync(x =>
+                x.ChildProfileId == childId &&
+                x.LogopedUserId == logopedId);
+
+        if (assignment == null)
+            return NotFound("Child not found");
+
+        assignment.ChildProfile.Name = dto.Name;
+        assignment.ChildProfile.BirthDate = dto.BirthDate;
+        assignment.ChildProfile.ProblemSounds = dto.ProblemSounds ?? "";
+
+        await db.SaveChangesAsync();
+
+        return Ok();
+    }
 }

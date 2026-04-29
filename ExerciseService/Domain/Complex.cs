@@ -1,5 +1,4 @@
-﻿// Domain/Complex.cs
-namespace ExerciseService.Domain;
+﻿namespace ExerciseService.Domain;
 
 public class Complex
 {
@@ -20,6 +19,7 @@ public class Complex
 public class ComplexItem
 {
     public int Id { get; set; }
+
     public int ComplexId { get; set; }
     public Complex Complex { get; set; } = null!;
 
@@ -32,6 +32,7 @@ public class ComplexItem
 public class ComplexAssignment
 {
     public int Id { get; set; }
+
     public int ComplexId { get; set; }
     public Complex Complex { get; set; } = null!;
 

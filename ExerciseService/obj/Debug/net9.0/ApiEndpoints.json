@@ -2,7 +2,7 @@
   {
     "ContainingType": "ExerciseService.Controllers.ExercisesController",
     "Method": "GetById",
-    "RelativePath": "{id}",
+    "RelativePath": "api/Exercises/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -28,14 +28,66 @@
   {
     "ContainingType": "ExerciseService.Controllers.ExercisesController",
     "Method": "GetAll",
-    "RelativePath": "all",
+    "RelativePath": "api/Exercises/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sound",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetTags",
+    "RelativePath": "api/Exercises/tags",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseTagDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ExercisesController",
+    "Method": "GetTagsByCategory",
+    "RelativePath": "api/Exercises/tags/{category}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "category",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseTagDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -111,6 +163,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExerciseService.Controllers.ComplexController",
+    "Method": "GetAssignedChildren",
+    "RelativePath": "complexes/{complexId}/assigned-children",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "complexId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "ExerciseService.Controllers.ComplexController",
@@ -206,52 +284,6 @@
     ]
   },
   {
-    "ContainingType": "ExerciseService.Controllers.ComplexController",
-    "Method": "GetPublicComplexes",
-    "RelativePath": "complexes/public",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ComplexDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ExerciseService.Controllers.ComplexController",
-    "Method": "GetPublicComplexById",
-    "RelativePath": "complexes/public/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ExerciseService.Contracts.ComplexDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "ExerciseService.ExerciseProgram\u002B\u003C\u003Ec",
     "Method": "\u003CMain\u003Eb__0_4",
     "RelativePath": "health",
@@ -282,51 +314,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "GetTags",
-    "RelativePath": "tags",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseTagDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ExerciseService.Controllers.ExercisesController",
-    "Method": "GetTagsByCategory",
-    "RelativePath": "tags/{category}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "category",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[ExerciseService.Contracts.ExerciseTagDto, ExerciseService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   }
 ]
