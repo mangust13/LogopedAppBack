@@ -1,10 +1,8 @@
 ############################
-# .NET / Visual Studio
+# .NET
 ############################
 bin/
 obj/
-[Bb]in/
-[Oo]bj/
 
 *.user
 *.rsuser
@@ -13,16 +11,12 @@ obj/
 *.sln.docstates
 
 .vs/
-.vscode/
 
 ############################
-# Build artifacts
+# Build / publish
 ############################
-Debug/
-Release/
-x64/
-x86/
-AnyCPU/
+publish/
+out/
 
 ############################
 # Logs
@@ -30,44 +24,25 @@ AnyCPU/
 *.log
 
 ############################
-# Databases (SQLite)
-############################
-*.db
-*.db-shm
-*.db-wal
-
-############################
-# ASP.NET Core
+# ASP.NET Core configs
 ############################
 appsettings.Development.json
 appsettings.Local.json
 
 ############################
-# Python (AIService)
+# Python (SpeechService / AI)
 ############################
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
 .env
 venv/
-.env/
+.venv/
 
 ############################
-# OS junk
-############################
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-############################
-# Rider / ReSharper
-############################
-.idea/
-*.DotSettings.user
-
-############################
-# Node 
+# Node (якщо десь є RN / tooling)
 ############################
 node_modules/
 npm-debug.log*
@@ -75,10 +50,29 @@ yarn-debug.log*
 yarn-error.log*
 
 ############################
-# Media files
+# IDE
 ############################
-ExerciseService/wwwroot/static/videos/*
-!ExerciseService/wwwroot/static/videos/.gitkeep
+.idea/
+.vscode/
 
-*.xlsx
-*.sql
+############################
+# OS
+############################
+Thumbs.db
+Desktop.ini
+
+############################
+# DATABASES
+############################
+*.db
+*.db-shm
+*.db-wal
+
+############################
+# MEDIA (ДУЖЕ ВАЖЛИВО)
+############################
+ExerciseService/wwwroot/static/**
+
+# Але залишаємо структуру
+!ExerciseService/wwwroot/static/
+!ExerciseService/wwwroot/static/.gitkeep

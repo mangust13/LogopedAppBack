@@ -6,7 +6,7 @@ public class Exercise
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string VideoPath { get; set; } = string.Empty;
-    public string IconName { get; set; } = "happy";
+    public string ImagePath { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
 
     public List<ExerciseTagLink> Tags { get; set; } = new();

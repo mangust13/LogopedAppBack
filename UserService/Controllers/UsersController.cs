@@ -8,59 +8,43 @@ using UserService.Domain;
 using UserService.Infrastructure;
 using UserService.Services;
 
-using AuthDtos = UserService.Contracts.AuthDtos;
-
 namespace UserService.Controllers;
 
 [ApiController]
 [Route("")]
-public class UsersController : ControllerBase
+public class UsersController(
+    UsersDbContext db,
+    IJwtTokenService jwt,
+    IEmailService emailService,
+    IValidator<AuthDtos.RegisterRequest> registerValidator,
+    IValidator<AuthDtos.LoginRequest> loginValidator) : ControllerBase
 {
-    private readonly UsersDbContext _db;
-    private readonly IJwtTokenService _jwt;
-    private readonly IValidator<AuthDtos.RegisterRequest> _registerValidator;
-    private readonly IValidator<AuthDtos.LoginRequest> _loginValidator;
-
-    public UsersController(
-        UsersDbContext db,
-        IJwtTokenService jwt,
-        IValidator<AuthDtos.RegisterRequest> registerValidator,
-        IValidator<AuthDtos.LoginRequest> loginValidator)
-    {
-        _db = db;
-        _jwt = jwt;
-        _registerValidator = registerValidator;
-        _loginValidator = loginValidator;
-    }
-
     [AllowAnonymous]
     [HttpPost("register")]
     public async Task<ActionResult<AuthDtos.LoginResponse>> Register([FromBody] AuthDtos.RegisterRequest req)
     {
-        var validation = await _registerValidator.ValidateAsync(req);
+        var validation = await registerValidator.ValidateAsync(req);
         if (!validation.IsValid)
-        {
-            var errors = validation.Errors
-                .GroupBy(x => x.PropertyName)
-                .ToDictionary(g => g.Key, g => g.Select(x => x.ErrorMessage).ToArray());
-            return ValidationProblem(new ValidationProblemDetails(errors));
-        }
+            return ValidationProblem(validation.ToValidationProblemDetails());
 
-        var exists = await _db.Users.AnyAsync(x => x.Email == req.Email.Trim().ToLower());
-        if (exists)
+        var email = req.Email.Trim().ToLower();
+
+        if (await db.Users.AnyAsync(x => x.Email == email))
             return Conflict(new { message = "Email вже зареєстрований" });
 
         var user = new User
         {
-            Email = req.Email.Trim().ToLower(),
+            Email = email,
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(req.Password),
             Role = string.IsNullOrWhiteSpace(req.Role) ? "User" : req.Role!,
         };
 
-        _db.Users.Add(user);
-        await _db.SaveChangesAsync();
+        db.Users.Add(user);
+        await db.SaveChangesAsync();
 
-        var token = _jwt.Create(user);
+        _ = emailService.SendWelcomeAsync(user.Email, user.Role);
+
+        var token = jwt.Create(user);
         return new AuthDtos.LoginResponse(user.Id, user.Email, user.Role, token);
     }
 
@@ -68,25 +52,17 @@ public class UsersController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<AuthDtos.LoginResponse>> Login([FromBody] AuthDtos.LoginRequest req)
     {
-        var validation = await _loginValidator.ValidateAsync(req);
+        var validation = await loginValidator.ValidateAsync(req);
         if (!validation.IsValid)
-        {
-            var errors = validation.Errors
-                .GroupBy(x => x.PropertyName)
-                .ToDictionary(g => g.Key, g => g.Select(x => x.ErrorMessage).ToArray());
-            return ValidationProblem(new ValidationProblemDetails(errors));
-        }
+            return ValidationProblem(validation.ToValidationProblemDetails());
 
         var email = req.Email.Trim().ToLower();
-        var user = await _db.Users.FirstOrDefaultAsync(x => x.Email == email);
-        if (user is null)
+        var user = await db.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+        if (user is null || !BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash))
             return Unauthorized(new { message = "Невірний email або пароль" });
 
-        var ok = BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash);
-        if (!ok)
-            return Unauthorized(new { message = "Невірний email або пароль" });
-
-        var token = _jwt.Create(user);
+        var token = jwt.Create(user);
         return new AuthDtos.LoginResponse(user.Id, user.Email, user.Role, token);
     }
 
@@ -96,8 +72,28 @@ public class UsersController : ControllerBase
     {
         var sub = User.Claims.FirstOrDefault(c => c.Type.EndsWith("/nameidentifier") || c.Type == "sub")?.Value;
         if (!int.TryParse(sub, out var id)) return Unauthorized();
-        var user = await _db.Users.FindAsync(id);
+
+        var user = await db.Users.FindAsync(id);
         if (user is null) return Unauthorized();
+
         return Ok(new { user.Id, user.Email, user.Role, user.CreatedAt });
+    }
+
+    [Authorize]
+    [HttpDelete("me")]
+    public async Task<IActionResult> DeleteAccount()
+    {
+        var sub = User.Claims.FirstOrDefault(c => c.Type.EndsWith("/nameidentifier") || c.Type == "sub")?.Value;
+        if (!int.TryParse(sub, out var id)) return Unauthorized();
+
+        var user = await db.Users.FindAsync(id);
+        if (user is null) return Unauthorized();
+
+        db.Users.Remove(user);
+        await db.SaveChangesAsync();
+
+        _ = emailService.SendAccountDeletedAsync(user.Email);
+
+        return NoContent();
     }
 }

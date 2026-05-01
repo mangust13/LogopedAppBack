@@ -11,15 +11,8 @@ namespace UserService.Controllers;
 [ApiController]
 [Route("children")]
 [Authorize]
-public class ChildrenController : ControllerBase
+public class ChildrenController(UsersDbContext db) : ControllerBase
 {
-    private readonly UsersDbContext _db;
-
-    public ChildrenController(UsersDbContext db)
-    {
-        _db = db;
-    }
-
     // Children CRUD
     [HttpPost]
     public async Task<IActionResult> Create(CreateChildProfileDto dto)
@@ -34,8 +27,8 @@ public class ChildrenController : ControllerBase
             ProblemSounds = dto.ProblemSounds
         };
 
-        _db.ChildProfiles.Add(child);
-        await _db.SaveChangesAsync();
+        db.ChildProfiles.Add(child);
+        await db.SaveChangesAsync();
 
         return Ok(child.Id);
     }
@@ -47,7 +40,7 @@ public class ChildrenController : ControllerBase
             User.FindFirstValue(ClaimTypes.NameIdentifier)!
         );
 
-        var children = await _db.ChildProfiles
+        var children = await db.ChildProfiles
             .Where(c => c.ParentUserId == parentId)
             .Select(c => new GetChildProfilesDto
             {
@@ -55,7 +48,7 @@ public class ChildrenController : ControllerBase
                 Name = c.Name,
                 BirthDate = c.BirthDate,
                 ProblemSounds = c.ProblemSounds,
-                LogopedEmail = _db.ChildAssignments
+                LogopedEmail = db.ChildAssignments
                     .Where(a => a.ChildProfileId == c.Id)
                     .Select(a => a.Logoped.Email)
                     .FirstOrDefault()
@@ -71,7 +64,7 @@ public class ChildrenController : ControllerBase
     {
         var parentId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
-        var child = await _db.ChildProfiles
+        var child = await db.ChildProfiles
             .FirstOrDefaultAsync(c => c.Id == childId && c.ParentUserId == parentId);
 
         if (child == null)
@@ -81,7 +74,7 @@ public class ChildrenController : ControllerBase
         child.BirthDate = dto.BirthDate;
         child.ProblemSounds = dto.ProblemSounds;
 
-        await _db.SaveChangesAsync();
+        await db.SaveChangesAsync();
         return Ok();
     }
 
@@ -90,17 +83,17 @@ public class ChildrenController : ControllerBase
     {
         var parentId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
-        var child = await _db.ChildProfiles
+        var child = await db.ChildProfiles
             .FirstOrDefaultAsync(c => c.Id == childId && c.ParentUserId == parentId);
 
         if (child == null)
             return NotFound("Child not found");
 
-        var assignments = _db.ChildAssignments.Where(a => a.ChildProfileId == childId);
-        _db.ChildAssignments.RemoveRange(assignments);
+        var assignments = db.ChildAssignments.Where(a => a.ChildProfileId == childId);
+        db.ChildAssignments.RemoveRange(assignments);
 
-        _db.ChildProfiles.Remove(child);
-        await _db.SaveChangesAsync();
+        db.ChildProfiles.Remove(child);
+        await db.SaveChangesAsync();
         return Ok();
     }
 
@@ -111,7 +104,7 @@ public class ChildrenController : ControllerBase
             User.FindFirstValue(ClaimTypes.NameIdentifier)!
         );
 
-        var child = await _db.ChildProfiles
+        var child = await db.ChildProfiles
             .FirstOrDefaultAsync(c =>
                 c.Id == childId &&
                 c.ParentUserId == parentId);
@@ -119,7 +112,7 @@ public class ChildrenController : ControllerBase
         if (child == null)
             return NotFound("Child not found");
 
-        var logoped = await _db.Users
+        var logoped = await db.Users
             .FirstOrDefaultAsync(u =>
                 u.Email == dto.LogopedEmail &&
                 u.Role == "Logoped");
@@ -127,7 +120,7 @@ public class ChildrenController : ControllerBase
         if (logoped == null)
             return NotFound("Logoped not found");
 
-        var existingAssignment = await _db.ChildAssignments
+        var existingAssignment = await db.ChildAssignments
             .FirstOrDefaultAsync(x =>
                 x.ChildProfileId == childId);
 
@@ -137,14 +130,14 @@ public class ChildrenController : ControllerBase
         }
         else
         {
-            _db.ChildAssignments.Add(new ChildAssignment
+            db.ChildAssignments.Add(new ChildAssignment
             {
                 ChildProfileId = childId,
                 LogopedUserId = logoped.Id
             });
         }
 
-        await _db.SaveChangesAsync();
+        await db.SaveChangesAsync();
         return Ok();
     }
 }

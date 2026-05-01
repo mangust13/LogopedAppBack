@@ -6,7 +6,7 @@ public class SoundCard
     public string Sound { get; set; } = string.Empty;
     public string Word { get; set; } = string.Empty;
     public string ImageFile { get; set; } = string.Empty;
-
+    public bool IsAlive { get; set; } = false;
     public int PositionId { get; set; }
     public SoundPosition Position { get; set; } = null!;
 }

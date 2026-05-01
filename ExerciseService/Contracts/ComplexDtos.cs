@@ -42,7 +42,7 @@ public class ComplexDto
                 Title = item.Exercise.Title,
                 Description = item.Exercise.Description,
                 VideoPath = item.Exercise.VideoPath,
-                IconName = item.Exercise.IconName,
+                ImagePath = item.Exercise.ImagePath,
                 Tags = item.Exercise.Tags
                     .Select(tagLink => new ExerciseTagDto
                     {

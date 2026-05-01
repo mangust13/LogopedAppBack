@@ -89,11 +89,11 @@ public static class ExerciseSeeder
 
         var tags = new List<ExerciseTag>
         {
-            new() { Name = "type-static", Category = "type", DisplayName = "Статична" },
-            new() { Name = "type-dynamic", Category = "type", DisplayName = "Динамічна" },
-            new() { Name = "organ-lips", Category = "organ", DisplayName = "Губи" },
-            new() { Name = "organ-jaw", Category = "organ", DisplayName = "Нижня щелепа" },
-            new() { Name = "organ-tongue", Category = "organ", DisplayName = "Язик" }
+            new() { Name = "type-static",   Category = "type",   DisplayName = "Статична" },
+            new() { Name = "type-dynamic",  Category = "type",   DisplayName = "Динамічна" },
+            new() { Name = "organ-lips",    Category = "organ",  DisplayName = "Губи" },
+            new() { Name = "organ-jaw",     Category = "organ",  DisplayName = "Нижня щелепа" },
+            new() { Name = "organ-tongue",  Category = "organ",  DisplayName = "Язик" },
         };
 
         var sounds = new Dictionary<string, string>
@@ -125,14 +125,14 @@ public static class ExerciseSeeder
             ["sound-kh"] = "Звук Х",
             ["sound-ts"] = "Звук Ц",
             ["sound-ch"] = "Звук Ч",
-            ["sound-sh"] = "Звук Ш"
+            ["sound-sh"] = "Звук Ш",
         };
 
-        tags.AddRange(sounds.Select(sound => new ExerciseTag
+        tags.AddRange(sounds.Select(s => new ExerciseTag
         {
-            Name = sound.Key,
+            Name = s.Key,
             Category = "sound",
-            DisplayName = sound.Value
+            DisplayName = s.Value,
         }));
 
         db.ExerciseTags.AddRange(tags);
@@ -148,7 +148,6 @@ public static class ExerciseSeeder
 
         using var stream = File.Open(filePath, FileMode.Open, FileAccess.Read);
         using var reader = ExcelReaderFactory.CreateReader(stream);
-
         var dataSet = reader.AsDataSet();
 
         if (dataSet.Tables.Count == 0)
@@ -160,8 +159,8 @@ public static class ExerciseSeeder
             .ToDictionaryAsync(c => c.Name);
 
         var exercises = new List<Exercise>();
-        var exerciseTagMappings = new List<(Exercise Exercise, List<string> TagNames)>();
-        var complexItemMappings = new List<(Exercise Exercise, string ComplexName)>();
+        var tagMappings = new List<(Exercise Exercise, List<string> TagNames)>();
+        var complexMappings = new List<(Exercise Exercise, string ComplexName)>();
 
         foreach (DataTable table in dataSet.Tables)
         {
@@ -177,22 +176,24 @@ public static class ExerciseSeeder
             {
                 var row = table.Rows[i];
 
-                var title = GetCellValue(row, 0);
-                var video = GetCellValue(row, 2);
-                var type = GetCellValue(row, 3);
-                var organ = GetCellValue(row, 4);
-                var sounds = GetCellValue(row, 5);
-                var description = GetCellValue(row, 6);
+                var title = GetCell(row, 0);
+                var videoFile = GetCell(row, 2);
+                var type = GetCell(row, 4);
+                var organ = GetCell(row, 5);
+                var sounds = GetCell(row, 6);
+                var description = GetCell(row, 7);
 
                 if (string.IsNullOrWhiteSpace(title))
                     continue;
+
+                var fileName = NormalizeFileName(videoFile);
 
                 var exercise = new Exercise
                 {
                     Title = title,
                     Description = description,
-                    VideoPath = BuildVideoPath(video, folderName),
-                    IconName = "exercise"
+                    VideoPath = BuildPath("videos", folderName, fileName, ".mp4"),
+                    ImagePath = BuildPath("images", folderName, fileName, ".jpg"),
                 };
 
                 exercises.Add(exercise);
@@ -202,8 +203,8 @@ public static class ExerciseSeeder
                 exerciseTags.AddRange(MapOrgan(organ));
                 exerciseTags.AddRange(MapSounds(sounds));
 
-                exerciseTagMappings.Add((exercise, exerciseTags.Distinct().ToList()));
-                complexItemMappings.Add((exercise, complexName));
+                tagMappings.Add((exercise, exerciseTags.Distinct().ToList()));
+                complexMappings.Add((exercise, complexName));
             }
         }
 
@@ -213,39 +214,38 @@ public static class ExerciseSeeder
         db.Exercises.AddRange(exercises);
         await db.SaveChangesAsync();
 
-        var links = new List<ExerciseTagLink>();
-
-        foreach (var mapping in exerciseTagMappings)
+        var tagLinks = new List<ExerciseTagLink>();
+        foreach (var (exercise, tagNames) in tagMappings)
         {
-            foreach (var tagName in mapping.TagNames)
+            foreach (var tagName in tagNames)
             {
                 if (!tags.TryGetValue(tagName, out var tag))
                     continue;
 
-                links.Add(new ExerciseTagLink
+                tagLinks.Add(new ExerciseTagLink
                 {
-                    ExerciseId = mapping.Exercise.Id,
-                    TagId = tag.Id
+                    ExerciseId = exercise.Id,
+                    TagId = tag.Id,
                 });
             }
         }
 
-        if (links.Any())
-            db.ExerciseTagLinks.AddRange(links);
+        if (tagLinks.Any())
+            db.ExerciseTagLinks.AddRange(tagLinks);
 
-        var complexItemOrder = complexes.Keys.ToDictionary(name => name, _ => 1);
+        var orderMap = complexes.Keys.ToDictionary(n => n, _ => 1);
         var complexItems = new List<ComplexItem>();
 
-        foreach (var mapping in complexItemMappings)
+        foreach (var (exercise, complexName) in complexMappings)
         {
-            if (!complexes.TryGetValue(mapping.ComplexName, out var complex))
+            if (!complexes.TryGetValue(complexName, out var c))
                 continue;
 
             complexItems.Add(new ComplexItem
             {
-                ComplexId = complex.Id,
-                ExerciseId = mapping.Exercise.Id,
-                Order = complexItemOrder[mapping.ComplexName]++
+                ComplexId = c.Id,
+                ExerciseId = exercise.Id,
+                Order = orderMap[complexName]++,
             });
         }
 
@@ -253,6 +253,23 @@ public static class ExerciseSeeder
             db.ComplexItems.AddRange(complexItems);
 
         await db.SaveChangesAsync();
+    }
+
+    private static string BuildPath(string type, string folder, string fileName, string ext)
+    {
+        if (string.IsNullOrWhiteSpace(fileName))
+            return "";
+
+        return $"/static/preparation/{type}/{folder}/{fileName}{ext}";
+    }
+
+    private static string NormalizeFileName(string raw)
+    {
+        if (string.IsNullOrWhiteSpace(raw))
+            return "";
+
+        var withoutExt = Path.GetFileNameWithoutExtension(raw.Trim());
+        return withoutExt.ToLower().Replace(" ", "-");
     }
 
     private static string GetComplexName(string sheetName)
@@ -267,7 +284,7 @@ public static class ExerciseSeeder
             ["шиплячі"] = "hushing",
             ["звук л"] = "sound-l",
             ["звук р"] = "sound-r",
-            ["кінчик язика"] = "tongue-tip"
+            ["кінчик язика"] = "tongue-tip",
         };
 
         foreach (var item in map)
@@ -279,21 +296,12 @@ public static class ExerciseSeeder
         return "all";
     }
 
-    private static string GetCellValue(DataRow row, int columnIndex)
+    private static string GetCell(DataRow row, int col)
     {
-        if (columnIndex >= row.ItemArray.Length)
+        if (col >= row.ItemArray.Length)
             return "";
 
-        return row[columnIndex]?.ToString()?.Trim() ?? "";
-    }
-
-    private static string BuildVideoPath(string file, string folderName)
-    {
-        if (string.IsNullOrWhiteSpace(file))
-            return "";
-
-        file = file.Trim().ToLower().Replace(" ", "-");
-        return $"/static/videos/{folderName}/{file}";
+        return row[col]?.ToString()?.Trim() ?? "";
     }
 
     private static string Normalize(string value)
@@ -312,14 +320,10 @@ public static class ExerciseSeeder
     private static List<string> MapType(string raw)
     {
         raw = Normalize(raw);
-
         var result = new List<string>();
 
-        if (raw.Contains("статична"))
-            result.Add("type-static");
-
-        if (raw.Contains("динамічна"))
-            result.Add("type-dynamic");
+        if (raw.Contains("статична")) result.Add("type-static");
+        if (raw.Contains("динамічна")) result.Add("type-dynamic");
 
         return result;
     }
@@ -328,7 +332,7 @@ public static class ExerciseSeeder
     {
         ["губи"] = "organ-lips",
         ["нижня щелепа"] = "organ-jaw",
-        ["язик"] = "organ-tongue"
+        ["язик"] = "organ-tongue",
     };
 
     private static List<string> MapOrgan(string raw)
@@ -374,7 +378,7 @@ public static class ExerciseSeeder
         ["х"] = "sound-kh",
         ["ц"] = "sound-ts",
         ["ч"] = "sound-ch",
-        ["ш"] = "sound-sh"
+        ["ш"] = "sound-sh",
     };
 
     private static List<string> MapSounds(string raw)

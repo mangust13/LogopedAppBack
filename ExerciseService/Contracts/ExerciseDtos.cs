@@ -10,7 +10,7 @@ public class ExerciseDto
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string VideoPath { get; set; } = string.Empty;
-    public string IconName { get; set; } = string.Empty;
+    public string ImagePath { get; set; } = string.Empty;
 
     public List<ExerciseTagDto> Tags { get; set; } = new();
 
@@ -20,7 +20,7 @@ public class ExerciseDto
         Title = x.Title,
         Description = x.Description,
         VideoPath = x.VideoPath,
-        IconName = x.IconName,
+        ImagePath = x.ImagePath,
         Tags = x.Tags.Select(t => new ExerciseTagDto
         {
             Id = t.Tag.Id,

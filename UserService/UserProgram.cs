@@ -18,14 +18,17 @@ public static class UserProgram
         builder.Services.AddDbContext<UsersDbContext>(opt =>
             opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        // JWT
         builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
         builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+        builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection("Email"));
+        builder.Services.AddScoped<IEmailService, EmailService>();
+
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(opt =>
             {
                 var cfg = builder.Configuration.GetSection("Jwt");
-                opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                opt.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -41,11 +44,9 @@ public static class UserProgram
         builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
         builder.Services.AddEndpointsApiExplorer();
 
-        //Swagger
         builder.Services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new() { Title = "UserProgram", Version = "v1" });
-
             options.AddSecurityDefinition("Bearer", new()
             {
                 Name = "Authorization",
@@ -55,7 +56,6 @@ public static class UserProgram
                 In = Microsoft.OpenApi.Models.ParameterLocation.Header,
                 Description = "¬вед≥ть: Bearer {token}"
             });
-
             options.AddSecurityRequirement(new()
             {
                 {
@@ -71,7 +71,6 @@ public static class UserProgram
                 }
             });
         });
-
 
         var app = builder.Build();
 
@@ -90,7 +89,7 @@ public static class UserProgram
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.MapGet("/health", () => Results.Ok( new { status = "ok", service = "UserProgram" } ));
+        app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "UserProgram" }));
         app.MapControllers();
 
         await app.RunAsync();

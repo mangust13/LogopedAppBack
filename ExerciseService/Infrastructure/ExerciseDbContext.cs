@@ -26,7 +26,7 @@ public class ExerciseDbContext : DbContext
             entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Description).HasMaxLength(2000);
             entity.Property(e => e.VideoPath).HasMaxLength(500);
-            entity.Property(e => e.IconName).HasMaxLength(100);
+            entity.Property(e => e.ImagePath).HasMaxLength(500); 
         });
 
         modelBuilder.Entity<ExerciseTag>(entity =>
@@ -112,6 +112,7 @@ public class ExerciseDbContext : DbContext
             entity.Property(e => e.Sound).IsRequired().HasMaxLength(10);
             entity.Property(e => e.Word).IsRequired().HasMaxLength(100);
             entity.Property(e => e.ImageFile).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.IsAlive).HasDefaultValue(false);
 
             entity.HasOne(e => e.Position)
                 .WithMany(p => p.SoundCards)

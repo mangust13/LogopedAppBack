@@ -7,19 +7,12 @@ namespace ExerciseService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ExercisesController : ControllerBase
+public class ExercisesController(ExerciseDbContext db) : ControllerBase
 {
-    private readonly ExerciseDbContext _db;
-
-    public ExercisesController(ExerciseDbContext db)
-    {
-        _db = db;
-    }
-
     [HttpGet("all")]
     public async Task<ActionResult<List<ExerciseDto>>> GetAll([FromQuery] string? sound = null)
     {
-        var query = _db.Exercises
+        var query = db.Exercises
             .AsNoTracking()
             .AsQueryable();
 
@@ -39,7 +32,7 @@ public class ExercisesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<ExerciseDto>> GetById(int id)
     {
-        var exercise = await _db.Exercises
+        var exercise = await db.Exercises
             .AsNoTracking()
             .Where(x => x.Id == id)
             .Select(ExerciseDto.From)
@@ -54,7 +47,7 @@ public class ExercisesController : ControllerBase
     [HttpGet("tags")]
     public async Task<ActionResult<List<ExerciseTagDto>>> GetTags()
     {
-        var tags = await _db.ExerciseTags
+        var tags = await db.ExerciseTags
             .Select(t => new ExerciseTagDto
             {
                 Id = t.Id,
@@ -70,7 +63,7 @@ public class ExercisesController : ControllerBase
     [HttpGet("tags/{category}")]
     public async Task<ActionResult<List<ExerciseTagDto>>> GetTagsByCategory(string category)
     {
-        var tags = await _db.ExerciseTags
+        var tags = await db.ExerciseTags
             .Where(t => t.Category == category)
             .Select(t => new ExerciseTagDto
             {

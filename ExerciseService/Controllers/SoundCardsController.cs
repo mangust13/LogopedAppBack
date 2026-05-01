@@ -6,16 +6,8 @@ namespace ExerciseService.Controllers;
 
 [ApiController]
 [Route("sound-cards")]
-public class SoundCardsController : ControllerBase
+public class SoundCardsController(ExerciseDbContext db) : ControllerBase
 {
-    private readonly ExerciseDbContext _db;
-    private readonly IWebHostEnvironment _env;
-
-    public SoundCardsController(ExerciseDbContext db, IWebHostEnvironment env)
-    {
-        _db = db;
-        _env = env;
-    }
 
     [HttpGet]
     public async Task<IActionResult> GetBySound([FromQuery] string sound)
@@ -23,7 +15,7 @@ public class SoundCardsController : ControllerBase
         if (string.IsNullOrWhiteSpace(sound))
             return BadRequest("sound is required");
 
-        var cards = await _db.SoundCards
+        var cards = await db.SoundCards
             .Include(c => c.Position)
             .Where(c => c.Sound == sound.ToLower())
             .OrderBy(c => c.Position.Code)
@@ -33,15 +25,31 @@ public class SoundCardsController : ControllerBase
                 c.Sound,
                 c.Word,
                 c.ImageFile,
+                c.IsAlive,
                 Position = new
                 {
                     c.Position.Code,
                     c.Position.DisplayName,
                 },
-                ImageUrl = $"/static/automation/{c.ImageFile}",
+                ImageUrl = $"/static/automation/sound-{MapSound(c.Sound)}/{c.ImageFile}",
             })
             .ToListAsync();
 
         return Ok(cards);
     }
+
+    private static string MapSound(string sound) => sound switch
+    {
+        "р" => "r",
+        "л" => "l",
+        "с" => "s",
+        "ш" => "sh",
+        "ж" => "zh",
+        "з" => "z",
+        "ч" => "ch",
+        "ц" => "ts",
+        "дж" => "dzh",
+        "дз" => "dz",
+        _ => sound
+    };
 }

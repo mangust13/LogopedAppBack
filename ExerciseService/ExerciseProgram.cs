@@ -97,7 +97,7 @@ public class ExerciseProgram
             using var scope = app.Services.CreateScope();
 
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
-            var filePath = Path.Combine(env.WebRootPath, "static", "exercises.xlsx");
+            var filePath = Path.Combine(env.WebRootPath, "static", "preparation", "exercises.xlsx");
 
             await db.Database.EnsureDeletedAsync();
             await db.Database.EnsureCreatedAsync();
