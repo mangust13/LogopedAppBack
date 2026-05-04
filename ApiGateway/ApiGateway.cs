@@ -11,7 +11,6 @@ public class ApiGateway
         var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
         builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
         
-        // CORS
         builder.Services.AddCors(options =>
         {
             options.AddDefaultPolicy(policy =>
@@ -22,7 +21,6 @@ public class ApiGateway
             });
         });
 
-        // Swager
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(options =>
         {
@@ -59,7 +57,6 @@ public class ApiGateway
         });
 
 
-        // YARP
         builder.Services.AddReverseProxy()
             .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
@@ -73,8 +70,6 @@ public class ApiGateway
 
         app.UseCors();
         app.MapGet("/", () => new { gateway = "Logoped API Gateway", status = "ok" });
-
-        // Proxy routes
         app.MapReverseProxy();
 
         await app.RunAsync();

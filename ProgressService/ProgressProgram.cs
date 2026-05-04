@@ -2,33 +2,50 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ProgressService.Infrastructure;
+using ProgressService.Services;
 using System.Text;
 
 namespace ProgressService;
 
-public class ProgressService
+public class ProgressProgram
 {
     public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Database
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "5003";
+        builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
         builder.Services.AddDbContext<ProgressDbContext>(opt =>
-            opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-        );
+            opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        builder.Services.AddControllers();
+        builder.Services.AddScoped<IActivityService, ActivityService>();
+        builder.Services.AddScoped<IGameProgressService, GameProgressService>();
+        builder.Services.AddScoped<ILogopedSessionService, LogopedSessionService>();
 
-        //Swagger
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen(options =>
-        {
-            options.SwaggerDoc("v1", new()
+        var jwtSection = builder.Configuration.GetSection("Jwt");
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(opt =>
             {
-                Title = "ProgressService",
-                Version = "v1"
+                opt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSection["Issuer"],
+                    ValidAudience = jwtSection["Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtSection["Key"]!))
+                };
             });
 
+        builder.Services.AddAuthorization();
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+
+        builder.Services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new() { Title = "ProgressService", Version = "v1" });
             options.AddSecurityDefinition("Bearer", new()
             {
                 Name = "Authorization",
@@ -38,7 +55,6 @@ public class ProgressService
                 In = Microsoft.OpenApi.Models.ParameterLocation.Header,
                 Description = "Введіть: Bearer {token}"
             });
-
             options.AddSecurityRequirement(new()
             {
                 {
@@ -55,31 +71,8 @@ public class ProgressService
             });
         });
 
-
-        // JWT config
-        var jwtSection = builder.Configuration.GetSection("Jwt");
-        var key = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
-
-        builder.Services
-            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new()
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSection["Issuer"],
-                    ValidAudience = jwtSection["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(key)
-                };
-            });
-
-        builder.Services.AddAuthorization();
-
         var app = builder.Build();
 
-        // Apply migrations
         using (var scope = app.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<ProgressDbContext>();
@@ -95,10 +88,7 @@ public class ProgressService
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.MapGet("/health", () =>
-            Results.Ok(new { status = "Ok", service = "ProgressService" })
-        );
-
+        app.MapGet("/health", () => Results.Ok(new { status = "ok", service = "ProgressService" }));
         app.MapControllers();
 
         await app.RunAsync();

@@ -1,5 +1,4 @@
-﻿//Domain/Exercise.cs
-namespace ExerciseService.Domain;
+﻿namespace ExerciseService.Domain;
 
 public class Exercise
 {

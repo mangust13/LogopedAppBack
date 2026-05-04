@@ -13,7 +13,6 @@ namespace UserService.Controllers;
 [Authorize]
 public class ChildrenController(UsersDbContext db) : ControllerBase
 {
-    // Children CRUD
     [HttpPost]
     public async Task<IActionResult> Create(CreateChildProfileDto dto)
     {

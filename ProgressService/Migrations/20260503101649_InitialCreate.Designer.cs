@@ -12,7 +12,7 @@ using ProgressService.Infrastructure;
 namespace ProgressService.Migrations
 {
     [DbContext(typeof(ProgressDbContext))]
-    [Migration("20260319145235_InitialCreate")]
+    [Migration("20260503101649_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace ProgressService.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ProgressService.Domain.ProgressRecord", b =>
+            modelBuilder.Entity("ProgressService.Domain.GameProgress", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,29 +33,34 @@ namespace ProgressService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("Accuracy")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ChildProfileId")
+                    b.Property<int>("ChildId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime>("CompletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ExerciseId")
+                    b.Property<string>("GameType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PositionCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("Feedback")
+                    b.Property<string>("Sound")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RecognizedText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Records");
+                    b.HasIndex("ChildId", "Sound", "PositionCode", "GameType")
+                        .IsUnique();
+
+                    b.ToTable("GameProgresses");
                 });
 #pragma warning restore 612, 618
         }

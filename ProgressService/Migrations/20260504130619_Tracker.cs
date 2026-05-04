@@ -6,35 +6,38 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProgressService.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Tracker : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Records",
+                name: "DailyActivities",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ChildProfileId = table.Column<int>(type: "int", nullable: false),
-                    ExerciseId = table.Column<int>(type: "int", nullable: false),
-                    Accuracy = table.Column<double>(type: "float", nullable: false),
-                    Feedback = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RecognizedText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ChildId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateOnly>(type: "date", nullable: false),
+                    ActivityType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Records", x => x.Id);
+                    table.PrimaryKey("PK_DailyActivities", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DailyActivities_ChildId_Date_ActivityType",
+                table: "DailyActivities",
+                columns: new[] { "ChildId", "Date", "ActivityType" },
+                unique: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Records");
+                name: "DailyActivities");
         }
     }
 }

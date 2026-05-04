@@ -14,7 +14,6 @@ public class ExerciseProgram
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Services
         builder.Services.AddDbContext<ExerciseDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -34,7 +33,6 @@ public class ExerciseProgram
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
 
-        // Swagger
         builder.Services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new() { Title = "ExerciseProgram", Version = "v1" });
@@ -65,7 +63,6 @@ public class ExerciseProgram
             });
         });
 
-        // JWT
         var jwtSection = builder.Configuration.GetSection("Jwt");
         var key = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
 
