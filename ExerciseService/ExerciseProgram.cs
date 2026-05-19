@@ -91,16 +91,20 @@ public class ExerciseProgram
 
         if (forceReseed)
         {
+            Console.WriteLine(">>> RESEEDING DATABASE...");
             using var scope = app.Services.CreateScope();
 
             var db = scope.ServiceProvider.GetRequiredService<ExerciseDbContext>();
             var filePath = Path.Combine(env.WebRootPath, "static", "preparation", "exercises.xlsx");
 
             await db.Database.EnsureDeletedAsync();
+            Console.WriteLine(">>> DATABASE DELETED");
             await db.Database.EnsureCreatedAsync();
+            Console.WriteLine(">>> DATABASE CREATED");
 
             await ExerciseSeeder.SeedAsync(db, filePath);
             await SoundCardSeeder.SeedAsync(db);
+            Console.WriteLine(">>> SEEDING DONE");
         }
 
         if (app.Environment.IsDevelopment())

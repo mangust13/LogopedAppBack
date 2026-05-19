@@ -70,30 +70,47 @@ public class UsersController(
     [HttpGet("me")]
     public async Task<IActionResult> Me()
     {
-        var sub = User.Claims.FirstOrDefault(c => c.Type.EndsWith("/nameidentifier") || c.Type == "sub")?.Value;
+        var sub = User.Claims
+            .FirstOrDefault(c => c.Type.EndsWith("/nameidentifier") || c.Type == "sub")?.Value;
         if (!int.TryParse(sub, out var id)) return Unauthorized();
 
         var user = await db.Users.FindAsync(id);
         if (user is null) return Unauthorized();
 
-        return Ok(new { user.Id, user.Email, user.Role, user.CreatedAt });
+        return Ok(new
+        {
+            user.Id,
+            user.Email,
+            user.Role,
+            user.FirstName,
+            user.LastName,
+            user.CreatedAt,
+        });
     }
 
     [Authorize]
-    [HttpDelete("me")]
-    public async Task<IActionResult> DeleteAccount()
+    [HttpPut("me/profile")]
+    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto dto)
     {
-        var sub = User.Claims.FirstOrDefault(c => c.Type.EndsWith("/nameidentifier") || c.Type == "sub")?.Value;
+        var sub = User.Claims
+            .FirstOrDefault(c => c.Type.EndsWith("/nameidentifier") || c.Type == "sub")?.Value;
         if (!int.TryParse(sub, out var id)) return Unauthorized();
 
         var user = await db.Users.FindAsync(id);
         if (user is null) return Unauthorized();
 
-        db.Users.Remove(user);
+        user.FirstName = dto.FirstName?.Trim();
+        user.LastName = dto.LastName?.Trim();
+
         await db.SaveChangesAsync();
 
-        _ = emailService.SendAccountDeletedAsync(user.Email);
-
-        return NoContent();
+        return Ok(new
+        {
+            user.Id,
+            user.Email,
+            user.Role,
+            user.FirstName,
+            user.LastName,
+        });
     }
 }

@@ -1,5 +1,4 @@
-﻿// ProgressService/Controllers/ActivityController.cs
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProgressService.Contracts;
 using ProgressService.Services;
@@ -23,6 +22,13 @@ public class ActivityController : ControllerBase
     {
         await _service.TrackAsync(dto.ChildId, dto.ActivityType);
         return Ok();
+    }
+
+    [HttpPost("inactive")]
+    public async Task<IActionResult> GetInactiveChildren([FromBody] InactiveChildrenRequestDto dto)
+    {
+        var result = await _service.GetInactiveChildrenAsync(dto.ChildIds, dto.ThresholdDays);
+        return Ok(result);
     }
 
     [HttpGet("streak")]

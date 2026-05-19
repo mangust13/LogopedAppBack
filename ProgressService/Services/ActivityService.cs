@@ -104,4 +104,48 @@ public class ActivityService : IActivityService
 
         return dates.Select(d => d.ToString("yyyy-MM-dd")).ToList();
     }
+
+    public async Task<List<InactiveChildDto>> GetInactiveChildrenAsync(
+        IEnumerable<int> childIds, int thresholdDays)
+    {
+        var ids = childIds.ToList();
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+        var threshold = today.AddDays(-thresholdDays);
+
+        var lastActivities = await _db.DailyActivities
+            .Where(a => ids.Contains(a.ChildId))
+            .GroupBy(a => a.ChildId)
+            .Select(g => new
+            {
+                ChildId = g.Key,
+                LastDate = g.Max(a => a.Date)
+            })
+            .ToListAsync();
+
+        var result = new List<InactiveChildDto>();
+
+        foreach (var childId in ids)
+        {
+            var last = lastActivities.FirstOrDefault(x => x.ChildId == childId);
+
+            if (last == null)
+            {
+                result.Add(new InactiveChildDto
+                {
+                    ChildId = childId,
+                    DaysInactive = thresholdDays + 1,
+                });
+            }
+            else if (last.LastDate <= threshold)
+            {
+                result.Add(new InactiveChildDto
+                {
+                    ChildId = childId,
+                    DaysInactive = today.DayNumber - last.LastDate.DayNumber,
+                });
+            }
+        }
+
+        return result.OrderByDescending(x => x.DaysInactive).ToList();
+    }
 }

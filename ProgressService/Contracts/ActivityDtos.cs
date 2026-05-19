@@ -13,3 +13,15 @@ public class StreakDto
     public bool ActiveToday { get; set; }
     public int TotalActiveDays { get; set; }
 }
+
+public class InactiveChildDto
+{
+    public int ChildId { get; set; }
+    public int DaysInactive { get; set; }
+}
+
+public class InactiveChildrenRequestDto
+{
+    public List<int> ChildIds { get; set; } = new();
+    public int ThresholdDays { get; set; } = 3;
+}
